@@ -3,8 +3,12 @@ import React from "react";
 
 const HowItStartSection = () => {
   return (
-    <section className="section about text-center" data-page="about" id="about">
-      <div className="container">
+    <section
+      className="section  about bg-black-10 text-center"
+      data-page="about"
+      id="about"
+    >
+      <div className="container align-center">
         <div className="about-content">
           <p className="label-2 section-subtitle" id="about-label">
             Fromaj - Povestea noastră
@@ -22,7 +26,7 @@ const HowItStartSection = () => {
           </p>
         </div>
 
-        <figure className="about-banner">
+        <div className="about-banner">
           <Image
             src="/images/about-banner.jpg"
             width="570"
@@ -31,19 +35,7 @@ const HowItStartSection = () => {
             alt="about banner"
             className="w-100"
           />
-
-          <div className="abs-img abs-img-1 has-before">
-            <Image
-              src="/images/about-abs-image.jpg"
-              width="285"
-              height="285"
-              loading="lazy"
-              alt=""
-              className="w-100"
-            />
-          </div>
-
-          <div className="abs-img abs-img-2 has-before">
+          <figure className="abs-img abs-img-2 has-before">
             <Image
               src="/images/badge-2.png"
               width="133"
@@ -51,8 +43,8 @@ const HowItStartSection = () => {
               loading="lazy"
               alt=""
             />
-          </div>
-        </figure>
+          </figure>
+        </div>
       </div>
     </section>
   );

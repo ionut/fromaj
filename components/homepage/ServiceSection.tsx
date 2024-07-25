@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import ImageCustom from "../ui/ImageCustom";
 
 const ServiceSection = () => {
   return (
@@ -23,87 +25,84 @@ const ServiceSection = () => {
         <ul className="grid-list">
           <li>
             <div className="service-card">
-              <a href="#comanda" className="has-before hover:shine">
-                <figure className="card-banner img-holder">
-                  <Image
-                    src="/images/service-1.png"
-                    width="285"
-                    height="336"
-                    loading="lazy"
-                    alt="Breakfast"
-                    className="img-cover"
-                  />
-                </figure>
-              </a>
+              <ImageCustom href="/produse">
+                <Image
+                  src="/images/service-1.png"
+                  width="285"
+                  height="336"
+                  loading="lazy"
+                  alt="Breakfast"
+                  className="img-cover"
+                />
+              </ImageCustom>
 
               <div className="card-content">
                 <h3 className="title-4 card-title">
-                  <a href="#comanda">Cutii</a>
+                  <Link href="/produse">Cutii</Link>
                 </h3>
 
-                <a href="#comanda" className="btn-text hover-underline label-2">
+                <Link
+                  href="/produse"
+                  className="btn-text hover-underline label-2"
+                >
                   Comandă
-                </a>
+                </Link>
               </div>
             </div>
           </li>
 
           <li>
             <div className="service-card">
-              <a href="#cere_oferta" className="has-before hover:shine">
-                <figure className="card-banner img-holder">
-                  <Image
-                    src="/images/service-2.png"
-                    width="285"
-                    height="336"
-                    loading="lazy"
-                    alt="Appetizers"
-                    className="img-cover"
-                  />
-                </figure>
-              </a>
+              <ImageCustom href="/contact">
+                <Image
+                  src="/images/service-2.png"
+                  width="285"
+                  height="336"
+                  loading="lazy"
+                  alt="Appetizers"
+                  className="img-cover"
+                />
+              </ImageCustom>
 
               <div className="card-content">
                 <h3 className="title-4 card-title">
-                  <a href="#cere_oferta">Catering Corporate</a>
+                  <Link href="/contact">Catering Corporate</Link>
                 </h3>
 
-                <a
-                  href="#cere_oferta"
+                <Link
+                  href="/contact"
                   className="btn-text hover-underline label-2"
                 >
                   Cere ofertă
-                </a>
+                </Link>
               </div>
             </div>
           </li>
 
           <li>
             <div className="service-card">
-              <a href="#cere_oferta" className="has-before hover:shine">
-                <figure className="card-banner img-holder">
-                  <Image
-                    src="/images/service-3.png"
-                    width="285"
-                    height="336"
-                    loading="lazy"
-                    alt="Drinks"
-                    className="img-cover"
-                  />
-                </figure>
-              </a>
+              <ImageCustom href="/contact">
+                <Image
+                  src="/images/service-3.png"
+                  width="285"
+                  height="336"
+                  loading="lazy"
+                  alt="Drinks"
+                  className="img-cover"
+                />
+              </ImageCustom>
 
               <div className="card-content">
                 <h3 className="title-4 card-title">
-                  <a href="#cere_oferta">Evenimente</a>
+                  <Link href="/contact">Evenimente</Link>
                 </h3>
 
-                <a
-                  href="#cere_oferta"
+                <Link
+                  href="/contact"
                   className="btn-text hover-underline label-2"
                 >
                   Cere ofertă
-                </a>
+                </Link>
               </div>
             </div>
           </li>

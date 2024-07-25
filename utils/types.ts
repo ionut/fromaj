@@ -3,13 +3,6 @@ export type Menu = {
   href: string;
 };
 
-export type Slider = {
-  image: string;
-  subtitle: string;
-  title: string;
-  buttonText: string;
-};
-
 export type Products = {
   id: number;
   image: string;

@@ -1,7 +1,7 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { DM_Sans, Forum } from "next/font/google";
 import "./globals.css";
-import { Suspense } from "react";
 import Loading from "./loading";
 import Footer from "@/components/footer/Footer";
 import Providers from "./storeProvider";

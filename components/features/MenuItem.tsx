@@ -6,10 +6,11 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { addItem, getCurrentQuantityById } from "./cart/cartSlice";
 import UpdateItemQuantity from "./cart/UpdateItemQuantity";
 import DeleteItem from "./cart/DeleteItem";
+import Link from "next/link";
 
 const MenuItem = ({ item }: { item: Products }) => {
   const dispatch = useAppDispatch();
-  const { id, image, name, price, description } = item;
+  const { id, image, name, slug, price, description } = item;
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
 
@@ -25,23 +26,27 @@ const MenuItem = ({ item }: { item: Products }) => {
   }
 
   return (
-    <li className="list-flex">
+    <li className="list-flex gap-20">
       <div className="menu-card hover:card">
-        <figure className="card-banner image-holder">
-          <Image
-            src={image}
-            width="100"
-            height="100"
-            loading="lazy"
-            alt={name}
-            className="Image-cover"
-          />
+        <figure className="card-banner img-holder">
+          <Link href={`/produse/${slug}`}>
+            <Image
+              src={image}
+              width="100"
+              height="100"
+              loading="lazy"
+              alt={name}
+              className="img-cover"
+            />
+          </Link>
         </figure>
 
         <div>
           <div className="title-wrapper">
             <h3 className="title-3">
-              <a className="card-title">{name}</a>
+              <Link href={`/produse/${slug}`} className="card-title">
+                {name}
+              </Link>
             </h3>
 
             <span className="span title-2">{price} ron</span>
@@ -50,7 +55,7 @@ const MenuItem = ({ item }: { item: Products }) => {
           <p className="card-text label-1">{description}</p>
         </div>
       </div>
-      <div className="row">
+      <div className="row justify-end">
         <div className="col-2 row gap-20">
           {isInCart && (
             <>

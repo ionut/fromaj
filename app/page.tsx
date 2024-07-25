@@ -1,12 +1,12 @@
-import HomeSection from "@/components/homepage/HomeSection";
 import HowItStartSection from "@/components/homepage/HowItStartSection";
+import MainSection from "@/components/homepage/MainSection";
 import MenuSection from "@/components/homepage/MenuSection";
 import ServiceSection from "@/components/homepage/ServiceSection";
 
 export default function Home() {
   return (
     <>
-      <HomeSection />
+      <MainSection />
       <ServiceSection />
       <MenuSection />
       <HowItStartSection />

@@ -440,6 +440,7 @@ body {
   padding-block: var(--section-space);
   /* overflow: hidden; */
   z-index: 1;
+  clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%);
 }
 
 .bg-black-10 {
@@ -1097,7 +1098,6 @@ body {
 
 .about-banner {
   position: relative;
-  margin-block-end: 12rem;
 }
 
 .about-banner > .w-100 {
@@ -1198,7 +1198,7 @@ body {
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .hover\:card .card-banner {
@@ -2001,12 +2001,12 @@ footer {
   }
 
   .service .shape-1 {
-    bottom: 0;
+    bottom: 5rem;
     left: 0;
   }
 
   .service .shape-2 {
-    top: 0;
+    top: 5rem;
     right: 0;
   }
 
@@ -2622,4 +2622,12 @@ ul {
 
 .gap-20 {
   gap: 2rem;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.align-center {
+  align-items: center;
 }
