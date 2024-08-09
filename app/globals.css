@@ -924,6 +924,7 @@ body {
   width: 7rem;
   height: 7rem;
   transform: scale(0.6);
+  cursor: pointer;
 }
 
 .hero-btn img {
@@ -1229,7 +1230,7 @@ body {
 }
 
 .menu .shape-3 {
-  bottom: 0;
+  bottom: 2rem;
   right: 0;
 }
 
@@ -2589,4 +2590,103 @@ ul {
 
 body {
   background-color: var(--smoky-black-3);
+}
+/* tooltip */
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: visible;
+  width: 16rem;
+  background-color: var(--green);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: -10rem;
+  left: -10rem;
+}
+
+/* benefits */
+
+.nutritional-block,
+.benefits-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 100%;
+  gap: 2rem;
+  margin-block: 5.5rem;
+}
+.benefits-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.benefits-list > .benefits-item {
+  padding-block: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.benefits-list > .benefits-item:not(:last-child) {
+  border-bottom: 0.1rem solid var(--white-alpha-20);
+}
+.benefits {
+  background-color: var(--smoky-black-1);
+}
+.benefits-image {
+  border-radius: 100%;
+  margin-left: auto;
+}
+/* nutritional */
+.nutritional {
+  background-position: bottom;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-image: url(../public/images/nutritional-background-image.webp);
+}
+
+.nutritional:before {
+  content: "";
+  display: block;
+  -webkit-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--smoky-black-1);
+  background: currentcolor;
+  opacity: 0.85;
+}
+
+.nutritional-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+}
+
+.cheese {
+  width: 100%;
+}
+
+.cheese-name {
+  border-bottom: 0.1rem solid var(--white-alpha-20);
+  padding-bottom: 1rem;
+}
+
+.cheese-nutritional {
+  margin-top: 1rem;
+}
+
+.cheese-reference {
+  text-align: right;
+  font-style: italic;
 }
