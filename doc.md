@@ -8,7 +8,10 @@
 8. connect to some backend (medusa.js)
 9. create cart logic ✅
 10. checkout page
-11. benefits page section - P
+11. benefits section ✅
+12. nutritional section ✅
+13. contact page
+14. optimize images with some 3rd party tool
 
 <!-- for adriana -->
 

@@ -20,3 +20,19 @@ export type Cart = {
   price: number;
   totalPrice: number;
 };
+
+type values = {
+  calorii: string;
+  grasimi: string;
+  carbo: string;
+  proteine: string;
+  calciu: string;
+  sodium: string;
+  colesterol: string;
+};
+
+export type NutritionalValues = {
+  id: number;
+  productName: string;
+  values: values;
+};
