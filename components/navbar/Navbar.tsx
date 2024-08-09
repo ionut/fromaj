@@ -12,6 +12,7 @@ import {
 } from "react-icons/io5";
 import Link from "next/link";
 import NavbarList from "../features/NavbarList";
+import Button from "../ui/Button";
 
 const Navbar = () => {
   const [showMobileNavbar, setShowMobileNavbar] = useState<boolean>(false);
@@ -177,13 +178,7 @@ const Navbar = () => {
               </a>
             </div>
           </nav>
-          <Link href="/contact" className="btn btn-secondary">
-            <span className="text text-1">Cere ofertă</span>
-
-            <span className="text text-2" aria-hidden="true">
-              Cere ofertă
-            </span>
-          </Link>
+          <Button goTo="/evenimente" text="Cere ofertă" />
           <button className="nav-open-btn" onClick={handleClick}>
             <span className="line line-1"></span>
             <span className="line line-2"></span>

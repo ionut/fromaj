@@ -91,7 +91,7 @@
    * SPACING
    */
 
-  --section-space: 6rem;
+  --section-space: 2rem;
 
   /**
    * SHADOW
@@ -438,13 +438,7 @@ body {
 .section {
   position: relative;
   padding-block: var(--section-space);
-  /* overflow: hidden; */
   z-index: 1;
-  clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%);
-}
-
-.bg-black-10 {
-  background-color: var(--smoky-black-2);
 }
 
 .grid-list {
@@ -679,7 +673,6 @@ body {
 }
 
 .header .container {
-  padding-inline: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -768,6 +761,7 @@ body {
 
 .cart-block {
   position: relative;
+  height: 3rem;
 }
 
 .cart-button {
@@ -889,68 +883,33 @@ body {
 
 .hero {
   position: relative;
-  padding-block: 12rem;
-  min-height: 100vh;
-  overflow: hidden;
-  z-index: 1;
+  background-color: var(--smoky-black-1);
+  display: flex;
+  min-height: 100dvh;
 }
 
-.hero .slider-item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+.hero-block {
   display: grid;
-  place-content: center;
-  padding-block-start: 10rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition-3);
-  z-index: 1;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 100%;
+  gap: 2rem;
 }
 
-.hero .slider-item.active {
-  opacity: 1;
-  visibility: visible;
+.hero-block_col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
-
-.hero .slider-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
+.wave {
   width: 100%;
-  height: 100%;
-  transform: scale(1.15);
-  pointer-events: none;
-  user-select: none;
-  z-index: -1;
 }
-
-.hero .slider-item.active .slider-bg {
-  animation: smoothScale 7s linear forwards;
-}
-
-@keyframes smoothScale {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.15);
-  }
-}
-
 .hero .section-subtitle::after {
   margin-block: 1.4rem 2rem;
 }
 
 .hero-text {
   margin-block: 1rem 4rem;
-}
-
-.hero .btn {
-  margin-inline: auto;
 }
 
 .hero-btn {
@@ -1081,6 +1040,12 @@ body {
 /*-----------------------------------*\
   #ABOUT
 \*-----------------------------------*/
+
+.about {
+  position: relative;
+  display: flex;
+  min-height: 100dvh;
+}
 
 .about .section-text {
   margin-block: 1.5rem 3rem;
@@ -1475,8 +1440,8 @@ textarea.input-field {
   #FOOTER
 \*-----------------------------------*/
 
-footer {
-  border: 0.1rem solid var(--white-alpha-20);
+.footer {
+  background: var(--smoky-black-1);
 }
 
 .footer-top {
@@ -1960,7 +1925,7 @@ footer {
      * spacing
      */
 
-    --section-space: 10rem;
+    --section-space: 4rem;
   }
 
   /**
@@ -2188,10 +2153,6 @@ footer {
     display: none;
   }
 
-  .header .container {
-    max-width: unset;
-  }
-
   .navbar,
   .navbar.active,
   .navbar-list {
@@ -2242,10 +2203,6 @@ footer {
    * HERO
    */
 
-  .hero {
-    height: 88rem;
-  }
-
   .hero-btn {
     bottom: 5rem;
     right: 5rem;
@@ -2266,14 +2223,6 @@ footer {
 
   .service .section-text {
     margin-block-end: 7.5rem;
-  }
-
-  /**
-   * ABOUT
-   */
-
-  .about {
-    padding-block: 17rem 10rem;
   }
 
   /**
@@ -2630,4 +2579,14 @@ ul {
 
 .align-center {
   align-items: center;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+}
+
+body {
+  background-color: var(--smoky-black-3);
 }

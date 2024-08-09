@@ -5,7 +5,7 @@ import ImageCustom from "../ui/ImageCustom";
 
 const ServiceSection = () => {
   return (
-    <section className="section service bg-black-10 text-center">
+    <section className="section service text-center">
       <div className="container">
         <p className="section-subtitle label-2"> Fromaj</p>
 
