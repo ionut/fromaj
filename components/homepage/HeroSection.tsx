@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Button from "../ui/Button";
 
 const HeroSection = () => {
   return (
@@ -22,7 +21,6 @@ const HeroSection = () => {
               voluptatem, aliquid ea nam vel distinctio esse rem, hic tempora,
               debitis tenetur accusantium fugiat.
             </p>
-            <Button goTo="/produse" text="Comandă" />
           </div>
 
           <div className="service-card">
