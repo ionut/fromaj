@@ -32,9 +32,11 @@ export default function RootLayout({
       <body className={`${dmsans.variable} ${forum.variable}`}>
         <Providers>
           <Suspense fallback={<Loading />}>
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
+            <div className="main-grid">
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
+            </div>
             <CartSection />
           </Suspense>
         </Providers>

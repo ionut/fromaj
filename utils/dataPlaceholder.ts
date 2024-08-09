@@ -6,10 +6,6 @@ export const menuLinks: Menu[] = [
     href: "/",
   },
   {
-    name: "Produse",
-    href: "/produse",
-  },
-  {
     name: "Evenimente",
     href: "/evenimente",
   },

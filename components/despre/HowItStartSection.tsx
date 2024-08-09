@@ -3,11 +3,7 @@ import React from "react";
 
 const HowItStartSection = () => {
   return (
-    <section
-      className="section  about bg-black-10 text-center"
-      data-page="about"
-      id="about"
-    >
+    <section className="section about text-center">
       <div className="container align-center">
         <div className="about-content">
           <p className="label-2 section-subtitle" id="about-label">
