@@ -25,7 +25,7 @@ const ServiceSection = () => {
         <ul className="grid-list">
           <li>
             <div className="service-card">
-              <ImageCustom href="/produse">
+              <ImageCustom href="/produse/cutie-standard-mare">
                 <Image
                   src="/images/service-1.png"
                   width="285"
@@ -38,11 +38,11 @@ const ServiceSection = () => {
 
               <div className="card-content">
                 <h3 className="title-4 card-title">
-                  <Link href="/produse">Cutii</Link>
+                  <Link href="/produse/cutie-standard-mare">Cutii</Link>
                 </h3>
 
                 <Link
-                  href="/produse"
+                  href="/produse/cutie-standard-mare"
                   className="btn-text hover-underline label-2"
                 >
                   Comandă
@@ -53,7 +53,7 @@ const ServiceSection = () => {
 
           <li>
             <div className="service-card">
-              <ImageCustom href="/contact">
+              <ImageCustom href="/rezervare">
                 <Image
                   src="/images/service-2.png"
                   width="285"
@@ -66,14 +66,14 @@ const ServiceSection = () => {
 
               <div className="card-content">
                 <h3 className="title-4 card-title">
-                  <Link href="/contact">Catering Corporate</Link>
+                  <Link href="/rezervare">Catering Corporate</Link>
                 </h3>
 
                 <Link
-                  href="/contact"
+                  href="/rezervare"
                   className="btn-text hover-underline label-2"
                 >
-                  Cere ofertă
+                  Rezervă
                 </Link>
               </div>
             </div>
@@ -81,7 +81,7 @@ const ServiceSection = () => {
 
           <li>
             <div className="service-card">
-              <ImageCustom href="/contact">
+              <ImageCustom href="/rezervare">
                 <Image
                   src="/images/service-3.png"
                   width="285"
@@ -94,14 +94,14 @@ const ServiceSection = () => {
 
               <div className="card-content">
                 <h3 className="title-4 card-title">
-                  <Link href="/contact">Evenimente</Link>
+                  <Link href="/rezervare">Evenimente</Link>
                 </h3>
 
                 <Link
-                  href="/contact"
+                  href="/rezervare"
                   className="btn-text hover-underline label-2"
                 >
-                  Cere ofertă
+                  Rezervă
                 </Link>
               </div>
             </div>

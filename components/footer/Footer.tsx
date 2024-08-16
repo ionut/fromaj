@@ -57,7 +57,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="copyright">
-            &copy; Copyright (c) 2022 Crafted by Entourage Addict SRL |{" "}
+            &copy; Copyright (c) 2022 Crafted by WebRender (webrender.ro) |{" "}
             <a href="tel:+40747241177">0747241177</a>
           </p>
         </div>

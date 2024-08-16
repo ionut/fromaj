@@ -6,9 +6,11 @@ export type Menu = {
 export type Products = {
   id: number;
   image: string;
+  otherImages: string[];
   name: string;
   slug: string;
-  quantity: number;
+  persoane: string;
+  weight: number;
   price: number;
   description: string;
 };
@@ -19,20 +21,4 @@ export type Cart = {
   quantity: number;
   price: number;
   totalPrice: number;
-};
-
-type values = {
-  calorii: string;
-  grasimi: string;
-  carbo: string;
-  proteine: string;
-  calciu: string;
-  sodium: string;
-  colesterol: string;
-};
-
-export type NutritionalValues = {
-  id: number;
-  productName: string;
-  values: values;
 };

@@ -79,7 +79,11 @@ const Navbar = () => {
             </a>
           </div>
           <div className="topbar-item">
-            <a href="https://wa.me/40754404000" className="topbar-item link">
+            <a
+              href="https://wa.me/40754404000"
+              className="topbar-item link"
+              target="_blank"
+            >
               <IoLogoWhatsapp />
 
               <span className="span">WhatsApp</span>
@@ -90,7 +94,8 @@ const Navbar = () => {
 
           <a
             href="https://www.facebook.com/Fromaj.Iasi"
-            className="topbar-item"
+            className="topbar-item link"
+            target="_blank"
           >
             <IoLogoFacebook />
 
@@ -102,6 +107,7 @@ const Navbar = () => {
           <a
             href="https://www.instagram.com/fromaj.iasi/"
             className="topbar-item link"
+            target="_blank"
           >
             <IoLogoInstagram />
 
@@ -147,6 +153,7 @@ const Navbar = () => {
               <a
                 href="https://www.facebook.com/Fromaj.Iasi"
                 className="body-4 sidebar-link"
+                target="_blank"
               >
                 Facebook: Fromaj - Artisan Cheese Boards
               </a>
@@ -154,6 +161,7 @@ const Navbar = () => {
               <a
                 href="https://www.instagram.com/fromaj.iasi/"
                 className="body-4 sidebar-link"
+                target="_blank"
               >
                 Instagram: fromaj.iasi
               </a>
@@ -178,7 +186,7 @@ const Navbar = () => {
               </a>
             </div>
           </nav>
-          <Button goTo="/evenimente" text="Cere ofertă" />
+          <Button goTo="/rezervare" text="Rezervă" />
           <button className="nav-open-btn" onClick={handleClick}>
             <span className="line line-1"></span>
             <span className="line line-2"></span>

@@ -36,7 +36,7 @@ const MenuItem = ({ item }: { item: Products }) => {
               height="100"
               loading="lazy"
               alt={name}
-              className="img-cover"
+              className="img-cover size-10"
             />
           </Link>
         </figure>
