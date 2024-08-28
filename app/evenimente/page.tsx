@@ -1,7 +1,8 @@
 import React from "react";
+import EventsSection from "@/components/evenimente/EventsSection";
 
-const page = () => {
-  return <div>page</div>;
+const EventPage = () => {
+  return <EventsSection />;
 };
 
-export default page;
+export default EventPage;

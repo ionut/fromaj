@@ -3,7 +3,7 @@ import { IoChevronDown, IoPersonOutline } from "react-icons/io5";
 
 const page = () => {
   return (
-    <section className="reservation" id="cere_oferta">
+    <section className="reservation">
       <div className="container">
         <div className="form reservation-form bg-black-10">
           <form method="post" className="form-left">

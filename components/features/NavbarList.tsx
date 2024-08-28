@@ -13,7 +13,7 @@ const NavbarList = () => {
       {menuLinks.map((item, index) => {
         const { href, name } = item;
         return (
-          <li key={index} className="navbar-item">
+          <li key={name} className="navbar-item">
             <Link
               href={href}
               className={`navbar-link hover-underline ${

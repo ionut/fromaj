@@ -8,14 +8,9 @@ interface ICart {
   totalPrice: number;
 }
 
-type CartState = {
+interface CartState {
   cart: ICart[];
-};
-
-type CartAction = {
-  type: string;
-  cartItem: ICart;
-};
+}
 
 const initialState: CartState = {
   cart: [],
@@ -25,7 +20,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItem(state, action: PayloadAction<ICart>) {
+    addItem(state: CartState, action: PayloadAction<ICart>) {
       // payload = newItem
       state.cart.push(action.payload);
     },
@@ -35,10 +30,11 @@ const cartSlice = createSlice({
     },
     increaseItemQuantity(state, action: PayloadAction<number>) {
       const item: any = state.cart.find((item) => item.id === action.payload);
+
       item.quantity++;
       item.totalPrice = item.quantity * item.price;
     },
-    decreaseItemQuantity(state, action: PayloadAction<number>) {
+    decreaseItemQuantity(state: CartState, action: PayloadAction<number>) {
       const item: any = state.cart.find((item) => item.id === action.payload);
       item.quantity--;
       item.totalPrice = item.quantity * item.price;
@@ -63,10 +59,13 @@ export default cartSlice.reducer;
 export const getCart = (state: any) => state.cart.cart;
 
 export const getTotalCartQuantity = (state: any) =>
-  state.cart.cart.reduce((sum: any, item: any) => sum + item.quantity, 0);
+  state.cart.cart.reduce((sum: number, item: ICart) => sum + item.quantity, 0);
 
 export const getTotalCartPrice = (state: any) =>
-  state.cart.cart.reduce((sum: any, item: any) => sum + item.totalPrice, 0);
+  state.cart.cart.reduce(
+    (sum: number, item: ICart) => sum + item.totalPrice,
+    0
+  );
 
 export const getCurrentQuantityById = (id: number) => (state: any) =>
-  state.cart.cart.find((item: any) => item.id === id)?.quantity ?? 0;
+  state.cart.cart.find((item: ICart) => item.id === id)?.quantity ?? 0;

@@ -17,7 +17,6 @@ const MenuItem = ({ item }: { item: Products }) => {
   const { id, image, name, slug, price, description } = item;
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
   const totalPrice = useAppSelector(getTotalCartPrice);
-  console.log(totalPrice);
   const isInCart = currentQuantity > 0;
 
   function handleAddToCart() {

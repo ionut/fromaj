@@ -1,6 +1,6 @@
 1. Create single product page ✅
 2. About us product page ✅
-3. Events product pages
+3. Events product pages - research and add to UI
 4. terms page - ✅
 5. privacy page ✅
 6. about cookies ✅
@@ -10,7 +10,7 @@
 10. checkout page
 11. benefits section ✅
 12. nutritional section ✅
-13. contact page - p
+13. contact page
 14. optimize images with some 3rd party tool
 
 <!-- adriana -->

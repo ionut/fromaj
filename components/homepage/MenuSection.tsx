@@ -14,8 +14,8 @@ const MenuSection = () => {
         <h2 className="headline-1 section-title text-center">Cutii</h2>
 
         <ul className="grid-list products">
-          {products.map((item, index) => {
-            return <MenuItem key={index} item={item} />;
+          {products.map((item) => {
+            return <MenuItem key={item.name} item={item} />;
           })}
         </ul>
         <Image

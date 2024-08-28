@@ -193,7 +193,8 @@ body {
 /* body.nav-active { overflow: hidden; } */
 
 ::-webkit-scrollbar {
-  width: 0.6rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -202,6 +203,10 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--green);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 /*-----------------------------------*\
@@ -1026,11 +1031,11 @@ body {
   transition-delay: 300ms;
 }
 
-.service-card .card-banner {
+.card-banner {
   transition: var(--transition-2);
 }
 
-.service-card:is(:hover, :focus-within) .card-banner {
+.card-banner:is(:hover, :focus-within) {
   transform: scale(1.05);
 }
 
@@ -2647,20 +2652,14 @@ body {
 }
 .product-attribute {
   display: grid;
-  grid-template-columns: 20rem 1fr;
+  grid-template-columns: 25rem 1fr;
 }
 
 .product-attribute_detail {
   color: var(--green);
 }
 
-.product-section {
-  position: relative;
-  background-color: var(--smoky-black-3);
-  display: flex;
-  min-height: 100dvh;
-}
-
+.events-section,
 .product-section {
   position: relative;
   background-color: var(--smoky-black-3);
@@ -2704,12 +2703,21 @@ body {
   cursor: pointer;
 }
 
+.events-section-block {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  min-height: 100%;
+  margin-top: 13rem;
+}
+
 @media (min-width: 768px) {
   .product-section-block,
   .hero-block {
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: 1fr 0.8fr;
+    grid-template-columns: 60% 40%;
     align-items: center;
     min-height: 100%;
     gap: 2rem;
@@ -2721,4 +2729,20 @@ body {
   .benefits-block {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.w-full {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }

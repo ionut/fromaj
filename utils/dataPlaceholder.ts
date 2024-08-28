@@ -1,4 +1,4 @@
-import { Menu, Products } from "./types";
+import { Events, Menu, Products } from "./types";
 
 export const menuLinks: Menu[] = [
   {
@@ -63,5 +63,48 @@ export const products: Products[] = [
     persoane: "4/5 persoane",
     description:
       "Brânzeturi maturate (camembert, brânză cu mucegai albastru, gouda etc.), măsline, fructe proaspete de sezon, crackers, mini-croissant.",
+  },
+];
+
+export const events: Events[] = [
+  {
+    id: 1,
+    location: "Nunta capitol",
+    personNumber: 50,
+    type: "Nunta",
+    pictures: [
+      "/images/cheese-bar.jpg",
+      "/images/cheese-bar.jpg",
+      "/images/cheese-bar.jpg",
+      "/images/cheese-bar.jpg",
+      "/images/cheese-bar.jpg",
+      "/images/cheese-bar.jpg",
+      "/images/cheese-bar.jpg",
+    ],
+    date: "01/01/2021",
+  },
+  {
+    id: 2,
+    location: "Picnic",
+    personNumber: 50,
+    type: "Nunta",
+    pictures: ["/images/cheese-bar.jpg"],
+    date: "01/01/2021",
+  },
+  {
+    id: 3,
+    location: "lorem ipsum",
+    personNumber: 50,
+    type: "Nunta",
+    pictures: ["/images/cheese-bar.jpg"],
+    date: "01/01/2021",
+  },
+  {
+    id: 4,
+    location: "lorem ipsum",
+    personNumber: 50,
+    type: "Nunta",
+    pictures: ["/images/cheese-bar.jpg"],
+    date: "01/01/2021",
   },
 ];

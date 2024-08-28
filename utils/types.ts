@@ -22,3 +22,12 @@ export type Cart = {
   price: number;
   totalPrice: number;
 };
+
+export type Events = {
+  id: number;
+  location: string;
+  personNumber: number;
+  type: string;
+  pictures: string[];
+  date: string;
+};

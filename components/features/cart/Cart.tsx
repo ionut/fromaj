@@ -10,7 +10,6 @@ const Cart = () => {
   const router = useRouter();
   const totalQuantity = useAppSelector(getTotalCartQuantity);
   const totalPrice = useAppSelector(getTotalCartPrice);
-
   const [showTooltip, setShowTooltip] = useState(false);
 
   const handleClick = () => {

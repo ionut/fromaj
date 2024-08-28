@@ -9,14 +9,14 @@ import DeleteItem from "../features/cart/DeleteItem";
 import { products } from "@/utils/dataPlaceholder";
 import Link from "next/link";
 
-const ProductSection = ({ product }: { product: Products }) => {
+const SingleProduct = ({ product }: { product: Products }) => {
   const dispatch = useAppDispatch();
   const { id, image, name, price, weight, description, otherImages, persoane } =
     product;
+  const [mainImage, setMainImage] = useState(image);
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
   const relatedProducts = products.filter((product) => product.id !== id);
-  const [mainImage, setMainImage] = useState(image);
 
   const handleClick = (id: number) => {
     setMainImage(otherImages[id]);
@@ -46,7 +46,7 @@ const ProductSection = ({ product }: { product: Products }) => {
               alt={name}
               className="img-cover"
             />
-            <div className="row gap-10">
+            <div className="row gap-10 overflow-scroll">
               {otherImages.map((otherImage, index) => {
                 return (
                   <Image
@@ -126,7 +126,7 @@ const ProductSection = ({ product }: { product: Products }) => {
             {relatedProducts.map((relatedProduct) => {
               const { image, name, slug, id, price } = relatedProduct;
               return (
-                <div key={id} className="related-product">
+                <div key={name} className="related-product">
                   <Link href={`/produse/${slug}`}>
                     <Image
                       src={image}
@@ -153,4 +153,4 @@ const ProductSection = ({ product }: { product: Products }) => {
   );
 };
 
-export default ProductSection;
+export default SingleProduct;

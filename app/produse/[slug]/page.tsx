@@ -1,4 +1,4 @@
-import ProductSection from "@/components/produse/ProductSection";
+import SingleProduct from "@/components/produse/SingleProduct";
 import { products } from "@/utils/dataPlaceholder";
 import { notFound } from "next/navigation";
 
@@ -17,5 +17,5 @@ export default function Page({ params }: { params: { slug: string } }) {
   if (product.length === 0) {
     notFound();
   }
-  return <ProductSection product={product[0]} />;
+  return <SingleProduct product={product[0]} />;
 }
