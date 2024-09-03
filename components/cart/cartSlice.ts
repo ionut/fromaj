@@ -12,6 +12,10 @@ interface CartState {
   cart: ICart[];
 }
 
+interface Cart {
+  cart: CartState;
+}
+
 const initialState: CartState = {
   cart: [],
 };
@@ -56,16 +60,16 @@ export const {
 
 export default cartSlice.reducer;
 
-export const getCart = (state: any) => state.cart.cart;
+export const getCart = (state: Cart) => state.cart.cart;
 
-export const getTotalCartQuantity = (state: any) =>
+export const getTotalCartQuantity = (state: Cart) =>
   state.cart.cart.reduce((sum: number, item: ICart) => sum + item.quantity, 0);
 
-export const getTotalCartPrice = (state: any) =>
+export const getTotalCartPrice = (state: Cart) =>
   state.cart.cart.reduce(
     (sum: number, item: ICart) => sum + item.totalPrice,
     0
   );
 
-export const getCurrentQuantityById = (id: number) => (state: any) =>
+export const getCurrentQuantityById = (id: number) => (state: Cart) =>
   state.cart.cart.find((item: ICart) => item.id === id)?.quantity ?? 0;

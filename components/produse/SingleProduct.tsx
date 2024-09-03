@@ -3,9 +3,9 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Cart, Products } from "@/utils/types";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { addItem, getCurrentQuantityById } from "../features/cart/cartSlice";
-import UpdateItemQuantity from "../features/cart/UpdateItemQuantity";
-import DeleteItem from "../features/cart/DeleteItem";
+import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
+import UpdateItemQuantity from "../cart/UpdateItemQuantity";
+import DeleteItem from "../cart/DeleteItem";
 import { products } from "@/utils/dataPlaceholder";
 import Link from "next/link";
 

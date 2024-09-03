@@ -6,7 +6,7 @@ import Loading from "./loading";
 import Footer from "@/components/footer/Footer";
 import Providers from "./storeProvider";
 import Navbar from "@/components/navbar/Navbar";
-import Cart from "@/components/features/cart/Cart";
+import Cart from "@/components/cart/Cart";
 
 const dmsans = DM_Sans({
   subsets: ["latin"],

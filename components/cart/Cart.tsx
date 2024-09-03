@@ -2,14 +2,13 @@
 import React, { useState } from "react";
 import { useAppSelector } from "@/lib/hooks";
 import { IoCartOutline } from "react-icons/io5";
-import { getTotalCartPrice, getTotalCartQuantity } from "./cartSlice";
+import { getTotalCartQuantity } from "./cartSlice";
 import { useRouter } from "next/navigation";
-import Tooltip from "../Tooltip";
+import Tooltip from "../ui/Tooltip";
 
 const Cart = () => {
   const router = useRouter();
   const totalQuantity = useAppSelector(getTotalCartQuantity);
-  const totalPrice = useAppSelector(getTotalCartPrice);
   const [showTooltip, setShowTooltip] = useState(false);
 
   const handleClick = () => {
@@ -22,7 +21,7 @@ const Cart = () => {
 
       return;
     }
-    router.push("/checkout");
+    router.push("/cart");
   };
 
   return (

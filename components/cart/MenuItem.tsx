@@ -3,20 +3,15 @@ import React from "react";
 import { Cart, Products } from "@/utils/types";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import {
-  addItem,
-  getCurrentQuantityById,
-  getTotalCartPrice,
-} from "./cart/cartSlice";
-import UpdateItemQuantity from "./cart/UpdateItemQuantity";
-import DeleteItem from "./cart/DeleteItem";
+import { addItem, getCurrentQuantityById } from "./cartSlice";
+import UpdateItemQuantity from "./UpdateItemQuantity";
+import DeleteItem from "./DeleteItem";
 import Link from "next/link";
 
 const MenuItem = ({ item }: { item: Products }) => {
   const dispatch = useAppDispatch();
   const { id, image, name, slug, price, description } = item;
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
-  const totalPrice = useAppSelector(getTotalCartPrice);
   const isInCart = currentQuantity > 0;
 
   function handleAddToCart() {

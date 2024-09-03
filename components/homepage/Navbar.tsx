@@ -5,12 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { menuLinks } from "@/utils/dataPlaceholder";
 
-const NavbarList = () => {
+const Navbar = () => {
   const pathname = usePathname();
 
   return (
     <ul className="navbar-list">
-      {menuLinks.map((item, index) => {
+      {menuLinks.map((item) => {
         const { href, name } = item;
         return (
           <li key={name} className="navbar-item">
@@ -30,4 +30,4 @@ const NavbarList = () => {
   );
 };
 
-export default NavbarList;
+export default Navbar;

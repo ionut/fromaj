@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import MenuItem from "../features/MenuItem";
+import MenuItem from "../cart/MenuItem";
 import { products } from "@/utils/dataPlaceholder";
 
 const MenuSection = () => {

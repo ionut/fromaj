@@ -1,6 +1,5 @@
 import SingleEvent from "@/components/evenimente/SingleEvent";
 import { events } from "@/utils/dataPlaceholder";
-import { Events } from "@/utils/types";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {

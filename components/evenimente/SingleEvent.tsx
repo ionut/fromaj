@@ -7,13 +7,10 @@ const SingleEvent = ({ event }: { event: Events }) => {
   const { location, personNumber, type, pictures, date } = event;
   const [mainImage, setMainImage] = useState(pictures[0]);
 
-  const handleClick = (id: number) => {
+  const handleClick = (id: number): void => {
     setMainImage(pictures[id]);
   };
 
-  const handleScroll = (): void => {
-    console.log("test");
-  };
   return (
     <>
       <section className="product-section">
@@ -27,16 +24,13 @@ const SingleEvent = ({ event }: { event: Events }) => {
               alt={location}
               className="img-cover"
             />
-            <div
-              className="row gap-10 overflow-scroll"
-              onClick={() => handleScroll()}
-            >
+            <div className="row gap-10 overflow-scroll w-full">
               {pictures.map((picture, index) => {
                 return (
                   <Image
                     key={index}
                     src={picture}
-                    width={100}
+                    width={200}
                     height={100}
                     alt="image"
                     className="other-images"

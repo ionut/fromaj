@@ -11,7 +11,7 @@ import {
   IoMailOutline,
 } from "react-icons/io5";
 import Link from "next/link";
-import NavbarList from "../features/NavbarList";
+import NavbarList from "../homepage/Navbar";
 import Button from "../ui/Button";
 
 const Navbar = () => {

@@ -62,7 +62,7 @@ const BenefitsSection = () => {
           <div className="benefits-col">
             <Image
               src={"/images/benefits-cheese.jpg"}
-              width={400}
+              width={300}
               height={400}
               alt="Îmbunătățește vederea"
               className="benefits-image"

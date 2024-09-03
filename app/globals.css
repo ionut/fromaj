@@ -1282,7 +1282,8 @@ body {
   #RESERVATION
 \*-----------------------------------*/
 
-.reservation {
+.reservation,
+.checkout {
   background-color: var(--smoky-black-3);
   min-height: 100dvh;
   display: grid;
@@ -2745,4 +2746,42 @@ body {
 
 .overflow-scroll {
   overflow: scroll;
+}
+
+/* checkout and cart */
+.btn-back {
+  margin-bottom: 3rem;
+}
+
+.checkout-title {
+  margin-bottom: 3rem;
+}
+
+.cart-item {
+  border-bottom: 0.1rem solid var(--white-alpha-20);
+
+  padding-block: 2rem;
+}
+
+.checkout-block_btn {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-item_details {
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 767px) {
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart-item_details {
+    gap: 3rem;
+  }
 }
