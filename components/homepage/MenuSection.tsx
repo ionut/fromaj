@@ -1,9 +1,21 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import MenuItem from "../cart/MenuItem";
-import { products } from "@/utils/dataPlaceholder";
+import { useQuery } from "@apollo/client";
+import { GET_PRODUCTS } from "@/utils/query";
+import { Products } from "@/utils/types";
 
 const MenuSection = () => {
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+  if (error)
+    return (
+      <h2>
+        Vă rugăm sunați la numărul <a href="tel:0754 404 000">0754 404 000</a>
+      </h2>
+    );
+  if (loading) return <h2>Loading...</h2>;
+
   return (
     <section className="section menu">
       <div className="container">
@@ -14,8 +26,14 @@ const MenuSection = () => {
         <h2 className="headline-1 section-title text-center">Cutii</h2>
 
         <ul className="grid-list products">
-          {products.map((item) => {
-            return <MenuItem key={item.name} item={item} />;
+          {data?.products?.data?.map((item: Products) => {
+            return (
+              <MenuItem
+                key={item.productName}
+                item={item.attributes}
+                id={item.id}
+              />
+            );
           })}
         </ul>
         <Image

@@ -7,13 +7,14 @@ import { addItem, getCurrentQuantityById } from "./cartSlice";
 import UpdateItemQuantity from "./UpdateItemQuantity";
 import DeleteItem from "./DeleteItem";
 import Link from "next/link";
+import { getUrl } from "@/utils/utils";
 
-const MenuItem = ({ item }: { item: Products }) => {
+const MenuItem = ({ item, id }: { item: Products; id: number }) => {
   const dispatch = useAppDispatch();
-  const { id, image, name, slug, price, description } = item;
+  const { image, productName: name, slug, price, description } = item;
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
-
+  console.log(image.data.attributes.url);
   function handleAddToCart() {
     const newItem: Cart = {
       id: id,
@@ -31,7 +32,7 @@ const MenuItem = ({ item }: { item: Products }) => {
         <figure className="card-banner img-holder">
           <Link href={`/produse/${slug}`}>
             <Image
-              src={image}
+              src={`${getUrl()}${image.data.attributes.url}`}
               width="100"
               height="100"
               loading="lazy"

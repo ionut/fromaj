@@ -2,13 +2,14 @@
 import { Events } from "@/utils/types";
 import Image from "next/image";
 import React, { useState } from "react";
+import { getUrl } from "@/utils/utils";
 
 const SingleEvent = ({ event }: { event: Events }) => {
-  const { location, personNumber, type, pictures, date } = event;
-  const [mainImage, setMainImage] = useState(pictures[0]);
+  const { location, persons, eventType, date, pictures } = event.attributes;
+  const [mainImage, setMainImage] = useState(pictures.data[0].attributes.url);
 
   const handleClick = (id: number): void => {
-    setMainImage(pictures[id]);
+    setMainImage(pictures.data[id].attributes.url);
   };
 
   return (
@@ -17,7 +18,7 @@ const SingleEvent = ({ event }: { event: Events }) => {
         <div className="container product-section-block">
           <div className="product-section-block_col">
             <Image
-              src={mainImage}
+              src={`${getUrl()}${mainImage}`}
               width="285"
               height="336"
               loading="lazy"
@@ -25,11 +26,11 @@ const SingleEvent = ({ event }: { event: Events }) => {
               className="img-cover"
             />
             <div className="row gap-10 overflow-scroll w-full">
-              {pictures.map((picture, index) => {
+              {pictures?.data?.map((picture: any, index: number) => {
                 return (
                   <Image
                     key={index}
-                    src={picture}
+                    src={`${getUrl()}${picture.attributes.url}`}
                     width={200}
                     height={100}
                     alt="image"
@@ -48,12 +49,12 @@ const SingleEvent = ({ event }: { event: Events }) => {
               <div className="product-attribute">
                 <p className="title-2">Numar de persoane:</p>
                 <p className="title-2 product-attribute_detail">
-                  {personNumber} persoane
+                  {persons} persoane
                 </p>
               </div>
               <div className="product-attribute">
                 <p className="title-2">Tip Eveniment:</p>
-                <p className="title-2 product-attribute_detail">{type}</p>
+                <p className="title-2 product-attribute_detail">{eventType}</p>
               </div>
               <div className="product-attribute">
                 <p className="title-2">Data:</p>

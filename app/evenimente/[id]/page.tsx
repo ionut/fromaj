@@ -1,19 +1,18 @@
+"use client";
 import SingleEvent from "@/components/evenimente/SingleEvent";
-import { events } from "@/utils/dataPlaceholder";
 import { notFound } from "next/navigation";
+import { useQuery } from "@apollo/client";
+import Loader from "@/components/ui/Loader";
+import { GET_EVENT } from "@/utils/query";
 
-export function generateStaticParams() {
-  return events.map((event) => ({
-    id: event.id.toString(),
-  }));
-}
-
-export default function ProductPage({ params }: { params: { id: number } }) {
-  const { id } = params;
-
-  const event = events.filter((item) => item.id == id);
-  if (event.length === 0) {
+export default function ProductPage({ params }: { params: { id: string } }) {
+  const { loading, error, data } = useQuery(GET_EVENT, {
+    variables: { id: params.id },
+  });
+  if (error) return "Something went wrong";
+  if (loading) return <Loader />;
+  if (!data?.evenimente?.data) {
     notFound();
   }
-  return <SingleEvent event={event[0]} />;
+  return <SingleEvent event={data?.evenimente?.data} />;
 }

@@ -5,14 +5,24 @@ export type Menu = {
 
 export type Products = {
   id: number;
-  image: string;
+  image: any;
+  attributes: any;
   otherImages: string[];
-  name: string;
+  productName: string;
   slug: string;
-  persoane: string;
+  personNumber: number;
   weight: number;
   price: number;
   description: string;
+};
+
+export type Events = {
+  id: number;
+  location: string;
+  personNumber: number;
+  type: string;
+  attributes: any;
+  date: string;
 };
 
 export type Cart = {
@@ -21,13 +31,4 @@ export type Cart = {
   quantity: number;
   price: number;
   totalPrice: number;
-};
-
-export type Events = {
-  id: number;
-  location: string;
-  personNumber: number;
-  type: string;
-  pictures: string[];
-  date: string;
 };

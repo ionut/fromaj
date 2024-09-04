@@ -6,21 +6,34 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
 import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 import DeleteItem from "../cart/DeleteItem";
-import { products } from "@/utils/dataPlaceholder";
 import Link from "next/link";
+import { getUrl } from "@/utils/utils";
 
-const SingleProduct = ({ product }: { product: Products }) => {
+const SingleProduct = ({ product }: { product: Products[] }) => {
   const dispatch = useAppDispatch();
-  const { id, image, name, price, weight, description, otherImages, persoane } =
-    product;
-  const [mainImage, setMainImage] = useState(image);
+
+  const {
+    id,
+    productName: name,
+    price,
+    weight,
+    description,
+    otherImages,
+    personNumber,
+  } = product[0];
+  console.log(product[0].attributes.image.data.attributes.url);
+  const [mainImage, setMainImage] = useState(
+    product[0].attributes.image.data.attributes.url
+  );
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
-  const relatedProducts = products.filter((product) => product.id !== id);
+  // const relatedProducts = products.filter((product) => product.id !== id);
 
   const handleClick = (id: number) => {
-    setMainImage(otherImages[id]);
+    setMainImage(product[0].attributes.image.data.attributes.url);
   };
+
+  // share same query as events - TO DO
 
   function handleAddToCart() {
     const newItem: Cart = {
@@ -39,7 +52,7 @@ const SingleProduct = ({ product }: { product: Products }) => {
         <div className="container product-section-block">
           <div className="product-section-block_col">
             <Image
-              src={mainImage}
+              src={`${getUrl()}${mainImage}`}
               width="285"
               height="336"
               loading="lazy"
@@ -47,19 +60,21 @@ const SingleProduct = ({ product }: { product: Products }) => {
               className="img-cover"
             />
             <div className="row gap-10 overflow-scroll">
-              {otherImages.map((otherImage, index) => {
-                return (
-                  <Image
-                    key={index}
-                    src={otherImage}
-                    width={100}
-                    height={100}
-                    alt="image"
-                    className="other-images"
-                    onClick={() => handleClick(index)}
-                  />
-                );
-              })}
+              {product[0].attributes.otherImages.data.map(
+                (otherImage, index) => {
+                  return (
+                    <Image
+                      key={index}
+                      src={`${getUrl()}${otherImage.attributes.url}`}
+                      width={100}
+                      height={100}
+                      alt="image"
+                      className="other-images"
+                      onClick={() => handleClick(index)}
+                    />
+                  );
+                }
+              )}
             </div>
           </div>
           <div className="product-section-block_col">
@@ -81,7 +96,9 @@ const SingleProduct = ({ product }: { product: Products }) => {
               </div>
               <div className="product-attribute">
                 <p className="title-2">Recomandare:</p>
-                <p className="title-2 product-attribute_detail">{persoane}</p>
+                <p className="title-2 product-attribute_detail">
+                  {personNumber}
+                </p>
               </div>
             </div>
 
@@ -123,7 +140,7 @@ const SingleProduct = ({ product }: { product: Products }) => {
             Produse Recomandate
           </h2>
           <div className="row gap-20">
-            {relatedProducts.map((relatedProduct) => {
+            {/* {relatedProducts.map((relatedProduct) => {
               const { image, name, slug, id, price } = relatedProduct;
               return (
                 <div key={name} className="related-product">
@@ -145,7 +162,7 @@ const SingleProduct = ({ product }: { product: Products }) => {
                   </div>
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
       </section>

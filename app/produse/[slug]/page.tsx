@@ -1,21 +1,20 @@
+"use client";
 import SingleProduct from "@/components/produse/SingleProduct";
-import { products } from "@/utils/dataPlaceholder";
+import Loader from "@/components/ui/Loader";
+import { GET_PRODUCT } from "@/utils/query";
+import { useQuery } from "@apollo/client";
 import { notFound } from "next/navigation";
 
-export function generateStaticParams() {
-  const productsList = products;
-
-  return productsList.map((product) => ({
-    slug: product.slug,
-  }));
-}
-
 export default function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const product = products.filter((product) => product.slug === slug);
+  const { loading, error, data } = useQuery(GET_PRODUCT, {
+    variables: { slug: params.slug },
+  });
 
-  if (product.length === 0) {
+  if (error) return "Something went wrong";
+  if (loading) return <Loader />;
+
+  if (!data?.products?.data) {
     notFound();
   }
-  return <SingleProduct product={product[0]} />;
+  return <SingleProduct product={data?.products?.data} />;
 }
