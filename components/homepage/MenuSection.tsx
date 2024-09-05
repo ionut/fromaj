@@ -8,6 +8,7 @@ import { Products } from "@/utils/types";
 
 const MenuSection = () => {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
+
   if (error)
     return (
       <h2>
@@ -27,13 +28,7 @@ const MenuSection = () => {
 
         <ul className="grid-list products">
           {data?.products?.data?.map((item: Products) => {
-            return (
-              <MenuItem
-                key={item.productName}
-                item={item.attributes}
-                id={item.id}
-              />
-            );
+            return <MenuItem key={item.attributes.productName} item={item} />;
           })}
         </ul>
         <Image

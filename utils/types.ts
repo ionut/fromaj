@@ -5,9 +5,8 @@ export type Menu = {
 
 export type Products = {
   id: number;
-  image: any;
+  pictures: any;
   attributes: any;
-  otherImages: string[];
   productName: string;
   slug: string;
   personNumber: number;

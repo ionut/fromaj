@@ -1,4 +1,4 @@
-import { Events, Menu, Products } from "./types";
+import { Menu } from "./types";
 
 export const menuLinks: Menu[] = [
   {

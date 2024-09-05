@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client";
-import { Products } from "./types";
 
 export const GET_EVENTS = gql`
   query Events {
@@ -59,14 +58,7 @@ export const GET_PRODUCTS = gql`
           weight
           price
           description
-          image {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          otherImages {
+          pictures {
             data {
               attributes {
                 url
@@ -91,14 +83,28 @@ export const GET_PRODUCT = gql`
           weight
           price
           description
-          image {
+          pictures {
             data {
               attributes {
                 url
               }
             }
           }
-          otherImages {
+        }
+      }
+    }
+  }
+`;
+
+export const GET_RELATEDPRODUCT = gql`
+  query Product($id: ID!) {
+    products(filters: { id: { ne: $id } }) {
+      data {
+        id
+        attributes {
+          productName
+          slug
+          pictures {
             data {
               attributes {
                 url

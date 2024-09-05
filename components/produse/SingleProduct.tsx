@@ -8,32 +8,27 @@ import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 import DeleteItem from "../cart/DeleteItem";
 import Link from "next/link";
 import { getUrl } from "@/utils/utils";
-
-const SingleProduct = ({ product }: { product: Products[] }) => {
+import { GET_RELATEDPRODUCT } from "@/utils/query";
+import { useQuery } from "@apollo/client";
+const SingleProduct = ({ product }: { product: Products }) => {
   const dispatch = useAppDispatch();
-
+  const { id } = product;
   const {
-    id,
     productName: name,
     price,
     weight,
     description,
-    otherImages,
+    pictures,
     personNumber,
-  } = product[0];
-  console.log(product[0].attributes.image.data.attributes.url);
-  const [mainImage, setMainImage] = useState(
-    product[0].attributes.image.data.attributes.url
-  );
+  } = product.attributes;
+
+  const [mainImage, setMainImage] = useState(pictures.data[0].attributes.url);
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
-  // const relatedProducts = products.filter((product) => product.id !== id);
 
   const handleClick = (id: number) => {
-    setMainImage(product[0].attributes.image.data.attributes.url);
+    setMainImage(pictures.data[id].attributes.url);
   };
-
-  // share same query as events - TO DO
 
   function handleAddToCart() {
     const newItem: Cart = {
@@ -45,6 +40,13 @@ const SingleProduct = ({ product }: { product: Products[] }) => {
     };
     dispatch(addItem(newItem));
   }
+  // related product section
+  const { loading, error, data } = useQuery(GET_RELATEDPRODUCT, {
+    variables: { id: id },
+  });
+
+  if (error) return "Something went wrong!";
+  if (loading) return <h2>Loading...</h2>;
 
   return (
     <>
@@ -60,21 +62,19 @@ const SingleProduct = ({ product }: { product: Products[] }) => {
               className="img-cover"
             />
             <div className="row gap-10 overflow-scroll">
-              {product[0].attributes.otherImages.data.map(
-                (otherImage, index) => {
-                  return (
-                    <Image
-                      key={index}
-                      src={`${getUrl()}${otherImage.attributes.url}`}
-                      width={100}
-                      height={100}
-                      alt="image"
-                      className="other-images"
-                      onClick={() => handleClick(index)}
-                    />
-                  );
-                }
-              )}
+              {pictures?.data?.map((picture: any, index: number) => {
+                return (
+                  <Image
+                    key={index}
+                    src={`${getUrl()}${picture.attributes.url}`}
+                    width={100}
+                    height={100}
+                    alt="image"
+                    className="other-images"
+                    onClick={() => handleClick(index)}
+                  />
+                );
+              })}
             </div>
           </div>
           <div className="product-section-block_col">
@@ -140,13 +140,18 @@ const SingleProduct = ({ product }: { product: Products[] }) => {
             Produse Recomandate
           </h2>
           <div className="row gap-20">
-            {/* {relatedProducts.map((relatedProduct) => {
-              const { image, name, slug, id, price } = relatedProduct;
+            {data?.products?.data?.map((relatedProduct: any) => {
+              const {
+                productName: name,
+                price,
+                pictures,
+                slug,
+              } = relatedProduct.attributes;
               return (
                 <div key={name} className="related-product">
                   <Link href={`/produse/${slug}`}>
                     <Image
-                      src={image}
+                      src={`${getUrl()}${pictures.data[0].attributes.url}`}
                       width="5000"
                       height="5000"
                       loading="lazy"
@@ -162,7 +167,7 @@ const SingleProduct = ({ product }: { product: Products[] }) => {
                   </div>
                 </div>
               );
-            })} */}
+            })}
           </div>
         </div>
       </section>

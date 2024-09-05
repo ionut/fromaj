@@ -2,11 +2,10 @@
 import { store } from "@/lib/store";
 import { Provider } from "react-redux";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-
-const STRAPI_URL = process.env.STRAPI_URL;
+import { getUrl } from "@/utils/utils";
 
 const client = new ApolloClient({
-  uri: `${STRAPI_URL}/graphql`,
+  uri: `${getUrl()}/graphql`,
   cache: new InMemoryCache(),
   defaultOptions: {
     mutate: {

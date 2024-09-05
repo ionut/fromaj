@@ -9,15 +9,23 @@ import DeleteItem from "./DeleteItem";
 import Link from "next/link";
 import { getUrl } from "@/utils/utils";
 
-const MenuItem = ({ item, id }: { item: Products; id: number }) => {
+const MenuItem = ({ item }: { item: Products }) => {
   const dispatch = useAppDispatch();
-  const { image, productName: name, slug, price, description } = item;
+  const { id } = item;
+  const {
+    productName: name,
+    slug,
+    price,
+    description,
+    pictures,
+  } = item.attributes;
+
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
-  console.log(image.data.attributes.url);
+
   function handleAddToCart() {
     const newItem: Cart = {
-      id: id,
+      id: item.id,
       name: name,
       quantity: 1,
       price: price,
@@ -32,7 +40,7 @@ const MenuItem = ({ item, id }: { item: Products; id: number }) => {
         <figure className="card-banner img-holder">
           <Link href={`/produse/${slug}`}>
             <Image
-              src={`${getUrl()}${image.data.attributes.url}`}
+              src={`${getUrl()}${pictures.data[0].attributes.url}`}
               width="100"
               height="100"
               loading="lazy"
