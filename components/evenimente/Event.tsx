@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { Events } from "@/utils/types";
 import Link from "next/link";
-import { getUrl } from "@/utils/utils";
 
 const Event = ({ event }: { event: Events }) => {
   const { id, attributes } = event;
@@ -12,7 +11,7 @@ const Event = ({ event }: { event: Events }) => {
       <Link href={`/evenimente/${id}`}>
         <figure className="card-banner img-holder">
           <Image
-            src={`${getUrl()}${attributes.pictures.data[0].attributes.url}`}
+            src={`${process.env.STRAPI_URL}${attributes.pictures.data[0].attributes.url}`}
             width={300}
             height={300}
             alt={attributes.location}

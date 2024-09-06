@@ -1,21 +1,11 @@
-"use client";
 import Image from "next/image";
 import React from "react";
 import MenuItem from "../cart/MenuItem";
-import { useQuery } from "@apollo/client";
-import { GET_PRODUCTS } from "@/utils/query";
 import { Products } from "@/utils/types";
+import { getQuery } from "@/utils/query";
 
-const MenuSection = () => {
-  const { loading, error, data } = useQuery(GET_PRODUCTS);
-
-  if (error)
-    return (
-      <h2>
-        Vă rugăm sunați la numărul <a href="tel:0754 404 000">0754 404 000</a>
-      </h2>
-    );
-  if (loading) return <h2>Loading...</h2>;
+const MenuSection = async () => {
+  const { error, data } = await getQuery("/products?populate=*");
 
   return (
     <section className="section menu">
@@ -27,9 +17,16 @@ const MenuSection = () => {
         <h2 className="headline-1 section-title text-center">Cutii</h2>
 
         <ul className="grid-list products">
-          {data?.products?.data?.map((item: Products) => {
-            return <MenuItem key={item.attributes.productName} item={item} />;
-          })}
+          {error === undefined ? (
+            data?.map((item: Products) => {
+              return <MenuItem key={item.attributes.productName} item={item} />;
+            })
+          ) : (
+            <h2 className="title-2">
+              Vă rugăm sunați la numărul{" "}
+              <a href="tel:0754 404 000">0754 404 000</a>
+            </h2>
+          )}
         </ul>
         <Image
           src="/images/shape-6.png"

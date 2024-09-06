@@ -2,7 +2,6 @@
 import { Events } from "@/utils/types";
 import Image from "next/image";
 import React, { useState } from "react";
-import { getUrl } from "@/utils/utils";
 
 const SingleEvent = ({ event }: { event: Events }) => {
   const { location, persons, eventType, date, pictures } = event.attributes;
@@ -18,7 +17,7 @@ const SingleEvent = ({ event }: { event: Events }) => {
         <div className="container product-section-block">
           <div className="product-section-block_col">
             <Image
-              src={`${getUrl()}${mainImage}`}
+              src={`${process.env.STRAPI_URL}${mainImage}`}
               width="285"
               height="336"
               loading="lazy"
@@ -30,7 +29,7 @@ const SingleEvent = ({ event }: { event: Events }) => {
                 return (
                   <Image
                     key={index}
-                    src={`${getUrl()}${picture.attributes.url}`}
+                    src={`${process.env.STRAPI_URL}${picture.attributes.url}`}
                     width={200}
                     height={100}
                     alt="image"

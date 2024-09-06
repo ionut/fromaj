@@ -1,19 +1,23 @@
-"use client";
 import SingleProduct from "@/components/produse/SingleProduct";
-import Loader from "@/components/ui/Loader";
-import { GET_PRODUCT } from "@/utils/query";
-import { useQuery } from "@apollo/client";
+import { getQuery } from "@/utils/query";
 import { notFound } from "next/navigation";
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const { loading, error, data } = useQuery(GET_PRODUCT, {
-    variables: { slug: params.slug },
-  });
-  if (error) return "Something went wrong";
-  if (loading) return <Loader />;
+export default async function ProductPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { data: product } = await getQuery(
+    `/products?filters[slug][$eq]=${params.slug}&populate=*`
+  );
 
-  if (!data?.products?.data) {
+  const { data: relatedProducts } = await getQuery(
+    `/products?filters[slug][$ne]=${params.slug}&populate=*`
+  );
+  if (!product.length || !product) {
     notFound();
   }
-  return <SingleProduct product={data?.products?.data[0]} />;
+  return (
+    <SingleProduct product={product[0]} relatedProducts={relatedProducts} />
+  );
 }

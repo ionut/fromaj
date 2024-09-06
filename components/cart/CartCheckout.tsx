@@ -9,6 +9,7 @@ import Button from "../ui/Button";
 
 const CartCheckout = () => {
   const cart = useAppSelector<Cart[]>(getCart);
+
   const totalPrice = useAppSelector<number>(getTotalCartPrice);
   return (
     <section className="checkout">

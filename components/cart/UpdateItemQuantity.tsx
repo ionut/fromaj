@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
 import { decreaseItemQuantity, increaseItemQuantity } from "./cartSlice";
+import { useAppDispatch } from "@/lib/hooks";
 
 function UpdateItemQuantity({
   productId,
@@ -8,7 +8,7 @@ function UpdateItemQuantity({
   productId: number;
   currentQuantity: number;
 }) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <div className="row gap-10">

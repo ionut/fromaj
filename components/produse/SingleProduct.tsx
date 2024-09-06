@@ -7,10 +7,13 @@ import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
 import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 import DeleteItem from "../cart/DeleteItem";
 import Link from "next/link";
-import { getUrl } from "@/utils/utils";
-import { GET_RELATEDPRODUCT } from "@/utils/query";
-import { useQuery } from "@apollo/client";
-const SingleProduct = ({ product }: { product: Products }) => {
+const SingleProduct = ({
+  product,
+  relatedProducts,
+}: {
+  product: Products;
+  relatedProducts: Products[];
+}) => {
   const dispatch = useAppDispatch();
   const { id } = product;
   const {
@@ -40,13 +43,6 @@ const SingleProduct = ({ product }: { product: Products }) => {
     };
     dispatch(addItem(newItem));
   }
-  // related product section
-  const { loading, error, data } = useQuery(GET_RELATEDPRODUCT, {
-    variables: { id: id },
-  });
-
-  if (error) return "Something went wrong!";
-  if (loading) return <h2>Loading...</h2>;
 
   return (
     <>
@@ -54,7 +50,7 @@ const SingleProduct = ({ product }: { product: Products }) => {
         <div className="container product-section-block">
           <div className="product-section-block_col">
             <Image
-              src={`${getUrl()}${mainImage}`}
+              src={`${process.env.STRAPI_URL}${mainImage}`}
               width="285"
               height="336"
               loading="lazy"
@@ -66,7 +62,7 @@ const SingleProduct = ({ product }: { product: Products }) => {
                 return (
                   <Image
                     key={index}
-                    src={`${getUrl()}${picture.attributes.url}`}
+                    src={`${process.env.STRAPI_URL}${picture.attributes.url}`}
                     width={100}
                     height={100}
                     alt="image"
@@ -140,7 +136,7 @@ const SingleProduct = ({ product }: { product: Products }) => {
             Produse Recomandate
           </h2>
           <div className="row gap-20">
-            {data?.products?.data?.map((relatedProduct: any) => {
+            {relatedProducts.map((relatedProduct: any) => {
               const {
                 productName: name,
                 price,
@@ -151,7 +147,7 @@ const SingleProduct = ({ product }: { product: Products }) => {
                 <div key={name} className="related-product">
                   <Link href={`/produse/${slug}`}>
                     <Image
-                      src={`${getUrl()}${pictures.data[0].attributes.url}`}
+                      src={`${process.env.STRAPI_URL}${pictures.data[0].attributes.url}`}
                       width="5000"
                       height="5000"
                       loading="lazy"

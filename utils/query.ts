@@ -1,118 +1,15 @@
-import { gql } from "@apollo/client";
+export async function getQuery(query: string) {
+  try {
+    const response = await fetch(`${process.env.STRAPI_URL}/api${query}`);
 
-export const GET_EVENTS = gql`
-  query Events {
-    evenimentes {
-      data {
-        id
-        attributes {
-          location
-          persons
-          eventType
-          date
-          pictures {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Network response was not ok");
     }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    const err = error as Error;
+    return { error: err.message };
   }
-`;
-
-export const GET_EVENT = gql`
-  query Events($id: ID!) {
-    evenimente(id: $id) {
-      data {
-        id
-        attributes {
-          location
-          persons
-          eventType
-          date
-          pictures {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-export const GET_PRODUCTS = gql`
-  query Product {
-    products {
-      data {
-        id
-        attributes {
-          productName
-          slug
-          personNumber
-          weight
-          price
-          description
-          pictures {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-export const GET_PRODUCT = gql`
-  query Product($slug: String!) {
-    products(filters: { slug: { contains: $slug } }) {
-      data {
-        id
-        attributes {
-          productName
-          slug
-          personNumber
-          weight
-          price
-          description
-          pictures {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-export const GET_RELATEDPRODUCT = gql`
-  query Product($id: ID!) {
-    products(filters: { id: { ne: $id } }) {
-      data {
-        id
-        attributes {
-          productName
-          slug
-          pictures {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+}
