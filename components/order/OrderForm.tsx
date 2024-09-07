@@ -4,7 +4,6 @@ import CreateOrder from "@/app/action";
 import { Cart } from "@/utils/types";
 
 const initialState = {
-  order: {},
   message: "",
 };
 
@@ -12,8 +11,8 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button type="submit" className="btn btn-secondary" aria-disabled={pending}>
-      Trimite
+    <button type="submit" className="btn btn-order" aria-disabled={pending}>
+      {pending ? "Așteaptă" : "Trimite comandă"}
     </button>
   );
 }

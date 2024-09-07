@@ -5,7 +5,7 @@ import { Products } from "@/utils/types";
 import { getQuery } from "@/utils/query";
 
 const MenuSection = async () => {
-  const { error, data } = await getQuery("/products?populate=*");
+  const { data } = await getQuery("/products?populate=*");
 
   return (
     <section className="section menu">
@@ -17,15 +17,14 @@ const MenuSection = async () => {
         <h2 className="headline-1 section-title text-center">Cutii</h2>
 
         <ul className="grid-list products">
-          {error === undefined ? (
+          {!data.length ? (
+            <h2 className="title-2">
+              Comandați la numărul <a href="tel:0754 404 000">0754 404 000</a>
+            </h2>
+          ) : (
             data?.map((item: Products) => {
               return <MenuItem key={item.attributes.productName} item={item} />;
             })
-          ) : (
-            <h2 className="title-2">
-              Vă rugăm sunați la numărul{" "}
-              <a href="tel:0754 404 000">0754 404 000</a>
-            </h2>
           )}
         </ul>
         <Image

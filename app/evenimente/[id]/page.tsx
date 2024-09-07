@@ -8,10 +8,9 @@ export default async function EventPage({
 }: {
   params: { id: string };
 }) {
-  const { error, data: event } = await getQuery(
+  const { data: event } = await getQuery(
     `/evenimentes?filters[id][$eq]=${params.id}&populate=*`
   );
-  console.log(event);
   if (!event.length) {
     notFound();
   }

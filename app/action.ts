@@ -1,7 +1,5 @@
-import { clearCart } from "@/components/cart/cartSlice";
-import { useAppDispatch } from "@/lib/hooks";
-import { POST_ORDER } from "@/utils/query";
-import { useMutation, useQuery } from "@apollo/client";
+"use server";
+import { postQuery } from "@/utils/query";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
@@ -16,7 +14,7 @@ const schema = z.object({
   cart: z.string(),
 });
 
-export default async function CreateOrder(prevState: any, formData: FormData) {
+export default async function createOrder(prevState: any, formData: FormData) {
   const validatedFields = schema.safeParse({
     fullName: formData.get("fullName"),
     email: formData.get("email"),
@@ -36,13 +34,16 @@ export default async function CreateOrder(prevState: any, formData: FormData) {
 
   // Mutate data
   try {
-    const data = validatedFields.data;
+    const data = validatedFields;
+
     const order = {
       ...data,
-      cart: JSON.parse(data.cart),
+      cart: data.data.cart,
     };
 
-    return { order, message: "All good" };
+    await postQuery("/orders", order);
+
+    redirect("/congratulations");
   } catch (error) {
     return { message: "Something went wrong" };
   }

@@ -2804,3 +2804,7 @@ body {
 input[type="time"]::-webkit-calendar-picker-indicator {
   filter: invert(100%);
 }
+
+.btn-order:hover {
+  color: var(--white);
+}
