@@ -93,7 +93,7 @@ const SingleProduct = ({
               <div className="product-attribute">
                 <p className="title-2">Recomandare:</p>
                 <p className="title-2 product-attribute_detail">
-                  {personNumber}
+                  {personNumber} persoane
                 </p>
               </div>
             </div>

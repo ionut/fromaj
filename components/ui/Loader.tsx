@@ -10,7 +10,7 @@ const Loader = () => {
         className="text"
         width="160"
         height="50"
-        alt="Fomaj - Preload"
+        alt="Fromaj - Artisan Cheese Boards"
       />
     </div>
   );

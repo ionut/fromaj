@@ -1,7 +1,9 @@
 import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import CreateOrder from "@/app/action";
+import { createOrder } from "@/app/action";
 import { Cart } from "@/utils/types";
+import Input from "../ui/Input";
+import { redirect } from "next/navigation";
 
 const initialState = {
   message: "",
@@ -11,52 +13,56 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button type="submit" className="btn btn-order" aria-disabled={pending}>
-      {pending ? "Așteaptă" : "Trimite comandă"}
+    <button type="submit" className="btn-order" aria-disabled={pending}>
+      Trimite comandă
     </button>
   );
 }
 
 const OrderForm = ({ cart }: { cart: Cart[] }) => {
-  const [state, formAction] = useFormState(CreateOrder, initialState);
+  const [state, formAction] = useFormState(createOrder, initialState);
 
+  if (state.status === "Success!") {
+    redirect(`/congratulations?userName=${state.userName}`);
+  }
   return (
     <form action={formAction}>
       <div className="input-wrapper">
-        <input
+        <Input
           type="text"
           name="fullName"
           placeholder="Numele dumneavoastră"
           className="input-field"
         />
-        <input
+
+        <Input
           type="email"
           name="email"
           placeholder="Email"
           className="input-field"
         />
-        <input
+        <Input
           type="tel"
           name="phone"
           placeholder="Numărul de telefon"
           className="input-field"
         />
 
-        <input
+        <Input
           type="text"
           name="street"
           placeholder="Adresa dumneavoastră"
           className="input-field"
         />
         <div className="row gap-20">
-          <input
+          <Input
             type="text"
             name="city"
             placeholder="Oras"
             className="input-field"
           />
-          <input type="date" name="date" className="input-field" />
-          <input type="time" name="time" className="input-field" />
+          <Input type="date" name="date" className="input-field" />
+          <Input type="time" name="time" className="input-field" />
         </div>
 
         <input type="hidden" name="cart" value={JSON.stringify(cart)} />

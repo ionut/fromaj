@@ -28,7 +28,6 @@ const Cart = () => {
     <>
       <div
         className={`hero-btn ${totalQuantity > 0 && "has-after"}`}
-        aria-disabled="true"
         onClick={handleClick}
       >
         <div className="cart-block">

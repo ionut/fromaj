@@ -123,8 +123,9 @@ const Navbar = () => {
               src="/images/logo.png"
               width="160"
               height="50"
-              alt="Grilli - Home"
+              alt="Fromaj - Artisan Cheese Boards"
               loading="lazy"
+              className="img-cover"
             />
           </Link>
 
@@ -138,8 +139,9 @@ const Navbar = () => {
                 src="/images/logo.png"
                 width="180"
                 height="60"
-                alt="Fromaj - Home"
+                alt="Fromaj - Artisan Cheese Boards"
                 loading="lazy"
+                className="img-cover"
               />
             </Link>
 
