@@ -9,6 +9,13 @@ const nextConfig = {
         port: "1337",
       },
     ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: process.env.STRAPI_URL,
+        port: "",
+      },
+    ],
   },
   env: {
     STRAPI_URL: process.env.STRAPI_URL,
