@@ -50,7 +50,7 @@ const SingleProduct = ({
         <div className="container product-section-block">
           <div className="product-section-block_col">
             <Image
-              src={`${process.env.STRAPI_URL}${mainImage}`}
+              src={`${mainImage}`}
               width="285"
               height="336"
               loading="lazy"
@@ -62,7 +62,7 @@ const SingleProduct = ({
                 return (
                   <Image
                     key={index}
-                    src={`${process.env.STRAPI_URL}${picture.attributes.url}`}
+                    src={`${picture.attributes.url}`}
                     width={100}
                     height={100}
                     alt="image"
@@ -147,7 +147,7 @@ const SingleProduct = ({
                 <div key={name} className="related-product">
                   <Link href={`/produse/${slug}`}>
                     <Image
-                      src={`${process.env.STRAPI_URL}${pictures.data[0].attributes.url}`}
+                      src={`${pictures.data[0].attributes.url}`}
                       width="5000"
                       height="5000"
                       loading="lazy"

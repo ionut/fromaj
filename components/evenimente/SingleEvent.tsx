@@ -17,7 +17,7 @@ const SingleEvent = ({ event }: { event: Events }) => {
         <div className="container product-section-block">
           <div className="product-section-block_col">
             <Image
-              src={`${process.env.STRAPI_URL}${mainImage}`}
+              src={`${mainImage}`}
               width="285"
               height="336"
               loading="lazy"
@@ -29,7 +29,7 @@ const SingleEvent = ({ event }: { event: Events }) => {
                 return (
                   <Image
                     key={index}
-                    src={`${process.env.STRAPI_URL}${picture.attributes.url}`}
+                    src={`${picture.attributes.url}`}
                     width={200}
                     height={100}
                     alt="image"

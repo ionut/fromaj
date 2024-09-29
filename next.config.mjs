@@ -4,21 +4,11 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
-      },
-    ],
-    remotePatterns: [
-      {
         protocol: "https",
-        hostname: process.env.STRAPI_URL,
+        hostname: "powerful-bouquet-e112157a62.media.strapiapp.com",
         port: "",
       },
     ],
-  },
-  env: {
-    STRAPI_URL: process.env.STRAPI_URL,
   },
 };
 

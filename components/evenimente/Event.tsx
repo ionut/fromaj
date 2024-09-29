@@ -11,7 +11,7 @@ const Event = ({ event }: { event: Events }) => {
       <Link href={`/evenimente/${id}`}>
         <figure className="card-banner img-holder">
           <Image
-            src={`${process.env.STRAPI_URL}${attributes.pictures.data[0].attributes.url}`}
+            src={`${attributes.pictures.data[0].attributes.url}`}
             width={300}
             height={300}
             alt={attributes.location}
