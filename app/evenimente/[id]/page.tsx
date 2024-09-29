@@ -1,6 +1,5 @@
 import SingleEvent from "@/components/evenimente/SingleEvent";
 import { notFound } from "next/navigation";
-import Loader from "@/components/ui/Loader";
 import { getQuery } from "@/utils/query";
 
 export default async function EventPage({
