@@ -6,7 +6,7 @@ import { getQuery } from "@/utils/query";
 
 const MenuSection = async () => {
   const { data } = await getQuery("/products?populate=*");
-
+  console.log(data);
   return (
     <section className="section menu">
       <div className="container">
@@ -17,9 +17,9 @@ const MenuSection = async () => {
         <h2 className="headline-1 section-title text-center">Cutii</h2>
 
         <ul className="grid-list products">
-          {!data.length ? (
-            <h2 className="title-2">
-              Comandați la numărul <a href="tel:0754 404 000">0754 404 000</a>
+          {!data?.length ? (
+            <h2 className="title-2 flex gap-10">
+              Comandați la numărul: <a href="tel:0754 404 000">0754 404 000.</a>
             </h2>
           ) : (
             data?.map((item: Products) => {

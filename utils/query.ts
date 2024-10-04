@@ -1,4 +1,7 @@
+import { unstable_noStore as noStore } from "next/cache";
+
 export async function getQuery(query: string) {
+  noStore();
   try {
     const response = await fetch(`${process.env.STRAPI_URL}/api${query}`);
 

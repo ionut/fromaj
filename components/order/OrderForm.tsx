@@ -23,7 +23,7 @@ const OrderForm = ({ cart }: { cart: Cart[] }) => {
   const [state, formAction] = useFormState(createOrder, initialState);
 
   if (state.status === "Success!") {
-    redirect(`/congratulations?userName=${state.userName}`);
+    redirect(`/congratulations?userName=${state.userName}&type=comanda`);
   }
   return (
     <form action={formAction}>

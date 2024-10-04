@@ -3,6 +3,7 @@ import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { createReservation } from "@/app/action";
 import Input from "../ui/Input";
+import { redirect } from "next/navigation";
 const initialState = {
   message: "",
 };
@@ -19,7 +20,10 @@ function SubmitButton() {
 
 const ReservationForm = () => {
   const [state, formAction] = useFormState(createReservation, initialState);
-  console.log(state);
+
+  if (state.status === "Success!") {
+    redirect(`/congratulations?userName=${state.userName}&type=rezervare`);
+  }
   return (
     <form action={formAction} className="form-left">
       <h2 className="headline-1 text-center">Consultanță Online</h2>

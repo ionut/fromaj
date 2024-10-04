@@ -62,7 +62,6 @@ export async function createOrder(prevState: any, formData: FormData) {
 }
 
 export async function createReservation(prevState: any, formData: FormData) {
-  console.log();
   const validatedFields = reservationSchema.safeParse({
     fullName: formData.get("fullName"),
     phone: formData.get("phone"),
@@ -72,7 +71,6 @@ export async function createReservation(prevState: any, formData: FormData) {
     time: formData.get("time"),
     message: formData.get("message"),
   });
-  console.log(validatedFields.error?.issues);
   // Return early if the form data is invalid
   if (!validatedFields.success) {
     return {
