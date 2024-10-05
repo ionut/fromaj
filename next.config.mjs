@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "powerful-bouquet-e112157a62.media.strapiapp.com",
+        hostname: "api.fromaj.ro",
         port: "",
       },
     ],

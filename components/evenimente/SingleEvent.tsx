@@ -29,7 +29,7 @@ const SingleEvent = ({ event }: { event: Events }) => {
                 return (
                   <Image
                     key={index}
-                    src={`${picture.attributes.url}`}
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${picture.attributes.url}`}
                     width={200}
                     height={100}
                     alt="image"

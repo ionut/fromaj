@@ -39,7 +39,7 @@ const MenuItem = ({ item }: { item: Products }) => {
         <figure className="card-banner img-holder">
           <Link href={`/produse/${slug}`}>
             <Image
-              src={`${pictures.data[0].attributes.url}`}
+              src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${pictures.data[0].attributes.url}`}
               width="100"
               height="100"
               loading="lazy"

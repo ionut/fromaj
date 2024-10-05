@@ -3,7 +3,9 @@ import { unstable_noStore as noStore } from "next/cache";
 export async function getQuery(query: string) {
   noStore();
   try {
-    const response = await fetch(`${process.env.STRAPI_URL}/api${query}`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api${query}`
+    );
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -19,15 +21,18 @@ export async function getQuery(query: string) {
 
 export async function postData(query: string, formData: any) {
   try {
-    const response = await fetch(`${process.env.STRAPI_URL}/api${query}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.API_TOKEN_SALT}`, // Include the Authorization header
-      },
-      body: JSON.stringify({ data: formData.data }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api${query}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.API_TOKEN_SALT}`, // Include the Authorization header
+        },
+        body: JSON.stringify({ data: formData.data }),
+      }
+    );
 
     if (!response.ok) {
       const errorData = await response.json();

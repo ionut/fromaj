@@ -6,7 +6,7 @@ import { getQuery } from "@/utils/query";
 
 const MenuSection = async () => {
   const { data } = await getQuery("/products?populate=*");
-  console.log(data);
+
   return (
     <section className="section menu">
       <div className="container">
