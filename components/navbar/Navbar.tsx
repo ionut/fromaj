@@ -123,7 +123,7 @@ const Navbar = () => {
               src="/images/logo.png"
               width="160"
               height="50"
-              alt="Fromaj - Artisan Cheese Boards"
+              alt="Fromaj - Artisan Cheese Boards Logo"
               loading="lazy"
               className="img-cover"
             />
@@ -139,7 +139,7 @@ const Navbar = () => {
                 src="/images/logo.png"
                 width="180"
                 height="60"
-                alt="Fromaj - Artisan Cheese Boards"
+                alt="Fromaj - Artisan Cheese Boards Logo"
                 loading="lazy"
                 className="img-cover"
               />

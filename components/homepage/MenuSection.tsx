@@ -32,7 +32,7 @@ const MenuSection = async () => {
           width="343"
           height="345"
           loading="lazy"
-          alt="shape"
+          alt="Fromaj forme"
           className="shape shape-3 move-anim"
         />
       </div>

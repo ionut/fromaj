@@ -27,11 +27,11 @@ const ServiceSection = () => {
             <div className="service-card">
               <ImageCustom href="/produse/cutie-standard-mare">
                 <Image
-                  src="/images/service-1.png"
+                  src="/images/img-main.jpg"
                   width="285"
                   height="336"
                   loading="lazy"
-                  alt="Breakfast"
+                  alt="Fromaj Cutie Standard Mare"
                   className="img-cover"
                 />
               </ImageCustom>
@@ -55,11 +55,11 @@ const ServiceSection = () => {
             <div className="service-card">
               <ImageCustom href="/rezervare">
                 <Image
-                  src="/images/service-2.png"
+                  src="/images/img-main.jpg"
                   width="285"
                   height="336"
                   loading="lazy"
-                  alt="Appetizers"
+                  alt="Fromaj Boards"
                   className="img-cover"
                 />
               </ImageCustom>
@@ -83,11 +83,11 @@ const ServiceSection = () => {
             <div className="service-card">
               <ImageCustom href="/rezervare">
                 <Image
-                  src="/images/service-3.png"
+                  src="/images/img-main.jpg"
                   width="285"
                   height="336"
                   loading="lazy"
-                  alt="Drinks"
+                  alt="Fromaj Evenimente"
                   className="img-cover"
                 />
               </ImageCustom>
@@ -113,7 +113,7 @@ const ServiceSection = () => {
           width="246"
           height="412"
           loading="lazy"
-          alt="shape"
+          alt="Fromaj forme"
           className="shape shape-1 move-anim"
         />
         <Image
@@ -121,7 +121,7 @@ const ServiceSection = () => {
           width="343"
           height="345"
           loading="lazy"
-          alt="shape"
+          alt="Fromaj forme"
           className="shape shape-2 move-anim"
         />
       </div>

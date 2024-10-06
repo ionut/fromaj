@@ -65,7 +65,7 @@ const SingleProduct = ({
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${picture.attributes.url}`}
                     width={100}
                     height={100}
-                    alt="image"
+                    alt={name}
                     className="other-images"
                     onClick={() => handleClick(index)}
                   />

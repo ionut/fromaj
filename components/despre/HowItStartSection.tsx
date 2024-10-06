@@ -28,7 +28,7 @@ const HowItStartSection = () => {
             width="570"
             height="570"
             loading="lazy"
-            alt="about banner"
+            alt="Platouri Branzeturi"
             className="w-100"
           />
           <figure className="abs-img abs-img-2 has-before">
@@ -37,7 +37,7 @@ const HowItStartSection = () => {
               width="133"
               height="134"
               loading="lazy"
-              alt=""
+              alt="Artisan Cheese Boards"
             />
           </figure>
         </div>

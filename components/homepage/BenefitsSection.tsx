@@ -34,7 +34,7 @@ const BenefitsSection = () => {
                   src={"/images/joins.webp"}
                   width={50}
                   height={50}
-                  alt="Articulații/țesuturi sănătoase"
+                  alt="Articulații"
                 />
                 Articulații sănătoase
               </li>
@@ -43,8 +43,7 @@ const BenefitsSection = () => {
                   src={"/images/skin.webp"}
                   width={50}
                   height={50}
-                  alt="Oferă protecție pielii
-"
+                  alt="Piele"
                 />
                 Oferă protecție pielii
               </li>
@@ -53,7 +52,7 @@ const BenefitsSection = () => {
                   src={"/images/stomach.webp"}
                   width={50}
                   height={50}
-                  alt="Previne ulcerele"
+                  alt="Ulcer"
                 />
                 Previne ulcerele
               </li>
@@ -64,7 +63,7 @@ const BenefitsSection = () => {
               src={"/images/benefits-cheese.jpg"}
               width={300}
               height={400}
-              alt="Îmbunătățește vederea"
+              alt="Vederea"
               className="benefits-image"
             />
           </div>

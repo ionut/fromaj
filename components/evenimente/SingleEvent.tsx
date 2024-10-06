@@ -17,11 +17,11 @@ const SingleEvent = ({ event }: { event: Events }) => {
         <div className="container product-section-block">
           <div className="product-section-block_col">
             <Image
-              src={`${mainImage}`}
+              src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${mainImage}`}
               width="285"
               height="336"
               loading="lazy"
-              alt={location}
+              alt={`${location} - ${persons} persoane`}
               className="img-cover"
             />
             <div className="row gap-10 overflow-scroll w-full">
@@ -32,7 +32,7 @@ const SingleEvent = ({ event }: { event: Events }) => {
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${picture.attributes.url}`}
                     width={200}
                     height={100}
-                    alt="image"
+                    alt={`${location} - ${persons} persoane`}
                     className="other-images"
                     onClick={() => handleClick(index)}
                   />

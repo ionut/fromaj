@@ -891,7 +891,6 @@ body {
 .hero {
   position: relative;
   background-color: var(--smoky-black-1);
-  padding-block: 6rem;
 }
 
 .hero-block {
@@ -908,7 +907,8 @@ body {
   gap: 2rem;
 }
 .wave {
-  width: 100%;
+  width: 100vw;
+  height: 426px;
 }
 .hero .section-subtitle::after {
   margin-block: 1.4rem 2rem;
@@ -1453,6 +1453,7 @@ textarea.input-field {
 
 .footer {
   background: var(--smoky-black-1);
+  height: 30rem;
 }
 
 .footer-top {
@@ -2514,6 +2515,10 @@ ul {
   flex-direction: row;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .btn-success {
   position: relative;
   color: var(--green);
@@ -2731,7 +2736,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
   .events-section,
-  .hero,
   .product-section {
     padding-block: 20rem;
   }
@@ -2850,6 +2854,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .hero-block_image {
   grid-column: 1 / -1;
+  height: 100dvh;
 }
 
 @media (width>768px) {

@@ -14,7 +14,7 @@ const Event = ({ event }: { event: Events }) => {
             src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.pictures.data[0].attributes.url}`}
             width={300}
             height={300}
-            alt={attributes.location}
+            alt={`${attributes.location} - ${attributes.persons} persoane`}
             className="w-full "
             loading="lazy"
           />
