@@ -502,6 +502,10 @@ body {
   width: 100%;
 }
 
+.h-36 {
+  height: 36rem;
+}
+
 .move-anim {
   animation: move 5s linear infinite;
 }
@@ -891,6 +895,7 @@ body {
 .hero {
   position: relative;
   background-color: var(--smoky-black-1);
+  padding-top: 10rem;
 }
 
 .hero-block {
@@ -1553,6 +1558,8 @@ textarea.input-field {
 .copyright {
   color: var(--quick-silver);
   line-height: var(--lineHeight-3);
+  display: flex;
+  gap: 1rem;
 }
 
 .copyright .link {
@@ -1863,6 +1870,10 @@ textarea.input-field {
   /**
    * HERO
    */
+
+  .hero {
+    padding: 0;
+  }
 
   .hero .slider-btn {
     display: grid;
@@ -2843,18 +2854,16 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .hero-wrapper {
   display: grid;
   grid-template-columns:
-    1fr repeat(2, calc((min(100% - 1.6rem, 120rem) - 2rem) / 2))
+    1fr repeat(2, calc(min(100% - 1.6rem, 120rem) / 2))
     1fr;
-  gap: 2rem;
 }
 
 .hero-block_text {
-  grid-column: 2 / -1;
+  grid-column: 1 / -1;
 }
 
 .hero-block_image {
   grid-column: 1 / -1;
-  height: 100dvh;
 }
 
 @media (width>768px) {
@@ -2873,5 +2882,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
   .hero-block_image {
     grid-column: 7 / -1;
+    height: 90dvh;
   }
 }

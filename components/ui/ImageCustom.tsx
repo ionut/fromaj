@@ -10,7 +10,7 @@ const ImageCustom = ({
 }) => {
   return (
     <Link href={href} className="has-before hover:shine">
-      <figure className="card-banner img-holder">{children}</figure>
+      <figure className="card-banner img-holder h-36">{children}</figure>
     </Link>
   );
 };

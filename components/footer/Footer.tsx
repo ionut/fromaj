@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
         </div>
         <p className="copyright">
-          &copy; Copyright (c) 2022 Crafted by WebRender (webrender.ro) |{" "}
+          <span>&copy; Copyright (c) 2024 Crafted by WebRender |</span>
           <a href="tel:+40747241177">0747241177</a>
         </p>
       </div>

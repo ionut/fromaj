@@ -22,9 +22,9 @@ const HowItStartSection = () => {
           </p>
         </div>
 
-        <div className="about-banner">
+        <div className="about-banner h-36">
           <Image
-            src="/images/about-banner.jpg"
+            src="/images/catering-corporate.jpg"
             width="570"
             height="570"
             loading="lazy"

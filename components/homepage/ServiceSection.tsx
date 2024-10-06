@@ -13,7 +13,7 @@ const ServiceSection = () => {
           <span>CHEESE BAR</span>
         </h2>
         <h2 className="headline-2 section-title">
-          Într-un decor rustic, asigurăm gustări delicioase invitaților.
+          Într-un decor rustic, asigurăm gustări delicioase invitaților
         </h2>
         <p className="section-text">
           Dăruiește o notă specială evenimentului tău. Oferim servicii de
@@ -27,7 +27,7 @@ const ServiceSection = () => {
             <div className="service-card">
               <ImageCustom href="/produse/cutie-standard-mare">
                 <Image
-                  src="/images/img-main.jpg"
+                  src="/images/cutii.jpg"
                   width="285"
                   height="336"
                   loading="lazy"
@@ -55,7 +55,7 @@ const ServiceSection = () => {
             <div className="service-card">
               <ImageCustom href="/rezervare">
                 <Image
-                  src="/images/img-main.jpg"
+                  src="/images/catering-corporate.jpg"
                   width="285"
                   height="336"
                   loading="lazy"
@@ -83,7 +83,7 @@ const ServiceSection = () => {
             <div className="service-card">
               <ImageCustom href="/rezervare">
                 <Image
-                  src="/images/img-main.jpg"
+                  src="/images/eveniment-gradina.jpg"
                   width="285"
                   height="336"
                   loading="lazy"
