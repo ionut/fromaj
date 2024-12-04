@@ -10,12 +10,7 @@ const MenuSection = async () => {
   return (
     <section className="section menu">
       <div className="container">
-        <p className="section-subtitle text-center label-2">
-          Selecție Specială
-        </p>
-
-        <h2 className="headline-1 section-title text-center">Cutii</h2>
-
+        <p className="section-subtitle text-center label-2">Platouri fromaj</p>
         <ul className="grid-list products">
           {!data?.length ? (
             <h2 className="title-2 flex gap-10">

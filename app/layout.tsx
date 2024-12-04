@@ -1,11 +1,12 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { DM_Sans, Forum } from "next/font/google";
+import "normalize.css";
 import "./globals.css";
 import Loading from "./loading";
 import Footer from "@/components/footer/Footer";
 import Providers from "./storeProvider";
-import Navbar from "@/components/navbar/Navbar";
+import Navbar from "@/components/homepage/Navbar";
 import Cart from "@/components/cart/Cart";
 
 const dmsans = DM_Sans({

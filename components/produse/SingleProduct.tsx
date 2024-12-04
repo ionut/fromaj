@@ -3,10 +3,10 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Cart, Products } from "@/utils/types";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
+import { addItem, getCurrentQuantityById } from "../../lib/slice/cartSlice";
 import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 import DeleteItem from "../cart/DeleteItem";
-import Link from "next/link";
+import RelatedProduct from "./RelatedProduct";
 const SingleProduct = ({
   product,
   relatedProducts,
@@ -46,17 +46,18 @@ const SingleProduct = ({
 
   return (
     <>
-      <section className="product-section">
-        <div className="container product-section-block">
-          <div className="product-section-block_col">
+      <section className="container">
+        <div className="single-type">
+          <div className="single-type-block_col">
             <Image
               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${mainImage}`}
-              width="285"
-              height="336"
+              width={285}
+              height={336}
               loading="lazy"
               alt={name}
               className="img-cover"
             />
+
             <div className="row gap-10 overflow-scroll">
               {pictures?.data?.map((picture: any, index: number) => {
                 return (
@@ -73,7 +74,7 @@ const SingleProduct = ({
               })}
             </div>
           </div>
-          <div className="product-section-block_col">
+          <div className="single-type-block_col">
             <h2 className="headline-1 section-title">
               <span>{name}</span>
             </h2>
@@ -135,33 +136,13 @@ const SingleProduct = ({
           <h2 className="headline-1 section-title text-center">
             Produse Recomandate
           </h2>
-          <div className="row gap-20">
-            {relatedProducts.map((relatedProduct: any) => {
-              const {
-                productName: name,
-                price,
-                pictures,
-                slug,
-              } = relatedProduct.attributes;
+          <div className="related-product_grid">
+            {relatedProducts.map((relatedProduct: Products) => {
               return (
-                <div key={name} className="related-product">
-                  <Link href={`/produse/${slug}`}>
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${pictures.data[0].attributes.url}`}
-                      width="5000"
-                      height="5000"
-                      loading="lazy"
-                      alt={name}
-                      className="img-cover"
-                    />
-                  </Link>
-                  <div>
-                    <Link href={`/produse/${slug}`}>
-                      <p className="title-3 text-center">{name}</p>
-                    </Link>
-                    <p className="body-2 text-center">{price} RON</p>
-                  </div>
-                </div>
+                <RelatedProduct
+                  key={relatedProduct.productName}
+                  relatedProduct={relatedProduct}
+                />
               );
             })}
           </div>

@@ -3,7 +3,7 @@ import React from "react";
 import UpdateItemQuantity from "./UpdateItemQuantity";
 import DeleteItem from "./DeleteItem";
 import { useSelector } from "react-redux";
-import { getCurrentQuantityById } from "./cartSlice";
+import { getCurrentQuantityById } from "../../lib/slice/cartSlice";
 
 const CartItem = ({ item }: { item: Cart }) => {
   const { id, name, quantity, totalPrice } = item;

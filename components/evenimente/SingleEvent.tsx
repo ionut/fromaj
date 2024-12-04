@@ -13,13 +13,13 @@ const SingleEvent = ({ event }: { event: Events }) => {
 
   return (
     <>
-      <section className="product-section">
-        <div className="container product-section-block">
-          <div className="product-section-block_col">
+      <section className="container">
+        <div className="single-type">
+          <div className="single-type-block_col">
             <Image
               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${mainImage}`}
-              width="285"
-              height="336"
+              width={320}
+              height={320}
               loading="lazy"
               alt={`${location} - ${persons} persoane`}
               className="img-cover"
@@ -31,7 +31,7 @@ const SingleEvent = ({ event }: { event: Events }) => {
                     key={index}
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${picture.attributes.url}`}
                     width={200}
-                    height={100}
+                    height={200}
                     alt={`${location} - ${persons} persoane`}
                     className="other-images"
                     onClick={() => handleClick(index)}
@@ -40,7 +40,7 @@ const SingleEvent = ({ event }: { event: Events }) => {
               })}
             </div>
           </div>
-          <div className="product-section-block_col">
+          <div className="single-type-block_col">
             <h2 className="headline-1 section-title">
               <span>{location}</span>
             </h2>

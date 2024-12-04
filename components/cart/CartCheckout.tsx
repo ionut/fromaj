@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { useAppSelector } from "@/lib/hooks";
-import { getCart, getTotalCartPrice } from "./cartSlice";
+import { getCart, getTotalCartPrice } from "../../lib/slice/cartSlice";
 import CartItem from "./CartItem";
 import { Cart } from "@/utils/types";
 import Button from "../ui/Button";

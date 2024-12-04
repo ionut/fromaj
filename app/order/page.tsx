@@ -3,7 +3,7 @@ import OrderForm from "@/components/order/OrderForm";
 import React from "react";
 import { useAppSelector } from "@/lib/hooks";
 import { Cart } from "@/utils/types";
-import { getCart, getTotalCartPrice } from "@/components/cart/cartSlice";
+import { getCart, getTotalCartPrice } from "@/lib/slice/cartSlice";
 import Link from "next/link";
 
 const NewOrder = () => {

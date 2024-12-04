@@ -8,9 +8,10 @@ const Loader = () => {
       <Image
         src="/images/logo.png"
         className="text"
-        width="160"
-        height="50"
+        width={160}
+        height={50}
         alt="Fromaj - Artisan Cheese Boards"
+        priority={true}
       />
     </div>
   );

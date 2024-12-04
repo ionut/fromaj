@@ -14,6 +14,7 @@ export default async function ProductPage({
   const { data: relatedProducts } = await getQuery(
     `/products?filters[slug][$ne]=${params.slug}&populate=*`
   );
+
   if (!product.length || !product) {
     notFound();
   }

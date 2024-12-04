@@ -29,7 +29,6 @@ const Footer = () => {
                 <Image
                   src="/images/anpc-sal.png"
                   alt="ANPC Logo"
-                  loading="lazy"
                   width={200}
                   height={200}
                 />
@@ -40,7 +39,6 @@ const Footer = () => {
                   alt="ANPC Logo"
                   width={200}
                   height={200}
-                  loading="lazy"
                 />
               </a>
             </div>

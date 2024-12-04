@@ -9,9 +9,6 @@ const HowItStartSection = () => {
           <p className="label-2 section-subtitle" id="about-label">
             Fromaj - Povestea noastră
           </p>
-
-          <h2 className="headline-1 section-title">Cum a inceput totul</h2>
-
           <p className="section-text">
             Fromaj a luat naștere din pasiunea pentru gusturi elegante, arome
             îmbibate în vin și miresme puternice. Din dorința de a oferi tonul

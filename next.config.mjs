@@ -8,6 +8,12 @@ const nextConfig = {
         hostname: "api.fromaj.ro",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "tailwindui.com",
+        pathname: "/plus/img/ecommerce-images/*",
+        port: "",
+      },
     ],
   },
 };

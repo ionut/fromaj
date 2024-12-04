@@ -1,5 +1,5 @@
 import { useAppDispatch } from "@/lib/hooks";
-import { deleteItem } from "./cartSlice";
+import { deleteItem } from "../../lib/slice/cartSlice";
 
 function DeleteItem({ productId }: { productId: number }) {
   const dispatch = useAppDispatch();

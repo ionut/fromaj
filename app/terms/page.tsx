@@ -30,7 +30,7 @@ const TermsPage = () => {
                     nr 57, J22/2934/2021, Cod fiscal 44836220, care
                     administrează website-ul
                     <Link href="/">
-                      <b>www.fromaj.ro</b>
+                      <b>fromaj.ro</b>
                     </Link>
                     , denumit în continuare “website”, în conformitate cu GDPR,
                     operator de date cu caracter personal și, prin urmare, este

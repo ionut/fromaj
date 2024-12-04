@@ -23,9 +23,9 @@ const Event = ({ event }: { event: Events }) => {
 
       <Link
         href={`/evenimente/${id}`}
-        className="btn-text hover-underline label-1"
+        className="btn-text hover-underline label-1 text-center"
       >
-        {attributes.location} - {attributes.persons} persoane
+        {attributes.location} <br /> {attributes.persons} persoane
       </Link>
     </div>
   );

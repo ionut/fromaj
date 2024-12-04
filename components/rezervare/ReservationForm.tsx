@@ -13,7 +13,7 @@ function SubmitButton() {
 
   return (
     <button type="submit" className="btn-order" aria-disabled={pending}>
-      Rezervă
+      Cere ofertă
     </button>
   );
 }
@@ -64,8 +64,8 @@ const ReservationForm = () => {
         />
       </div>
       <div className="input-wrapper">
-        <input type="date" name="date" className="input-field " />
         <input type="time" name="time" className="input-field " />
+        <input type="date" name="date" className="input-field " />
       </div>
       <textarea
         name="message"

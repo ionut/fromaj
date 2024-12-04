@@ -5,66 +5,40 @@ const BenefitsSection = () => {
   return (
     <section className="section benefits">
       <div className="container">
-        <p className="section-subtitle text-center label-2">
-          Alegere sănătoasă
-        </p>
-
-        <h2 className="headline-1 section-title text-center">
-          <span>Beneficii</span>
-        </h2>
+        <p className="section-subtitle text-center label-2">Misiunea noastră</p>
         <div className="benefits-block">
           <div className="benefits-col">
-            <p className="section-text">
-              Brânza naturală din lapte este bogată în vitamine și minerale și
-              săracă în colesterol. De asemenea, este recomandată persoanelor
-              care au o digestie lentă și într-o recuperare mai rapidă.
+            <p className="body-3 text-center">
+              La Fromaj, misiunea noastră este să fim alături de tine la fiecare
+              moment special, transformând evenimentele în experiențe
+              memorabile, prin eleganță, savoare și un strop de magie gourmet.
             </p>
-            <ul className="benefits-list">
-              <li className="title-1 benefits-item">
-                <Image
-                  src={"/images/eyesight.webp"}
-                  width={50}
-                  height={50}
-                  alt="Îmbunătățește vederea"
-                />
-                Îmbunătățește vederea
-              </li>
-              <li className="title-1 benefits-item">
-                <Image
-                  src={"/images/joins.webp"}
-                  width={50}
-                  height={50}
-                  alt="Articulații"
-                />
-                Articulații sănătoase
-              </li>
-              <li className="title-1 benefits-item">
-                <Image
-                  src={"/images/skin.webp"}
-                  width={50}
-                  height={50}
-                  alt="Piele"
-                />
-                Oferă protecție pielii
-              </li>
-              <li className="title-1 benefits-item">
-                <Image
-                  src={"/images/stomach.webp"}
-                  width={50}
-                  height={50}
-                  alt="Ulcer"
-                />
-                Previne ulcerele
-              </li>
-            </ul>
+            <p className="body-3 text-center">
+              Fie că organizezi o nuntă de vis, un botez emoționant sau o
+              aniversare plină de bucurie, suntem aici să creăm acel CheeseBar
+              spectaculos care să surprindă invitații și să adauge un plus de
+              rafinament fiecărei ocazii. Înțelegem cât de important este să ai
+              alături parteneri de încredere, de aceea ne dedicăm fiecărui
+              detaliu, asigurându-ne că produsele noastre sunt nu doar
+              delicioase, ci și o adevărată încântare vizuală.
+            </p>
+            <p className="body-3 text-center">
+              Suntem mai mult decât o firmă de catering – suntem prietenii care
+              îți aduc bucuria gustului la orice eveniment, adaptându-ne mereu
+              dorințelor tale. Pentru noi, fiecare poveste este unică, iar
+              platourile și CheeseBar-urile noastre sunt create cu grijă, pentru
+              a reflecta esența momentului pe care îl sărbătorești.
+            </p>
+            <p className="body-3 text-center">
+              Fromaj – pentru momente speciale, alături de oameni speciali.
+            </p>
           </div>
           <div className="benefits-col">
             <Image
-              src={"/images/benefits-cheese.jpg"}
-              width={300}
-              height={400}
-              alt="Vederea"
-              className="benefits-image"
+              src={"/images/platou-no-back.png"}
+              width={574}
+              height={574}
+              alt="Platouri"
             />
           </div>
         </div>

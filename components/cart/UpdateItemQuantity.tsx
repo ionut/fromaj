@@ -1,4 +1,7 @@
-import { decreaseItemQuantity, increaseItemQuantity } from "./cartSlice";
+import {
+  decreaseItemQuantity,
+  increaseItemQuantity,
+} from "../../lib/slice/cartSlice";
 import { useAppDispatch } from "@/lib/hooks";
 
 function UpdateItemQuantity({

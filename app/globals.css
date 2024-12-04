@@ -149,6 +149,7 @@ a {
 }
 
 img {
+  width: 100%;
   height: auto;
 }
 
@@ -418,6 +419,7 @@ body {
 .btn-secondary {
   background-color: var(--green);
   color: var(--black);
+  border-radius: 1rem;
 }
 
 .btn-secondary::before {
@@ -659,7 +661,7 @@ body {
 }
 
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -784,7 +786,7 @@ body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: -1rem;
+  right: -0.5rem;
   top: -1rem;
   font-size: 2.5rem;
   font-weight: 600;
@@ -895,14 +897,9 @@ body {
 .hero {
   position: relative;
   background-color: var(--smoky-black-1);
-  padding-top: 10rem;
-}
-
-.hero-block {
   display: grid;
-  grid-template-rows: 1fr 0.8fr;
   align-items: center;
-  min-height: 100%;
+  min-height: 100dvh;
   gap: 2rem;
 }
 
@@ -932,10 +929,11 @@ body {
   align-items: center;
   z-index: 2;
   background-color: var(--green);
-  width: 10rem;
-  height: 10rem;
+  width: 9rem;
+  height: 9rem;
   transform: scale(0.6);
   cursor: pointer;
+  border-radius: 1000px;
 }
 
 .hero-btn img {
@@ -1122,44 +1120,6 @@ body {
 }
 
 /*-----------------------------------*\
-  #SPECIAL DISH
-\*-----------------------------------*/
-
-.special-dish-content {
-  padding-block: 7rem;
-}
-
-.special-dish .abs-img {
-  margin-inline: auto;
-  margin-block-end: 1.2rem;
-}
-
-.special-dish .section-text {
-  margin-block: 1.6rem 4rem;
-}
-
-.special-dish-content .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin-block-end: 4rem;
-}
-
-.special-dish-content .del {
-  text-decoration: none;
-  color: var(--davys-grey);
-}
-
-.special-dish-content .span {
-  color: var(--green);
-}
-
-.special-dish .btn {
-  margin-inline: auto;
-}
-
-/*-----------------------------------*\
   #MENU
 \*-----------------------------------*/
 
@@ -1172,10 +1132,18 @@ body {
 }
 
 .menu-card {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(fit-content, 1fr));
   gap: 2rem;
   cursor: pointer;
+}
+
+.menu-card_item img {
+  height: 400px;
+}
+
+.menu-card_item:first-child {
+  grid-row: 1/2;
 }
 
 .hover\:card .card-banner {
@@ -1192,7 +1160,6 @@ body {
 }
 
 .menu-card .card-banner {
-  flex-shrink: 0;
   border-radius: var(--radius-24);
 }
 
@@ -1932,6 +1899,13 @@ textarea.input-field {
   .copyright {
     margin-top: 1rem;
   }
+
+  .menu-card {
+    display: grid;
+    grid-template-rows: none;
+    gap: 2rem;
+    cursor: pointer;
+  }
 }
 
 /**
@@ -2005,63 +1979,6 @@ textarea.input-field {
   .about .container {
     grid-template-columns: 0.7fr 1fr;
     gap: 3rem;
-  }
-
-  /**
-   * SPECIAL DISH
-   */
-
-  .special-dish {
-    /* display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    text-align: left; */
-  }
-
-  .special-dish-banner {
-    grid-area: banner;
-  }
-
-  .special-dish-content {
-    grid-area: content;
-  }
-
-  .special-dish-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "banner content";
-  }
-
-  .special-dish-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "content banner";
-  }
-
-  .special-dish-content {
-    padding-inline: 5rem 2.5rem;
-  }
-
-  .special-dish-content .container {
-    position: relative;
-  }
-
-  .special-dish .section-subtitle::after,
-  .special-dish .btn {
-    margin-inline: 0;
-  }
-
-  .special-dish-content .wrapper {
-    justify-content: flex-start;
-  }
-
-  .special-dish .abs-img {
-    position: absolute;
-    top: 1rem;
-    left: -4rem;
-    animation: move 5s linear infinite;
   }
 
   /**
@@ -2249,20 +2166,6 @@ textarea.input-field {
   }
 
   /**
-   * SPECIAL DISH
-   */
-
-  .special-dish-content {
-    padding: 22.5rem 12rem;
-    padding-inline-end: 0;
-  }
-
-  .special-dish-content .container {
-    max-width: 46rem;
-    margin-inline: 0;
-  }
-
-  /**
    * MENU
    */
 
@@ -2286,6 +2189,9 @@ textarea.input-field {
 
   .features .grid-list {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .menu-card_item img {
+    height: 495px;
   }
 }
 
@@ -2314,42 +2220,6 @@ textarea.input-field {
     display: block;
     top: 46%;
     left: 0;
-  }
-
-  /**
-   * SPECIAL DISH
-   */
-
-  .special-dish {
-    overflow: visible;
-    position: relative;
-  }
-
-  .special-dish .shape {
-    display: block;
-    z-index: 1;
-  }
-
-  .special-dish .shape-right {
-    right: 0;
-    top: 10%;
-  }
-
-  .special-dish .shape-left {
-    left: 0;
-    top: 43%;
-  }
-
-  .special-dish .shape-right-bottom {
-    right: 0;
-    bottom: 10%;
-  }
-
-  .special-dish .shape-2 {
-    right: 0;
-    bottom: 0;
-    transform: translateY(50%);
-    width: max-content;
   }
 
   /**
@@ -2570,7 +2440,8 @@ ul {
   text-transform: uppercase;
   letter-spacing: var(--letterSpacing-5);
   max-width: max-content;
-  padding-inline: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
   border: 0.2rem solid var(--green);
   z-index: 1;
 }
@@ -2639,7 +2510,7 @@ body {
   grid-template-rows: auto;
   align-items: center;
   min-height: 100%;
-  gap: 2rem;
+  gap: 6rem;
   margin-block: 5.5rem;
 }
 .benefits-col {
@@ -2650,7 +2521,8 @@ body {
 
 .benefits-list > .benefits-item {
   padding-block: 2rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 50px 1fr;
   align-items: center;
   gap: 1rem;
 }
@@ -2661,8 +2533,7 @@ body {
   background-color: var(--smoky-black-1);
 }
 .benefits-image {
-  border-radius: 100%;
-  margin-left: auto;
+  max-height: 574px;
 }
 .product-attribute {
   display: grid;
@@ -2673,38 +2544,67 @@ body {
   color: var(--green);
 }
 
-.events-section,
-.product-section {
+.events-section {
   position: relative;
   background-color: var(--smoky-black-3);
-  padding-block: 2rem;
+  min-height: 100dvh;
+  display: grid;
+  align-items: center;
+  gap: 2rem;
 }
 
-.product-section-block {
+.single-type {
+  position: relative;
+  background-color: var(--smoky-black-3);
+  min-height: 100dvh;
   display: grid;
-  grid-template-rows: 1fr 0.8fr;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.single-type-block {
+  display: grid;
   align-items: center;
   min-height: 100%;
   gap: 2rem;
   margin-top: 13rem;
 }
 
-.product-section-block_col {
+.single-type-block_col {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
+.single-type-block_col > img {
+  height: 574px;
+}
+.other-images {
+  width: 30%;
+  height: 200px;
+  cursor: pointer;
+}
+
+.related-product_grid {
+  display: flex;
+  gap: 1rem;
+}
+
 .related-product {
+  flex: 1 1 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  width: 50%;
 }
 
 .related-product a {
   width: 100%;
+}
+
+.related-product a img {
+  height: 276px;
 }
 
 .size-10 {
@@ -2712,25 +2612,26 @@ body {
   height: 10rem;
 }
 
-.other-images {
-  cursor: pointer;
-}
-
 .events-section-block {
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   min-height: 100%;
   margin-top: 13rem;
 }
 
-.events-section-block > div {
-  grid-column: 1 / -1;
+.events-section-block div {
+  flex: 1 1 50%;
+}
+
+@media screen and (min-width: 767px) {
+  .events-section-block div {
+    flex: 1 1 calc(33.3% - 4rem);
+  }
 }
 
 @media (width>= 768px) {
-  .product-section-block,
+  .single-type-block,
   .hero-block {
     display: grid;
     grid-template-rows: auto;
@@ -2740,14 +2641,10 @@ body {
     gap: 2rem;
     margin-top: 0;
   }
-  .related-product {
-    width: 25%;
-  }
   .benefits-block {
     grid-template-columns: repeat(2, 1fr);
   }
-  .events-section,
-  .product-section {
+  .events-section {
     padding-block: 20rem;
   }
   .events-section-block > div {
@@ -2856,14 +2753,19 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   grid-template-columns:
     1fr repeat(2, calc(min(100% - 1.6rem, 120rem) / 2))
     1fr;
+  height: 100%;
 }
 
 .hero-block_text {
   grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .hero-block_image {
   grid-column: 1 / -1;
+  opacity: 85%;
 }
 
 @media (width>768px) {
@@ -2882,6 +2784,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
   .hero-block_image {
     grid-column: 7 / -1;
-    height: 90dvh;
+    height: 100%;
   }
 }

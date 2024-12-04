@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import React, { use, useState } from "react";
 import { Cart, Products } from "@/utils/types";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { addItem, getCurrentQuantityById } from "./cartSlice";
+import { addItem, getCurrentQuantityById } from "../../lib/slice/cartSlice";
 import UpdateItemQuantity from "./UpdateItemQuantity";
 import DeleteItem from "./DeleteItem";
 import Link from "next/link";
@@ -34,22 +34,21 @@ const MenuItem = ({ item }: { item: Products }) => {
   }
 
   return (
-    <li className="list-flex gap-20">
+    <li>
       <div className="menu-card hover:card">
-        <figure className="card-banner img-holder">
+        <figure className="menu-card_item">
           <Link href={`/produse/${slug}`}>
             <Image
               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${pictures.data[0].attributes.url}`}
-              width="100"
-              height="100"
+              width={237}
+              height={237}
               loading="lazy"
               alt={name}
-              className="img-cover size-10"
+              className="img-cover"
             />
           </Link>
         </figure>
-
-        <div>
+        <div className="menu-card_item">
           <div className="title-wrapper">
             <h3 className="title-3">
               <Link href={`/produse/${slug}`} className="card-title">
@@ -62,29 +61,29 @@ const MenuItem = ({ item }: { item: Products }) => {
 
           <p className="card-text label-1">{description}</p>
         </div>
-      </div>
-      <div className="row justify-end">
-        <div className="col-2 row gap-20">
-          {isInCart && (
-            <>
-              <UpdateItemQuantity
-                productId={id}
-                currentQuantity={currentQuantity}
-              />
-              <DeleteItem productId={id} />
-            </>
-          )}
-        </div>
-        <div className="col-10">
-          {!isInCart && (
-            <button
-              type="button"
-              className="btn-add-to-cart"
-              onClick={handleAddToCart}
-            >
-              Adaugă în coș
-            </button>
-          )}
+        <div className="menu-card_item">
+          <div className="col-2 row gap-20">
+            {isInCart && (
+              <>
+                <UpdateItemQuantity
+                  productId={id}
+                  currentQuantity={currentQuantity}
+                />
+                <DeleteItem productId={id} />
+              </>
+            )}
+          </div>
+          <div className="col-10">
+            {!isInCart && (
+              <button
+                type="button"
+                className="btn-add-to-cart"
+                onClick={handleAddToCart}
+              >
+                Adaugă în coș
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </li>

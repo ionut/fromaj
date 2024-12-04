@@ -8,13 +8,7 @@ const ServiceSection = () => {
     <section className="section service text-center">
       <div className="container">
         <p className="section-subtitle label-2"> Fromaj</p>
-
-        <h2 className="headline-1 section-title">
-          <span>CHEESE BAR</span>
-        </h2>
-        <h2 className="headline-2 section-title">
-          Într-un decor rustic, asigurăm gustări delicioase invitaților
-        </h2>
+        <h2 className="headline-1 section-title">CheeseBar</h2>
         <p className="section-text">
           Dăruiește o notă specială evenimentului tău. Oferim servicii de
           catering pentru orice tip de eveniment. Pentru mai multe detalii și
@@ -37,15 +31,11 @@ const ServiceSection = () => {
               </ImageCustom>
 
               <div className="card-content">
-                <h3 className="title-4 card-title">
-                  <Link href="/produse/cutie-standard-mare">Cutii</Link>
-                </h3>
-
                 <Link
                   href="/produse/cutie-standard-mare"
                   className="btn-text hover-underline label-2"
                 >
-                  Comandă
+                  Cere ofertă
                 </Link>
               </div>
             </div>
@@ -65,15 +55,11 @@ const ServiceSection = () => {
               </ImageCustom>
 
               <div className="card-content">
-                <h3 className="title-4 card-title">
-                  <Link href="/rezervare">Catering Corporate</Link>
-                </h3>
-
                 <Link
                   href="/rezervare"
                   className="btn-text hover-underline label-2"
                 >
-                  Rezervă
+                  Cere ofertă
                 </Link>
               </div>
             </div>
@@ -93,15 +79,11 @@ const ServiceSection = () => {
               </ImageCustom>
 
               <div className="card-content">
-                <h3 className="title-4 card-title">
-                  <Link href="/rezervare">Evenimente</Link>
-                </h3>
-
                 <Link
                   href="/rezervare"
                   className="btn-text hover-underline label-2"
                 >
-                  Rezervă
+                  Cere ofertă
                 </Link>
               </div>
             </div>
