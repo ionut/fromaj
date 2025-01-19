@@ -4,7 +4,6 @@ import { useAppSelector } from "@/lib/hooks";
 import { IoCartOutline } from "react-icons/io5";
 import { getTotalCartQuantity } from "../../lib/slice/cartSlice";
 import { useRouter } from "next/navigation";
-import Tooltip from "../ui/Tooltip";
 
 const Cart = () => {
   const router = useRouter();
@@ -34,7 +33,6 @@ const Cart = () => {
           <IoCartOutline className="cart-button" />
           <p className="cart-quantity">{totalQuantity}</p>
         </div>
-        {showTooltip && <Tooltip />}
       </div>
     </>
   );

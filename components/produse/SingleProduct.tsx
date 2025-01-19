@@ -1,165 +1,5 @@
-// "use client";
-// import Image from "next/image";
-// import React, { useState } from "react";
-// import { Cart, Products } from "@/utils/types";
-// import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-// import { addItem, getCurrentQuantityById } from "../../lib/slice/cartSlice";
-// import UpdateItemQuantity from "../cart/UpdateItemQuantity";
-// import DeleteItem from "../cart/DeleteItem";
-// import RelatedProduct from "./RelatedProduct";
-// const SingleProduct = ({
-//   product,
-//   relatedProducts,
-// }: {
-//   product: Products;
-//   relatedProducts: Products[];
-// }) => {
-//   const dispatch = useAppDispatch();
-//   const { id } = product;
-//   const {
-//     productName: name,
-//     price,
-//     weight,
-//     description,
-//     pictures,
-//     personNumber,
-//     slug,
-//   } = product.attributes;
-
-//   const [mainImage, setMainImage] = useState(pictures.data[0].attributes.url);
-//   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
-//   const isInCart = currentQuantity > 0;
-
-//   const handleClick = (id: number) => {
-//     setMainImage(pictures.data[id].attributes.url);
-//   };
-
-//   function handleAddToCart() {
-//     const newItem: Cart = {
-//       id: id,
-//       image: pictures?.data[0]?.attributes?.url,
-//       name: name,
-//       quantity: 1,
-//       price: price,
-//       totalPrice: price * 1,
-//       slug: slug,
-//     };
-//     dispatch(addItem(newItem));
-//   }
-
-//   return (
-//     <>
-//       <section className="container">
-//         <div className="single-type">
-//           <div className="single-type-block_col">
-//             <Image
-//               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${mainImage}`}
-//               width={285}
-//               height={336}
-//               loading="lazy"
-//               alt={name}
-//               className="img-cover"
-//             />
-
-//             <div className="row gap-10 overflow-scroll">
-//               {pictures?.data?.map((picture: any, index: number) => {
-//                 return (
-//                   <Image
-//                     key={index}
-//                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${picture.attributes.url}`}
-//                     width={100}
-//                     height={100}
-//                     alt={name}
-//                     className="other-images"
-//                     onClick={() => handleClick(index)}
-//                   />
-//                 );
-//               })}
-//             </div>
-//           </div>
-//           <div className="single-type-block_col">
-//             <h2 className="headline-1 section-title">
-//               <span>{name}</span>
-//             </h2>
-//             <div className="product-attributes">
-//               <div className="product-attribute">
-//                 <p className="title-2">Pret:</p>
-//                 <p className="title-2 product-attribute_detail">{price} RON</p>
-//               </div>
-//               <div className="product-attribute">
-//                 <p className="title-2">Greutate:</p>
-//                 <p className="title-2 product-attribute_detail">{weight} kg</p>
-//               </div>
-//               <div className="product-attribute">
-//                 <p className="title-2">Disponibilitate:</p>
-//                 <p className="title-2 product-attribute_detail">In stoc!</p>
-//               </div>
-//               <div className="product-attribute">
-//                 <p className="title-2">Recomandare:</p>
-//                 <p className="title-2 product-attribute_detail">
-//                   {personNumber} persoane
-//                 </p>
-//               </div>
-//             </div>
-
-//             <p className="section-text">{description}</p>
-//             <div className="row justify-start">
-//               <div className="col-2 row gap-20">
-//                 {isInCart && (
-//                   <>
-//                     <UpdateItemQuantity
-//                       productId={id}
-//                       currentQuantity={currentQuantity}
-//                     />
-//                     <DeleteItem productId={id} />
-//                   </>
-//                 )}
-//               </div>
-//               <div className="col-10">
-//                 {!isInCart && (
-//                   <button
-//                     type="button"
-//                     className="btn-add-to-cart"
-//                     onClick={handleAddToCart}
-//                   >
-//                     Adaugă în coș
-//                   </button>
-//                 )}
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//       <section className="section menu">
-//         <div className="container">
-//           <p className="section-subtitle text-center label-2">
-//             Selecție Specială
-//           </p>
-
-//           <h2 className="headline-1 section-title text-center">
-//             Produse Recomandate
-//           </h2>
-//           <div className="related-product_grid">
-//             {relatedProducts.map((relatedProduct: Products) => {
-//               return (
-//                 <RelatedProduct
-//                   key={relatedProduct.attributes.productName}
-//                   relatedProduct={relatedProduct}
-//                 />
-//               );
-//             })}
-//           </div>
-//         </div>
-//       </section>
-//     </>
-//   );
-// };
-
-// export default SingleProduct;
-
 "use client";
 
-import { useState } from "react";
 import {
   Disclosure,
   DisclosureButton,
@@ -237,7 +77,7 @@ export default function SingleProduct({ product }: { product: Products }) {
           {/* Image selector */}
           <div className="mx-auto mt-6 w-full max-w-2xl block lg:max-w-none">
             <TabList className="grid grid-cols-4 gap-6">
-              {pictures.data.map((image) => (
+              {pictures.data.map((image: any) => (
                 <Tab
                   key={image.id}
                   className="group relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-white hover:bg-white-alpha-80 focus:outline-none focus:ring focus:ring-green focus:ring-offset-4"
@@ -262,7 +102,7 @@ export default function SingleProduct({ product }: { product: Products }) {
           </div>
 
           <TabPanels>
-            {pictures.data.map((image) => (
+            {pictures.data.map((image: any) => (
               <TabPanel key={image.id}>
                 <Image
                   alt="Platouri"
