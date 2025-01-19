@@ -1,14 +1,15 @@
 import Image from "next/image";
 import React from "react";
+import Container from "../ui/common/Container";
+import SectionTitle from "../ui/common/SectionTitle";
 
 const HowItStartSection = () => {
   return (
-    <section className="section about text-center">
-      <div className="container align-center">
+    <Container>
+      <div className="grid grid-cols-2 items-center gap-4">
         <div className="about-content">
-          <p className="label-2 section-subtitle" id="about-label">
-            Fromaj - Povestea noastră
-          </p>
+          <SectionTitle title="Fromaj - Povestea noastră" />
+
           <p className="section-text">
             Fromaj a luat naștere din pasiunea pentru gusturi elegante, arome
             îmbibate în vin și miresme puternice. Din dorința de a oferi tonul
@@ -19,14 +20,14 @@ const HowItStartSection = () => {
           </p>
         </div>
 
-        <div className="about-banner h-36">
+        <div className="about-banner">
           <Image
             src="/images/catering-corporate.jpg"
-            width="570"
-            height="570"
+            width={500}
+            height={500}
             loading="lazy"
             alt="Platouri Branzeturi"
-            className="w-100"
+            className=""
           />
           <figure className="abs-img abs-img-2 has-before">
             <Image
@@ -39,7 +40,7 @@ const HowItStartSection = () => {
           </figure>
         </div>
       </div>
-    </section>
+    </Container>
   );
 };
 

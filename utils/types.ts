@@ -33,3 +33,9 @@ export interface Cart {
   totalPrice: number;
   slug: string;
 }
+
+export type InputProps = {
+  type: string;
+  name: string;
+  placeholder: string;
+};

@@ -4,7 +4,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Loading from "./loading";
 import Footer from "@/components/footer/Footer";
-import Providers from "./storeProvider";
+import { Providers } from "./storeProvider";
 import Navbar from "@/components/navbar/Navbar";
 
 const dmsans = DM_Sans({
@@ -31,7 +31,7 @@ export default function RootLayout({
             <div className="grid grid-rows-[auto_1fr_auto] h-[100dvh]">
               <Navbar />
               <main>{children}</main>
-              {/* <Footer /> */}
+              <Footer />
             </div>
           </Suspense>
         </Providers>

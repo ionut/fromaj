@@ -1,40 +1,3 @@
-// const CartCheckout = () => {
-
-//   return (
-//     <section className="checkout">
-//       <div className="container w-full">
-//         <Link href="/" className="btn-back">
-//           &larr; Prima pagină
-//         </Link>
-
-//         {cart.length ? (
-//           <>
-//             <h2 className="title-1 checkout-title">Coșul dumneavoastră:</h2>
-
-//             <ul>
-//               {cart.map((item) => (
-//                 <CartItem item={item} key={item.name} />
-//               ))}
-//             </ul>
-
-//             <div className="checkout-block_btn">
-//               <Button goTo="/order" text="Comandă" />
-//               <h3 className="title-1 checkout-title">
-//                 Total: {totalPrice} RON
-//               </h3>
-//             </div>
-//           </>
-//         ) : (
-//           <h2 className="title-1 checkout-title">
-//             Coșul dumneavoastră este gol!
-//           </h2>
-//         )}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default CartCheckout;
 "use client";
 import React from "react";
 import Link from "next/link";
@@ -42,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import {
   deleteItem,
   getCart,
+  getCurrentQuantityById,
   getTotalCartPrice,
   increaseItemQuantityBySelect,
 } from "../../lib/slice/cartSlice";
@@ -53,7 +17,7 @@ import {
   XMarkIcon as XMarkIconMini,
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import Container from "../ui/Container";
+import Container from "../ui/common/Container";
 
 const relatedProducts = [
   {
@@ -72,6 +36,9 @@ const relatedProducts = [
 export default function CartCheckout() {
   const cart = useAppSelector<Cart[]>(getCart);
   const subTotal = useAppSelector<number>(getTotalCartPrice);
+  const quantities = useAppSelector((state) =>
+    cart.map((product) => getCurrentQuantityById(product.id)(state))
+  );
   const transportTotal: number = 0;
   const priceTotal = subTotal + transportTotal;
   const dispatch = useAppDispatch();
@@ -82,7 +49,7 @@ export default function CartCheckout() {
       ) : (
         <>
           <h1 className="text-error">Coșul dumneavoastră</h1>
-          <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
+          <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
             <div aria-labelledby="cart-heading" className="lg:col-span-7">
               <h2 id="cart-heading" className="sr-only">
                 Produsele din coșul dumneavoastră
@@ -92,94 +59,97 @@ export default function CartCheckout() {
                 role="list"
                 className="divide-y divide-white-alpha-80 border-b border-t border-white-alpha-80"
               >
-                {cart.map((product, productIdx) => (
-                  <li key={product.id} className="flex py-6 sm:py-10">
-                    <div className="shrink-0">
-                      <Image
-                        alt={product.name}
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${product.image}`}
-                        width={200}
-                        height={200}
-                        className="size-24 rounded-md object-cover sm:size-48"
-                      />
-                    </div>
-
-                    <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-                      <div className=" pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
-                        <div>
-                          <div className="flex justify-between">
-                            <h3 className="text-xl">
-                              <Link
-                                href={`/produse/${product.slug}`}
-                                className="font-semibold text-white hover:text-white-alpha-80"
-                              >
-                                {product.name}
-                              </Link>
-                            </h3>
-                          </div>
-                          <p className="mt-1 text-lg font-medium text-white-alpha-80">
-                            {product.price} RON
-                          </p>
-                        </div>
-
-                        <div className="mt-4 sm:mt-0">
-                          <div className="inline-grid w-full max-w-16 grid-cols-1">
-                            <select
-                              id={`quantity-${productIdx}`}
-                              name={`quantity-${productIdx}`}
-                              aria-label={`Quantity, ${product.name}`}
-                              className="col-start-1 row-start-1 appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-eerie-black-1 outline outline-1 -outline-offset-1 outline-green focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-green sm:text-sm/6"
-                              onChange={(e) =>
-                                dispatch(
-                                  increaseItemQuantityBySelect({
-                                    id: product.id,
-                                    quantity: parseInt(e.target.value),
-                                  })
-                                )
-                              }
-                            >
-                              <option value={1}>1</option>
-                              <option value={2}>2</option>
-                              <option value={3}>3</option>
-                              <option value={4}>4</option>
-                              <option value={5}>5</option>
-                              <option value={6}>6</option>
-                              <option value={7}>7</option>
-                              <option value={8}>8</option>
-                            </select>
-                            <ChevronDownIcon
-                              aria-hidden="true"
-                              className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
-                            />
-                          </div>
-
-                          <div className="float-right">
-                            <button
-                              type="button"
-                              className="-m-2 inline-flex p-2 text-white hover:text-white-alpha-80"
-                              onClick={() => dispatch(deleteItem(product.id))}
-                            >
-                              <span className="sr-only">Remove</span>
-                              <XMarkIconMini
-                                aria-hidden="true"
-                                className="size-7"
-                              />
-                            </button>
-                          </div>
-                        </div>
+                {cart.map((product, productIdx) => {
+                  return (
+                    <li key={product.id} className="flex py-6 sm:py-10">
+                      <div className="shrink-0">
+                        <Image
+                          alt={product.name}
+                          src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${product.image}`}
+                          width={200}
+                          height={200}
+                          className="size-24 rounded-md object-cover sm:size-48"
+                        />
                       </div>
 
-                      <p className="mt-4 flex space-x-2 text-lg text-white-alpha-80">
-                        <ClockIcon
-                          aria-hidden="true"
-                          className="size-5 shrink-0 text-white-alpha-80"
-                        />
+                      <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+                        <div className=" pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+                          <div>
+                            <div className="flex justify-between">
+                              <h3 className="text-xl">
+                                <Link
+                                  href={`/produse/${product.slug}`}
+                                  className="font-semibold text-white hover:text-white-alpha-80"
+                                >
+                                  {product.name}
+                                </Link>
+                              </h3>
+                            </div>
+                            <p className="mt-1 text-lg font-medium text-white-alpha-80">
+                              {product.price} RON
+                            </p>
+                          </div>
 
-                        <span>Livrare in minimum 24 de ore</span>
-                      </p>
-                    </div>
-                  </li>
-                ))}
+                          <div className="mt-4 sm:mt-0">
+                            <div className="inline-grid w-full max-w-16 grid-cols-1">
+                              <select
+                                id={`quantity-${productIdx}`}
+                                name={`quantity-${productIdx}`}
+                                aria-label={`Quantity, ${product.name}`}
+                                className="col-start-1 row-start-1 appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-eerie-black-1 outline outline-1 -outline-offset-1 outline-green focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-green sm:text-sm/6"
+                                onChange={(e) =>
+                                  dispatch(
+                                    increaseItemQuantityBySelect({
+                                      id: product.id,
+                                      quantity: parseInt(e.target.value),
+                                    })
+                                  )
+                                }
+                                defaultValue={quantities[productIdx]}
+                              >
+                                <option value={1}>1</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                                <option value={4}>4</option>
+                                <option value={5}>5</option>
+                                <option value={6}>6</option>
+                                <option value={7}>7</option>
+                                <option value={8}>8</option>
+                              </select>
+                              <ChevronDownIcon
+                                aria-hidden="true"
+                                className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
+                              />
+                            </div>
+
+                            <div className="float-right">
+                              <button
+                                type="button"
+                                className="-m-2 inline-flex p-2 text-white hover:text-white-alpha-80"
+                                onClick={() => dispatch(deleteItem(product.id))}
+                              >
+                                <span className="sr-only">Remove</span>
+                                <XMarkIconMini
+                                  aria-hidden="true"
+                                  className="size-7"
+                                />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <p className="mt-4 flex space-x-2 text-lg text-white-alpha-80">
+                          <ClockIcon
+                            aria-hidden="true"
+                            className="size-5 shrink-0 text-white-alpha-80"
+                          />
+
+                          <span>Livrare in minimum 24 de ore</span>
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -231,15 +201,15 @@ export default function CartCheckout() {
               </dl>
 
               <div className="mt-6">
-                <button
-                  type="submit"
+                <Link
+                  href="/order"
                   className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-semibold text-white shadow-sm hover:bg-davys-grey focus:outline-none focus:ring-2 focus:ring-wjote focus:ring-offset-2 focus:ring-offset-white"
                 >
                   Comandă
-                </button>
+                </Link>
               </div>
             </div>
-          </form>
+          </div>
         </>
       )}
 

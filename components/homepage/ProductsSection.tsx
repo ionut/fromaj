@@ -3,15 +3,16 @@ import React from "react";
 import ProductSectionItem from "./ProductSectionItem";
 import { Products } from "@/utils/types";
 import { getQuery } from "@/utils/query";
-import Container from "../ui/Container";
+import Container from "../ui/common/Container";
+import SectionTitle from "../ui/common/SectionTitle";
 
 const ProductsSection = async () => {
   const { data } = await getQuery("/products?populate=*");
 
   return (
     <Container>
-      <p className="section-title">Platouri fromaj</p>
-      <ul className="grid grid-cols-3 gap-8">
+      <SectionTitle title="Platouri fromaj" />
+      <ul className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3 xl:gap-6 mt-10">
         {!data?.length ? (
           <a href="tel:0754 404 000" className="text-error col-span-3">
             Comandați la numărul: 0754 404 000.

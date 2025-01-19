@@ -36,7 +36,7 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
   }
 
   return (
-    <li className="space-y-4 border border-green p-6 rounded-md">
+    <li className="space-y-4 border border-green p-2 md:p-4 lg:p-6 rounded-md grid grid-rows-subgrid row-span-2">
       <Link href={`/produse/${slug}`} className="space-y-4">
         <figure className="hover:scale-105 ease-in-out duration-200 aspect-square ">
           <Image
@@ -49,7 +49,7 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
           />
         </figure>
 
-        <div className="flex justify-between">
+        <div className="">
           <h3 className="text-xl font-bold">{name}</h3>
 
           <p className="text-2xl font-bold text-green">{price} ron</p>
@@ -67,7 +67,7 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
             </>
           )}
         </div>
-        <div className="col-10">
+        <div>
           {!isInCart && (
             <button
               type="button"

@@ -2,24 +2,25 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ImageCustom from "../ui/ImageCustom";
-import Container from "../ui/Container";
+import Container from "../ui/common/Container";
+import SectionTitle from "../ui/common/SectionTitle";
 
 const ServiceSection = () => {
   return (
     <Container>
       <div>
-        <p className="section-title"> Fromaj</p>
-        <h2 className="headline-1 section-title">CheeseBar</h2>
-        <p className="section-text">
+        <SectionTitle title="Fromaj" />
+        <h2 className="text-center text-4xl font-bold mb-6">CheeseBar</h2>
+        <p className="max-w-[40vw] text-center mx-auto paragraph mb-10">
           Dăruiește o notă specială evenimentului tău. Oferim servicii de
           catering pentru orice tip de eveniment. Pentru mai multe detalii și
           oferte folosește căsuța de mai jos &quot;Consultanță Online&quot; sau
           sună-ne la numărul de telefon specificat mai sus!
         </p>
 
-        <ul className="grid-list">
-          <li>
-            <div className="service-card">
+        <ul className="grid grid-cols-4 items-center gap-x-4 gap-y-4">
+          <li className="col-span-2">
+            <div className="service-card flex flex-col text-center">
               <ImageCustom href="/produse/cutie-standard-mare">
                 <Image
                   src="/images/cutii.jpg"
@@ -42,8 +43,8 @@ const ServiceSection = () => {
             </div>
           </li>
 
-          <li>
-            <div className="service-card">
+          <li className="col-span-2">
+            <div className="service-card flex flex-col text-center">
               <ImageCustom href="/rezervare">
                 <Image
                   src="/images/catering-corporate.jpg"
@@ -66,8 +67,8 @@ const ServiceSection = () => {
             </div>
           </li>
 
-          <li>
-            <div className="service-card">
+          <li className="col-start-2 col-span-2">
+            <div className="service-card flex flex-col text-center">
               <ImageCustom href="/rezervare">
                 <Image
                   src="/images/eveniment-gradina.jpg"

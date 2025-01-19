@@ -1,13 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import Container from "../ui/Container";
+import Container from "../ui/common/Container";
+import SectionTitle from "../ui/common/SectionTitle";
 
 const AboutSection = () => {
   return (
     <Container>
       <div>
-        <p className="section-title">Misiunea noastră</p>
-        <div className="grid md:grid-cols-2 items-center">
+        <SectionTitle title="Misiunea noastră" />
+        <div className="grid md:grid-cols-2 items-center mt-10">
           <div className="col-span-1 pr-6 space-y-4">
             <p className="paragraph">
               La Fromaj, misiunea noastră este să fim alături de tine la fiecare

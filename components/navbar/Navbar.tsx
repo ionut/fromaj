@@ -87,17 +87,20 @@ const navigation = {
           id: "categorii",
           name: "Categorii",
           items: [
-            { name: "Botez", href: "#" },
-            { name: "Nunta", href: "#" },
-            { name: "Picnic", href: "#" },
-            { name: "Onomastica", href: "#" },
-            { name: "Atelier", href: "#" },
+            { name: "Botez", href: "/evenimente/botez" },
+            { name: "Nunta", href: "/evenimente/nunta" },
+            { name: "Picnic", href: "/evenimente/picnic" },
+            { name: "Onomastica", href: "/evenimente/onomastica" },
+            { name: "Atelier", href: "/evenimente/atelier" },
           ],
         },
       ],
     },
   ],
-  pages: [{ name: "Despre noi", href: "/despre" }],
+  pages: [
+    { name: "Rezervare", href: "/rezervare" },
+    { name: "Despre noi", href: "/despre" },
+  ],
 };
 
 export default function Navbar() {
