@@ -1,0 +1,40 @@
+/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    colors: {
+      green: "hsla(103, 11%, 45%, 1)",
+      "quick-silver": "hsla(0, 0%, 65%, 1)",
+      "davys-grey": "hsl(36, 3%, 34%)",
+      "smoky-black-1": "hsla(40, 12%, 5%, 1)",
+      "smoky-black-2": "hsla(30, 8%, 5%, 1)",
+      "smoky-black-3": "hsla(0, 3%, 7%, 1)",
+      "eerie-black-1": "hsla(210, 4%, 9%, 1)",
+      "eerie-black-2": "hsla(210, 4%, 11%, 1)",
+      "eerie-black-3": "hsla(180, 2%, 8%, 1)",
+      "eerie-black-4": "hsla(0, 0%, 13%, 1)",
+      white: " hsla(0, 0%, 100%, 1)",
+      "white-alpha-80": "hsla(0, 0%, 100%, 0.8)",
+      "white-alpha-20": "hsla(0, 0%, 100%, 0.2)",
+      "white-alpha-10": " hsla(0, 0%, 100%, 0.1)",
+      black: " hsla(0, 0%, 0%, 1)",
+      "black-alpha-80": " hsla(0, 0%, 0%, 0.8)",
+      "black-alpha-15": " hsla(0, 0%, 0%, 0.15)",
+    },
+
+    container: {
+      center: true,
+    },
+    extend: {
+      content: {
+        "subtitle-icon": 'url("/images/separator.svg")',
+      },
+    },
+  },
+  plugins: [],
+};

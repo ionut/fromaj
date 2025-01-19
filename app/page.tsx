@@ -1,14 +1,14 @@
 import HeroSection from "@/components/homepage/HeroSection";
-import MenuSection from "@/components/homepage/MenuSection";
+import ProductsSection from "@/components/homepage/ProductsSection";
 import ServiceSection from "@/components/homepage/ServiceSection";
-import BenefitsSection from "@/components/homepage/BenefitsSection";
+import AboutSection from "@/components/homepage/AboutSection";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <MenuSection />
-      <BenefitsSection />
+      <ProductsSection />
+      <AboutSection />
       <ServiceSection />
     </>
   );

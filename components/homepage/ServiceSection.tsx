@@ -2,12 +2,13 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ImageCustom from "../ui/ImageCustom";
+import Container from "../ui/Container";
 
 const ServiceSection = () => {
   return (
-    <section className="section service text-center">
-      <div className="container">
-        <p className="section-subtitle label-2"> Fromaj</p>
+    <Container>
+      <div>
+        <p className="section-title"> Fromaj</p>
         <h2 className="headline-1 section-title">CheeseBar</h2>
         <p className="section-text">
           Dăruiește o notă specială evenimentului tău. Oferim servicii de
@@ -107,7 +108,7 @@ const ServiceSection = () => {
           className="shape shape-2 move-anim"
         />
       </div>
-    </section>
+    </Container>
   );
 };
 

@@ -24,10 +24,12 @@ export type Events = {
   date: string;
 };
 
-export type Cart = {
+export interface Cart {
   id: number;
   name: string;
+  image: string;
   quantity: number;
   price: number;
   totalPrice: number;
-};
+  slug: string;
+}

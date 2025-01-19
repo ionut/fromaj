@@ -14,16 +14,16 @@ function UpdateItemQuantity({
   const dispatch = useAppDispatch();
 
   return (
-    <div className="row gap-10">
+    <div className="flex gap-4">
       <button
-        className="btn-update"
+        className="button-update"
         onClick={() => dispatch(decreaseItemQuantity(productId))}
       >
         -
       </button>
-      <span className="btn-update">{currentQuantity}</span>
+      <span className="button-update">{currentQuantity}</span>
       <button
-        className="btn-update"
+        className="button-update"
         onClick={() => dispatch(increaseItemQuantity(productId))}
       >
         +

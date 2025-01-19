@@ -5,10 +5,10 @@ function DeleteItem({ productId }: { productId: number }) {
   const dispatch = useAppDispatch();
   return (
     <button
-      className="btn-delete"
+      className="button-update underline"
       onClick={() => dispatch(deleteItem(productId))}
     >
-      Sterge
+      șterge
     </button>
   );
 }

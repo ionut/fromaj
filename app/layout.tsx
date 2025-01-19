@@ -1,22 +1,15 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { DM_Sans, Forum } from "next/font/google";
-import "normalize.css";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Loading from "./loading";
 import Footer from "@/components/footer/Footer";
 import Providers from "./storeProvider";
-import Navbar from "@/components/homepage/Navbar";
-import Cart from "@/components/cart/Cart";
+import Navbar from "@/components/navbar/Navbar";
 
 const dmsans = DM_Sans({
   subsets: ["latin"],
   variable: "--fontFamily-dm_sans",
-});
-const forum = Forum({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--fontFamily-forum",
 });
 
 export const metadata: Metadata = {
@@ -32,15 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmsans.variable} ${forum.variable}`}>
+      <body className={`${dmsans.className} bg-eerie-black-2`}>
         <Providers>
           <Suspense fallback={<Loading />}>
-            <div className="main-grid">
+            <div className="grid grid-rows-[auto_1fr_auto] h-[100dvh]">
               <Navbar />
               <main>{children}</main>
-              <Footer />
+              {/* <Footer /> */}
             </div>
-            <Cart />
           </Suspense>
         </Providers>
       </body>

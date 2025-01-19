@@ -23,6 +23,7 @@ const SingleProduct = ({
     description,
     pictures,
     personNumber,
+    slug,
   } = product.attributes;
 
   const [mainImage, setMainImage] = useState(pictures.data[0].attributes.url);
@@ -36,10 +37,12 @@ const SingleProduct = ({
   function handleAddToCart() {
     const newItem: Cart = {
       id: id,
+      image: pictures?.data[0]?.attributes?.url,
       name: name,
       quantity: 1,
       price: price,
       totalPrice: price * 1,
+      slug: slug,
     };
     dispatch(addItem(newItem));
   }
@@ -140,7 +143,7 @@ const SingleProduct = ({
             {relatedProducts.map((relatedProduct: Products) => {
               return (
                 <RelatedProduct
-                  key={relatedProduct.productName}
+                  key={relatedProduct.attributes.productName}
                   relatedProduct={relatedProduct}
                 />
               );

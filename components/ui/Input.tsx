@@ -19,21 +19,3 @@ const Input = ({ type, name, placeholder, className }: InputProps) => {
 };
 
 export default Input;
-
-function test(param) {
-  console.log(param);
-}
-
-test("test");
-
-const test = () => {
-  console.log("");
-};
-
-const test = function () {
-  console.log();
-};
-
-const test = {
-  nane: "tstas",
-};
