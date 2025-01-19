@@ -101,7 +101,7 @@ export default function OrderPage() {
                       key={product.id}
                       className="flex items-start space-x-4 py-2"
                     >
-                      <img
+                      <Image
                         alt={product.name}
                         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${product.image}`}
                         width={200}
