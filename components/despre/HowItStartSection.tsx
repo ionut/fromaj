@@ -6,7 +6,7 @@ import SectionTitle from "../ui/common/SectionTitle";
 const HowItStartSection = () => {
   return (
     <Container>
-      <div className="grid grid-cols-2 items-center gap-4">
+      <div className="grid  grid-cols-1 lg:grid-cols-2 items-center gap-4">
         <div className="space-y-4">
           <SectionTitle title="Fromaj - Povestea noastră" />
           <p className="text-center text-xl">
@@ -21,22 +21,29 @@ const HowItStartSection = () => {
 
         <div className="relative">
           <Image
-            src="@/public/images/catering-corporate.jpg"
+            src="/images/catering-corporate.jpg"
             width={500}
             height={500}
             loading="lazy"
             alt="Platouri Branzeturi"
             className="rounded-full"
           />
-          <figure className="absolute top-0 right-0">
-            <Image
-              src="@/public/images/badge-2.png"
-              width={130}
-              height={130}
-              loading="lazy"
-              alt="Artisan Cheese Boards"
-            />
-          </figure>
+
+          <Image
+            src="/images/badge-2.png"
+            width={130}
+            height={130}
+            alt="Artisan Cheese Boards"
+            className="absolute top-0 right-0"
+          />
+
+          <Image
+            src="/images/badge-2-bg.png"
+            width={130}
+            height={130}
+            alt="Artisan Cheese Boards"
+            className="animate-spin-slow duration-1000 absolute top-0 right-0"
+          />
         </div>
       </div>
     </Container>

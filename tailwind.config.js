@@ -34,6 +34,9 @@ module.exports = {
       content: {
         "subtitle-icon": 'url("/images/separator.svg")',
       },
+      animation: {
+        "spin-slow": "spin 10s linear infinite",
+      },
     },
   },
   plugins: [],
