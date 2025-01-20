@@ -56,7 +56,7 @@ export default function OrderPage() {
                     <h3>{product.name}</h3>
                   </div>
                   <p className="flex-none text-base font-medium">
-                    {product.price} RON
+                    {product.quantity} x {product.price} RON
                   </p>
                 </li>
               ))}
@@ -112,7 +112,7 @@ export default function OrderPage() {
                         <h3>{product.name}</h3>
                       </div>
                       <p className="flex-none text-base font-medium">
-                        {product.price} RON
+                        {product.quantity} x {product.price} RON
                       </p>
                     </li>
                   ))}

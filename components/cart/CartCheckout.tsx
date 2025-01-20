@@ -19,20 +19,6 @@ import {
 import Image from "next/image";
 import Container from "../ui/common/Container";
 
-const relatedProducts = [
-  {
-    id: 1,
-    name: "Billfold Wallet",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-01-related-product-01.jpg",
-    imageAlt: "Front of Billfold Wallet in natural leather.",
-    price: "$118",
-    color: "Natural",
-  },
-  // More products...
-];
-
 export default function CartCheckout() {
   const cart = useAppSelector<Cart[]>(getCart);
   const subTotal = useAppSelector<number>(getTotalCartPrice);
@@ -42,6 +28,8 @@ export default function CartCheckout() {
   const transportTotal: number = 0;
   const priceTotal = subTotal + transportTotal;
   const dispatch = useAppDispatch();
+
+  const numbers = Array.from({ length: 30 }, (_, index) => index + 1);
   return (
     <Container>
       {!cart.length ? (
@@ -107,14 +95,11 @@ export default function CartCheckout() {
                                 }
                                 defaultValue={quantities[productIdx]}
                               >
-                                <option value={1}>1</option>
-                                <option value={2}>2</option>
-                                <option value={3}>3</option>
-                                <option value={4}>4</option>
-                                <option value={5}>5</option>
-                                <option value={6}>6</option>
-                                <option value={7}>7</option>
-                                <option value={8}>8</option>
+                                {numbers.map((number) => (
+                                  <option key={number} value={number}>
+                                    {number}
+                                  </option>
+                                ))}
                               </select>
                               <ChevronDownIcon
                                 aria-hidden="true"

@@ -37,7 +37,7 @@ const AboutSection = () => {
           </div>
           <div className="col-span-1">
             <Image
-              src={"/images/platou-no-back.png"}
+              src="/images/platou-no-back.png"
               width={574}
               height={574}
               alt="Platouri"

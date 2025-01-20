@@ -10,6 +10,7 @@ import Navbar from "@/components/navbar/Navbar";
 const dmsans = DM_Sans({
   subsets: ["latin"],
   variable: "--fontFamily-dm_sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,11 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ro">
       <body className={`${dmsans.className} bg-eerie-black-2`}>
         <Providers>
           <Suspense fallback={<Loading />}>
-            <div className="grid grid-rows-[auto_1fr_auto] h-[100dvh]">
+            <div>
               <Navbar />
               <main>{children}</main>
               <Footer />

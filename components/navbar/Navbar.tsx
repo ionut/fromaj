@@ -252,7 +252,7 @@ export default function Navbar() {
                   height={48}
                   priority={true}
                   src="/images/logo.png"
-                  className="h-12 w-auto"
+                  className="h-12 w-64"
                 />
               </Link>
             </div>

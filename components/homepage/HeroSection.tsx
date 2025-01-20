@@ -7,7 +7,7 @@ const HeroSection = () => {
     <div>
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <article className="col-span-1 flex flex-col items-center justify-center gap-6">
+          <article className="col-span-1 flex flex-col items-center justify-center gap-6 order-2 md:order-1">
             <SectionTitle title="Pentru momente speciale" />
             <p className="paragraph">
               Credem că fiecare masă spune o poveste. De aceea, ne-am propus să
@@ -27,11 +27,13 @@ const HeroSection = () => {
             </p>
           </article>
 
-          <div className="col-span-1">
+          <div className="col-span-1 order-1 md:order-2">
             <Image
-              src="/images/pic-main-new.png"
-              width={1000}
-              height={1000}
+              src="/images/pic-main-new.webp"
+              width={468}
+              height={544}
+              priority
+              quality={75}
               alt="Fromaj Artisan Cheese Background"
               className="aspect-[3/2] object-cover lg:aspect-auto lg:size-full"
             />

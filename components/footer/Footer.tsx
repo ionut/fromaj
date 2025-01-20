@@ -71,7 +71,7 @@ export default function Footer() {
       <Container>
         <nav
           aria-label="Footer"
-          className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-base"
+          className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-base min-h-6"
         >
           {navigation.main.map((item) => (
             <Link
@@ -83,7 +83,7 @@ export default function Footer() {
             </Link>
           ))}
         </nav>
-        <div className="mt-16 flex justify-center gap-x-10">
+        <div className="mt-16 flex justify-center gap-x-10 min-h-8">
           {navigation.social.map((item) => (
             <a
               key={item.name}
@@ -111,10 +111,10 @@ export default function Footer() {
             <Image
               src="/images/anpc-sal.png"
               alt="Soluționarea alternativă a litigiilor"
-              width={200}
+              width={160}
               height={40}
               aria-hidden="true"
-              className="w-40 h-8"
+              className="w-40 h-10"
             />
           </a>
           <a
@@ -126,10 +126,10 @@ export default function Footer() {
             <Image
               src="/images/anpc-sal-2.png"
               alt="Soluționarea online a litigiilor"
-              width={200}
+              width={160}
               height={40}
               aria-hidden="true"
-              className="w-40 h-8"
+              className="w-40 h-10"
             />
           </a>
         </div>

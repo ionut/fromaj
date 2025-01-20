@@ -11,7 +11,7 @@ const CongratulationsPage = () => {
     <Container>
       <h1 className="text-4xl text-center mb-4">Felicitări, {userName}!</h1>
       <h2 className="text-3xl text-center">
-        Comandă dumneavoastră a fost inregistrată cu succes! Vei fi contact
+        Comandă dumneavoastră a fost inregistrată cu succes! Vei fi contactat
         telefonic in cel mai scurt timp pentru confirmare.
       </h2>
     </Container>
