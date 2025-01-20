@@ -67,7 +67,7 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-eerie-black-1 min-h-[500px]">
+    <footer className="bg-eerie-black-1">
       <Container>
         <nav
           aria-label="Footer"
@@ -103,7 +103,7 @@ export default function Footer() {
           <a
             href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO"
             target="_blank"
-            className="text-white hover:text-white-alpha-80 aspect"
+            className="text-white hover:text-white-alpha-80"
           >
             <span className="sr-only">
               Soluționarea alternativă a litigiilor
