@@ -32,22 +32,20 @@ export default function Breadcrumb() {
   const segments = pathname.split("/").filter((segment) => segment !== "");
 
   return (
-    <Container className="pt-16">
-      <nav aria-label="Breadcrumb" className="flex">
-        <ol role="list" className="flex items-center space-x-4">
-          <li>
-            <div>
-              <Link href="/" className="text-white hover:text-white-alpha-80">
-                <HomeIcon aria-hidden="true" className="size-8 shrink-0" />
-                <span className="sr-only">Home</span>
-              </Link>
-            </div>
-          </li>
-          {segments.map((segment, index) => (
-            <BreadcrumbItem key={index} segment={segment} />
-          ))}
-        </ol>
-      </nav>
-    </Container>
+    <nav aria-label="Breadcrumb" className="flex container pt-8 lg:pt-16">
+      <ol role="list" className="flex items-center space-x-4">
+        <li>
+          <div>
+            <Link href="/" className="text-white hover:text-white-alpha-80">
+              <HomeIcon aria-hidden="true" className="size-8 shrink-0" />
+              <span className="sr-only">Home</span>
+            </Link>
+          </div>
+        </li>
+        {segments.map((segment, index) => (
+          <BreadcrumbItem key={index} segment={segment} />
+        ))}
+      </ol>
+    </nav>
   );
 }

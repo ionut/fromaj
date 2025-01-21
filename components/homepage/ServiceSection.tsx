@@ -7,7 +7,7 @@ import SectionTitle from "../ui/common/SectionTitle";
 
 const ServiceSection = () => {
   return (
-    <Container className="pb-24 pt-16">
+    <Container>
       <div>
         <SectionTitle title="Fromaj" />
         <h2 className="text-center text-4xl font-bold mb-6">CheeseBar</h2>

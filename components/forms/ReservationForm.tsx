@@ -43,7 +43,7 @@ const ReservationForm = () => {
       <div>
         <label
           htmlFor="message"
-          className="block text-sm/6 font-medium text-gray-900"
+          className="block text-xl font-medium text-white"
         >
           Add your message
         </label>

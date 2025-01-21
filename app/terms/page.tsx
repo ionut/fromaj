@@ -5,7 +5,7 @@ import React from "react";
 
 const TermsPage = () => {
   return (
-    <Container className="pb-24 pt-16">
+    <Container>
       <div>
         <SectionTitle title="Termeni și condiții" />
         <div className="mt-5">

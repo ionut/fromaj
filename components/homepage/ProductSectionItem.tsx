@@ -7,9 +7,14 @@ import { addItem, getCurrentQuantityById } from "../../lib/slice/cartSlice";
 import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 import DeleteItem from "../cart/DeleteItem";
 import Link from "next/link";
+import ProductImage from "../ui/product/ProductImage";
+import ProductInfo from "../ui/product/ProductInfo";
 
 const ProductSectionItem = ({ item }: { item: Products }) => {
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("Adaugă în coș");
+
   const { id } = item;
   const {
     productName: name,
@@ -21,8 +26,11 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
 
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
+  const imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${pictures.data[0].attributes.url}`;
 
   function handleAddToCart() {
+    setIsLoading(true);
+    setLoadingText("Se adaugă");
     const newItem: Cart = {
       id: item.id,
       name: name,
@@ -32,31 +40,27 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
       totalPrice: price * 1,
       slug: slug,
     };
-    dispatch(addItem(newItem));
+
+    try {
+      dispatch(addItem(newItem));
+    } catch (error) {
+      setLoadingText("Incearcă din nou");
+    } finally {
+      setTimeout(() => {
+        setIsLoading(false);
+        setLoadingText("Adaugă în coș");
+      }, 500);
+    }
   }
 
   return (
     <li className="space-y-4 border border-green p-2 md:p-4 lg:p-6 rounded-md grid grid-rows-subgrid row-span-2">
-      <Link href={`/produse/${slug}`} className="space-y-4">
-        <figure className="hover:scale-105 ease-in-out duration-200 aspect-square ">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${pictures.data[0].attributes.url}`}
-            width={237}
-            height={237}
-            alt={name}
-            className="object-cover w-full h-full rounded-md"
-          />
-        </figure>
+      <ProductImage href={`/produse/${slug}`} imageUrl={imageUrl} name={name} />
+      <ProductInfo name={name} price={price} />
 
-        <div className="">
-          <h3 className="text-xl font-bold">{name}</h3>
-
-          <p className="text-2xl font-bold text-green">{price} ron</p>
-        </div>
-      </Link>
       <div className="flex items-center">
         <div className="flex gap-4">
-          {isInCart && (
+          {isInCart && !isLoading ? (
             <>
               <UpdateItemQuantity
                 productId={id}
@@ -64,16 +68,36 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
               />
               <DeleteItem productId={id} />
             </>
-          )}
-        </div>
-        <div>
-          {!isInCart && (
+          ) : (
             <button
               type="button"
               className="button-add-to-cart"
               onClick={handleAddToCart}
+              disabled={isLoading}
             >
-              Adaugă în coș
+              {isLoading ? (
+                <span className="flex items-center gap-2">
+                  <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      fill="none"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                    />
+                  </svg>
+                  {loadingText}
+                </span>
+              ) : (
+                "Adaugă în coș"
+              )}
             </button>
           )}
         </div>

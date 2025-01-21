@@ -8,7 +8,7 @@ const CongratulationsPage = () => {
   const userName = searchParams.get("userName");
   if (!userName) notFound();
   return (
-    <Container className="pb-24 pt-16">
+    <Container>
       <h1 className="text-4xl text-center mb-4">Felicitări, {userName}!</h1>
       <h2 className="text-3xl text-center">
         Comandă dumneavoastră a fost inregistrată cu succes! Vei fi contactat

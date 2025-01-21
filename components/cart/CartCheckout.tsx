@@ -31,7 +31,7 @@ export default function CartCheckout() {
 
   const numbers = Array.from({ length: 30 }, (_, index) => index + 1);
   return (
-    <Container className="pb-24 pt-16">
+    <Container>
       {!cart.length ? (
         <h1 className="text-error">Coșul dumneavoastră este gol!</h1>
       ) : (
@@ -197,43 +197,6 @@ export default function CartCheckout() {
           </div>
         </>
       )}
-
-      {/* Related products */}
-      {/* <div aria-labelledby="related-heading" className="mt-24">
-        <h2 id="related-heading" className="text-lg font-medium text-gray-900">
-          You may also like&hellip;
-        </h2>
-
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {relatedProducts.map((relatedProduct) => (
-            <div key={relatedProduct.id} className="">
-              <Image
-                alt={relatedProduct.imageAlt}
-                src={relatedProduct.imageSrc}
-                width={200}
-                height={200}
-                className="aspect-square w-full rounded-md object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
-              />
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    <a href={relatedProduct.href}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {relatedProduct.name}
-                    </a>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">
-                    {relatedProduct.color}
-                  </p>
-                </div>
-                <p className="text-sm font-medium text-gray-900">
-                  {relatedProduct.price}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
     </Container>
   );
 }

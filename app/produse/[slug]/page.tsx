@@ -1,5 +1,4 @@
 import SingleProduct from "@/components/produse/SingleProduct";
-import Breadcrumb from "@/components/ui/common/Breadcrumb";
 import Container from "@/components/ui/common/Container";
 import { getQuery } from "@/utils/query";
 import { notFound } from "next/navigation";
@@ -19,7 +18,7 @@ export default async function ProductPage(props: {
     notFound();
   }
   return (
-    <Container className="space-y-8 pb-24 pt-16">
+    <Container className="space-y-8">
       <SingleProduct product={product[0]} />
     </Container>
   );

@@ -1,17 +1,27 @@
 import { lora } from "@/styles/fonts";
+import Image from "next/image";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
 const SectionTitle = ({ title }: { title: string }) => {
   return (
-    <h1
-      className={twMerge(
-        "text-xl lg:text-2xl font-bold text-white uppercase text-center tracking-[0.2em] after:content-subtitle-icon after:block after:w-[10rem] after:text-white after:mx-auto after:mt-2 after:h-10",
-        `${lora.className}`
-      )}
-    >
-      {title}
-    </h1>
+    <>
+      <h1
+        className={twMerge(
+          "text-2xl lg:text-3xl font-bold text-white uppercase text-center tracking-[0.1em] mb-2",
+          `${lora.className}`
+        )}
+      >
+        {title}
+      </h1>
+      <Image
+        src="/images/separator-white.svg"
+        width={160}
+        height={40}
+        alt="Fromaj subtitlu"
+        className="mx-auto w-40 h-10"
+      />
+    </>
   );
 };
 

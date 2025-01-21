@@ -5,7 +5,7 @@ import SectionTitle from "../ui/common/SectionTitle";
 
 const HowItStartSection = () => {
   return (
-    <Container className="pb-24 pt-16">
+    <Container>
       <div className="grid  grid-cols-1 lg:grid-cols-2 items-center gap-4">
         <div className="space-y-4">
           <SectionTitle title="Fromaj - Povestea noastră" />

@@ -109,6 +109,7 @@ export default function SingleProduct({ product }: { product: Products }) {
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.attributes.url}`}
                 width={464}
                 height={464}
+                priority
                 className="aspect-square w-full object-cover sm:rounded-lg"
               />
             </TabPanel>
@@ -117,7 +118,7 @@ export default function SingleProduct({ product }: { product: Products }) {
       </TabGroup>
 
       {/* Product info */}
-      <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+      <div className="mt-10 sm:mt-16 px-0 lg:mt-0">
         <h1 className="text-3xl font-bold tracking-tight text-white">{name}</h1>
 
         <div className="mt-3">
@@ -134,8 +135,8 @@ export default function SingleProduct({ product }: { product: Products }) {
           />
         </div>
 
-        <div className="mt-6">
-          <div className="mt-10 flex">
+        <div className="mt-2 lg:mt-6">
+          <div className="flex">
             <div className="flex items-center">
               <div className="flex gap-4">
                 {isInCart && (
@@ -163,7 +164,7 @@ export default function SingleProduct({ product }: { product: Products }) {
           </div>
         </div>
 
-        <section aria-labelledby="details-heading" className="mt-12">
+        <div aria-labelledby="details-heading" className="mt-6">
           <h2 id="details-heading" className="sr-only">
             Additional details
           </h2>
@@ -203,7 +204,7 @@ export default function SingleProduct({ product }: { product: Products }) {
               </Disclosure>
             ))}
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );

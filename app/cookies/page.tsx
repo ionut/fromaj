@@ -4,7 +4,7 @@ import React from "react";
 
 const CookiesPage = () => {
   return (
-    <Container className="pb-24 pt-16">
+    <Container>
       <div>
         <SectionTitle title="Politica de utilizare Cookie" />
         <div className="mt-5">

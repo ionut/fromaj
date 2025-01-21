@@ -2,6 +2,11 @@
 import { postData, telegramNotification } from "@/utils/query";
 import { z } from "zod";
 
+const cartItemSchema = z.object({
+  name: z.string(),
+  quantity: z.number(),
+});
+
 const orderSchema = z.object({
   fullName: z.string().min(1, { message: "Nume prea scurt!" }),
   email: z.string().email({ message: "Adresă de email invalidă!" }),
@@ -10,7 +15,7 @@ const orderSchema = z.object({
   city: z.string().min(1, { message: "Numele orasului este prea scurt!" }),
   date: z.string().date(),
   time: z.string(),
-  cart: z.string(),
+  cart: z.array(cartItemSchema),
 });
 
 const reservationSchema = z.object({
@@ -26,6 +31,12 @@ const reservationSchema = z.object({
 });
 
 export async function createOrder(prevState: any, formData: FormData) {
+  const cartData = JSON.parse(formData.get("cart") as string);
+  const simplifiedCart = cartData.map((item: any) => ({
+    name: item.name,
+    quantity: item.quantity,
+  }));
+  console.log(simplifiedCart);
   const validatedFields = orderSchema.safeParse({
     fullName: formData.get("fullName"),
     email: formData.get("email"),
@@ -34,7 +45,7 @@ export async function createOrder(prevState: any, formData: FormData) {
     city: formData.get("city"),
     date: formData.get("date"),
     time: formData.get("time"),
-    cart: formData.get("cart"),
+    cart: simplifiedCart,
   });
 
   // Return early if the form data is invalid
@@ -50,6 +61,7 @@ export async function createOrder(prevState: any, formData: FormData) {
 
     const order = {
       ...data,
+      cart: simplifiedCart,
     };
 
     const telegramMessage: string = `Comanda de la ${order.data.fullName} si nr. de telefon ${order.data.phone}!`;

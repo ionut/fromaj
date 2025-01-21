@@ -68,10 +68,10 @@ const navigation = {
 export default function Footer() {
   return (
     <footer className="bg-eerie-black-1">
-      <Container className="pb-24 pt-16">
+      <Container>
         <nav
           aria-label="Footer"
-          className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-base min-h-6"
+          className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg min-h-6"
         >
           {navigation.main.map((item) => (
             <Link

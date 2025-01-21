@@ -4,7 +4,7 @@ import React from "react";
 export const Input = ({ type, name, placeholder }: InputProps) => {
   return (
     <div>
-      <label htmlFor={name} className="block text-lg font-medium text-white">
+      <label htmlFor={name} className="block text-xl font-medium text-white">
         {placeholder}
       </label>
       <div className="mt-2">

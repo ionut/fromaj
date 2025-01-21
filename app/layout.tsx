@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="ro">
       <body className={`${dmsans.className} bg-eerie-black-2`}>
         <Providers>
-          <div>
+          <div className="grid grid-rows-[auto_1fr_auto] min-h-[100dvh]">
             <Navbar />
             <main>
               <Breadcrumb />

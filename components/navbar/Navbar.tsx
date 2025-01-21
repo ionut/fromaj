@@ -249,12 +249,12 @@ export default function Navbar() {
             {/* Logo */}
             <div className="ml-4 flex lg:ml-0">
               <Link href="/">
-                <span className="sr-only">Fromaj</span>
+                <span className="sr-only">Fromaj Logo</span>
                 <Image
                   alt="Fromaj - Artisan Cheese Boards"
                   width={256}
                   height={48}
-                  priority={true}
+                  priority
                   src="/images/logo.png"
                   className="h-12 w-64"
                 />
@@ -267,7 +267,7 @@ export default function Navbar() {
                 {navigation.categories.map((category) => (
                   <Popover key={category.name} className="flex">
                     <div className="relative flex">
-                      <PopoverButton className="relative z-0 flex items-center text-lg font-medium text-white transition-colors duration-200 ease-out hover:text-white-alpha-80 data-[open]:text-white-alpha-80">
+                      <PopoverButton className="relative z-0 flex items-center text-xl font-medium text-white transition-colors duration-200 ease-out hover:text-white-alpha-80 data-[open]:text-white-alpha-80">
                         {category.name}
                       </PopoverButton>
                     </div>
@@ -289,7 +289,7 @@ export default function Navbar() {
                               {category.featured.map((item) => (
                                 <div
                                   key={item.name}
-                                  className="group relative text-base md:text-lg"
+                                  className="group relative text-lg md:text-xl"
                                 >
                                   <Image
                                     alt={item.imageAlt}
@@ -324,7 +324,7 @@ export default function Navbar() {
                                 <div key={section.name}>
                                   <p
                                     id={`${section.name}-heading`}
-                                    className="font-medium text-white text-2xl"
+                                    className="font-semibold text-white text-2xl"
                                   >
                                     {section.name}
                                   </p>
@@ -338,7 +338,7 @@ export default function Navbar() {
                                         <CloseButton
                                           as={Link}
                                           href={item.href}
-                                          className="text-lg text-white-alpha-80"
+                                          className="text-xl text-white-alpha-80"
                                         >
                                           {item.name}
                                         </CloseButton>
@@ -359,7 +359,7 @@ export default function Navbar() {
                   <Link
                     key={page.name}
                     href={page.href}
-                    className="flex items-center text-lg font-medium text-white hover:text-white-alpha-80"
+                    className="flex items-center text-xl font-medium text-white hover:text-white-alpha-80"
                   >
                     {page.name}
                   </Link>

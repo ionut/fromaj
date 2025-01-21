@@ -17,14 +17,18 @@
     @apply text-2xl font-bold tracking-tight text-white md:text-4xl;
   }
   .button-add-to-cart {
-    @apply text-white bg-green text-xl font-bold tracking-wider p-2 rounded-2xl outline outline-white outline-1 hover:bg-davys-grey hover:outline-none hover:transition-colors;
+    @apply text-white bg-green text-xl font-bold tracking-wider p-2 rounded-2xl outline outline-white outline-1 hover:bg-davys-grey hover:outline-none hover:transition-colors disabled:bg-davys-grey disabled:outline-none;
   }
   .button-update {
     @apply text-white text-xl font-bold capitalize py-2;
   }
 
-  .clip-custom {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  .clip-bottom {
+    clip-path: polygon(0 -1px, 100% -1px, 100% 100%, 0 90%);
+  }
+
+  .clip-top {
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
   }
 }
 
