@@ -4,6 +4,11 @@ import Link from "next/link";
 import { lora } from "@/styles/fonts";
 import { PhoneIcon } from "@heroicons/react/24/solid";
 
+const images = {
+  mobile: "/images/platou-no-back-mobile.webp",
+  desktop: "/images/platou-no-back.webp",
+};
+
 const HeroSection = () => {
   return (
     <div className="bg-green md:clip-bottom">
@@ -55,12 +60,20 @@ const HeroSection = () => {
           </article>
 
           <div className="order-1 md:order-2">
-            <Image
+            {/* <Image
               src="/images/platou-no-back.webp"
               width={468}
               height={544}
               priority
               alt="Fromaj Artisan Cheese Background"
+              className="object-cover drop-shadow-image aspect-square md:animate-spin-slow"
+            /> */}
+            <Image
+              src={images.mobile}
+              alt="Description"
+              width={468}
+              height={544}
+              priority
               className="object-cover drop-shadow-image aspect-square md:animate-spin-slow"
             />
           </div>
