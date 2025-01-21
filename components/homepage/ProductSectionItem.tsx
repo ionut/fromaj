@@ -54,7 +54,7 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
   }
 
   return (
-    <li className="space-y-4 border border-green p-2 md:p-4 lg:p-6 rounded-md grid grid-rows-subgrid row-span-2">
+    <li className="space-y-4 border border-green p-2 md:p-4 lg:p-6 rounded-md grid grid-rows-subgrid row-span-3">
       <ProductImage href={`/produse/${slug}`} imageUrl={imageUrl} name={name} />
       <ProductInfo name={name} price={price} />
 

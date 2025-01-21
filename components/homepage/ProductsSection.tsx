@@ -10,8 +10,8 @@ const ProductsSection = async () => {
   const { data } = await getQuery("/products?populate=*");
 
   return (
-    <div className="bg-product-sections bg-cover bg-center -my-[10%]">
-      <Container className="py-[15%]">
+    <div className="bg-product-sections bg-cover bg-center md:-my-[10%] md:py-[10%]">
+      <Container>
         <SectionTitle title="Platouri fromaj" />
         <ul className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3 xl:gap-6 mt-10">
           {!data?.length ? (
