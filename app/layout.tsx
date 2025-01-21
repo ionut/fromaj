@@ -1,17 +1,10 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import Loading from "./loading";
 import Footer from "@/components/footer/Footer";
 import { Providers } from "./storeProvider";
 import Navbar from "@/components/navbar/Navbar";
-
-const dmsans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--fontFamily-dm_sans",
-  display: "swap",
-});
+import { dmsans } from "@/styles/fonts";
+import Breadcrumb from "@/components/ui/common/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Fromaj Artisan Cheese",
@@ -28,13 +21,14 @@ export default function RootLayout({
     <html lang="ro">
       <body className={`${dmsans.className} bg-eerie-black-2`}>
         <Providers>
-          <Suspense fallback={<Loading />}>
-            <div>
-              <Navbar />
-              <main>{children}</main>
-              <Footer />
-            </div>
-          </Suspense>
+          <div>
+            <Navbar />
+            <main>
+              <Breadcrumb />
+              {children}
+            </main>
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>

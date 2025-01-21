@@ -5,7 +5,7 @@ import React from "react";
 
 const ReservationPage = () => {
   return (
-    <Container>
+    <Container className="pb-24 pt-16">
       <SectionTitle title="Consultanță Online" />
       <h3 className="text-2xl text-center max-w-2xl mx-auto mb-4">
         Cere o ofertă pentru evenimentul tău la{" "}

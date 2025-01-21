@@ -68,7 +68,7 @@ const navigation = {
 export default function Footer() {
   return (
     <footer className="bg-eerie-black-1">
-      <Container>
+      <Container className="pb-24 pt-16">
         <nav
           aria-label="Footer"
           className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-base min-h-6"
@@ -99,7 +99,7 @@ export default function Footer() {
         <p className="mt-10 text-center text-lg text-white">
           &copy; 2024 Fromaj.ro, Inc. All rights reserved.
         </p>
-        <div className="mt-10 flex justify-center gap-x-10">
+        <div className="mt-10 flex justify-center gap-x-10 min-h-8">
           <a
             href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO"
             target="_blank"
@@ -113,7 +113,6 @@ export default function Footer() {
               alt="Soluționarea alternativă a litigiilor"
               width={160}
               height={40}
-              aria-hidden="true"
               className="w-40 h-10"
             />
           </a>
@@ -128,7 +127,6 @@ export default function Footer() {
               alt="Soluționarea online a litigiilor"
               width={160}
               height={40}
-              aria-hidden="true"
               className="w-40 h-10"
             />
           </a>

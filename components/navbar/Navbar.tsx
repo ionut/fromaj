@@ -2,6 +2,7 @@
 
 import { Fragment, useState } from "react";
 import {
+  CloseButton,
   Dialog,
   DialogBackdrop,
   DialogPanel,
@@ -162,7 +163,8 @@ export default function Navbar() {
                             height={140}
                             className="aspect-square w-full rounded-lg object-cover group-hover:opacity-80"
                           />
-                          <Link
+                          <CloseButton
+                            as={Link}
                             href={item.href}
                             className="mt-6 block font-semibold text-white"
                           >
@@ -171,7 +173,7 @@ export default function Navbar() {
                               className="absolute inset-0 z-10"
                             />
                             {item.name}
-                          </Link>
+                          </CloseButton>
                           <p aria-hidden="true" className="mt-1 underline">
                             Shop now
                           </p>
@@ -193,12 +195,13 @@ export default function Navbar() {
                         >
                           {section.items.map((item) => (
                             <li key={item.name} className="flow-root">
-                              <Link
+                              <CloseButton
+                                as={Link}
                                 href={item.href}
                                 className="-m-2 block p-2 text-base font-medium text-white hover:text-white-alpha-80"
                               >
                                 {item.name}
-                              </Link>
+                              </CloseButton>
                             </li>
                           ))}
                         </ul>
@@ -212,12 +215,13 @@ export default function Navbar() {
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
               {navigation.pages.map((page) => (
                 <div key={page.name} className="flow-root">
-                  <Link
+                  <CloseButton
+                    as={Link}
                     href={page.href}
                     className="-m-2 block p-2 text-base font-medium text-white hover:text-white-alpha-80"
                   >
                     {page.name}
-                  </Link>
+                  </CloseButton>
                 </div>
               ))}
             </div>
@@ -263,14 +267,14 @@ export default function Navbar() {
                 {navigation.categories.map((category) => (
                   <Popover key={category.name} className="flex">
                     <div className="relative flex">
-                      <PopoverButton className="relative z-10 flex items-center text-lg font-medium text-white transition-colors duration-200 ease-out hover:text-white-alpha-80 data-[open]:text-white-alpha-80">
+                      <PopoverButton className="relative z-0 flex items-center text-lg font-medium text-white transition-colors duration-200 ease-out hover:text-white-alpha-80 data-[open]:text-white-alpha-80">
                         {category.name}
                       </PopoverButton>
                     </div>
 
                     <PopoverPanel
                       transition
-                      className="absolute inset-x-0 top-full text-white transition data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                      className="absolute z-10 inset-x-0 top-full text-white transition data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
                     >
                       {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                       <div
@@ -294,7 +298,9 @@ export default function Navbar() {
                                     height={344}
                                     className="aspect-square w-full rounded-lg object-cover group-hover:opacity-80"
                                   />
-                                  <Link
+
+                                  <CloseButton
+                                    as={Link}
                                     href={item.href}
                                     className="mt-6 block font-medium text-white "
                                   >
@@ -303,7 +309,7 @@ export default function Navbar() {
                                       className="absolute inset-0 z-10 font-bold"
                                     />
                                     {item.name}
-                                  </Link>
+                                  </CloseButton>
                                   <p
                                     aria-hidden="true"
                                     className="mt-1 underline"
@@ -329,12 +335,13 @@ export default function Navbar() {
                                   >
                                     {section.items.map((item) => (
                                       <li key={item.name} className="flex">
-                                        <Link
+                                        <CloseButton
+                                          as={Link}
                                           href={item.href}
                                           className="text-lg text-white-alpha-80"
                                         >
                                           {item.name}
-                                        </Link>
+                                        </CloseButton>
                                       </li>
                                     ))}
                                   </ul>

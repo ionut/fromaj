@@ -31,7 +31,7 @@ export default function CartCheckout() {
 
   const numbers = Array.from({ length: 30 }, (_, index) => index + 1);
   return (
-    <Container>
+    <Container className="pb-24 pt-16">
       {!cart.length ? (
         <h1 className="text-error">Coșul dumneavoastră este gol!</h1>
       ) : (

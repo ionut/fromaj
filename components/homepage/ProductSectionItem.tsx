@@ -43,7 +43,6 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
             src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${pictures.data[0].attributes.url}`}
             width={237}
             height={237}
-            loading="lazy"
             alt={name}
             className="object-cover w-full h-full rounded-md"
           />

@@ -1,10 +1,15 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
-const Container = ({ children }: { children: React.ReactNode }) => {
+const Container = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className: string;
+}) => {
   return (
-    <section className="container px-4 pb-24 pt-16 sm:px-6 lg:px-8">
-      {children}
-    </section>
+    <section className={twMerge("container", className)}>{children}</section>
   );
 };
 

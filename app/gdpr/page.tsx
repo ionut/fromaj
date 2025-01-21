@@ -4,7 +4,7 @@ import React from "react";
 
 const GDPRPage = () => {
   return (
-    <Container>
+    <Container className="pb-24 pt-16">
       <div>
         <SectionTitle title="Politica de confidențialitate" />
         <div className="mt-5">

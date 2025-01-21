@@ -1,11 +1,11 @@
 import cartSlice from "@/lib/slice/cartSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import sessionStorage from "redux-persist/lib/storage/session";
+import localstorage from "redux-persist/lib/storage/session";
 
 const persistConfig = {
   key: "root",
-  storage: sessionStorage, // Using sessionStorage instead of localStorage
+  storage: localstorage, // Using sessionStorage instead of localStorage
   whitelist: ["cart"],
 };
 

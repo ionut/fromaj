@@ -7,11 +7,11 @@ import SectionTitle from "../ui/common/SectionTitle";
 
 const ServiceSection = () => {
   return (
-    <Container>
+    <Container className="pb-24 pt-16">
       <div>
         <SectionTitle title="Fromaj" />
         <h2 className="text-center text-4xl font-bold mb-6">CheeseBar</h2>
-        <p className="max-w-[40vw] text-center mx-auto paragraph mb-10">
+        <p className="max-w-[40vw] text-center mx-auto text-lg lg:text-xl font-normal mb-10">
           Dăruiește o notă specială evenimentului tău. Oferim servicii de
           catering pentru orice tip de eveniment. Pentru mai multe detalii și
           oferte folosește căsuța de mai jos &quot;Consultanță Online&quot; sau
@@ -26,7 +26,6 @@ const ServiceSection = () => {
                   src="/images/cutii.jpg"
                   width="285"
                   height="336"
-                  loading="lazy"
                   alt="Fromaj Cutie Standard Mare"
                   className="img-cover"
                 />
@@ -47,12 +46,11 @@ const ServiceSection = () => {
             <div className="service-card flex flex-col text-center">
               <ImageCustom href="/rezervare">
                 <Image
-                  src="/images/catering-corporate.jpg"
+                  src="/images/cheese.jpg"
                   width="285"
                   height="336"
-                  loading="lazy"
                   alt="Fromaj Boards"
-                  className="img-cover"
+                  className="aspect-square w-full h-full object-cover"
                 />
               </ImageCustom>
 
@@ -71,10 +69,9 @@ const ServiceSection = () => {
             <div className="service-card flex flex-col text-center">
               <ImageCustom href="/rezervare">
                 <Image
-                  src="/images/eveniment-gradina.jpg"
+                  src="/images/eveniment.jpg"
                   width="285"
                   height="336"
-                  loading="lazy"
                   alt="Fromaj Evenimente"
                   className="img-cover"
                 />
