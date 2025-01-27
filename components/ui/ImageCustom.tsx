@@ -1,7 +1,13 @@
 import Link from "next/link";
 import React from "react";
 
-const ImageCustom = ({ children, href }: { children: any; href: string }) => {
+const ImageCustom = ({
+  children,
+  href,
+}: {
+  children: React.ReactNode;
+  href: string;
+}) => {
   return (
     <Link href={href} className="has-before hover:shine">
       <figure className="card-banner img-holder h-36">{children}</figure>

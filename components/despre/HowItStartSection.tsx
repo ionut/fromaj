@@ -21,12 +21,12 @@ const HowItStartSection = () => {
 
         <div className="relative">
           <Image
-            src="/images/catering.jpg"
+            src="/images/catering.webp"
             width={500}
             height={500}
             loading="lazy"
             alt="Platouri Branzeturi"
-            className="rounded-full"
+            className="rounded-t-full"
           />
 
           <Image

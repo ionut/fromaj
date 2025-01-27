@@ -2,6 +2,11 @@
 import { postData, telegramNotification } from "@/utils/query";
 import { z } from "zod";
 
+type cartItem = {
+  name: string;
+  quantity: number;
+};
+
 const cartItemSchema = z.object({
   name: z.string(),
   quantity: z.number(),
@@ -32,11 +37,10 @@ const reservationSchema = z.object({
 
 export async function createOrder(prevState: any, formData: FormData) {
   const cartData = JSON.parse(formData.get("cart") as string);
-  const simplifiedCart = cartData.map((item: any) => ({
+  const simplifiedCart = cartData.map((item: cartItem) => ({
     name: item.name,
     quantity: item.quantity,
   }));
-  console.log(simplifiedCart);
   const validatedFields = orderSchema.safeParse({
     fullName: formData.get("fullName"),
     email: formData.get("email"),

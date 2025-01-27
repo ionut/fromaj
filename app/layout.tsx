@@ -5,6 +5,7 @@ import { Providers } from "./storeProvider";
 import Navbar from "@/components/navbar/Navbar";
 import { dmsans } from "@/styles/fonts";
 import Breadcrumb from "@/components/ui/common/Breadcrumb";
+import Banner from "@/components/homepage/Banner";
 
 export const metadata: Metadata = {
   title: "Fromaj Artisan Cheese",
@@ -22,7 +23,10 @@ export default function RootLayout({
       <body className={`${dmsans.className} bg-eerie-black-2`}>
         <Providers>
           <div className="grid grid-rows-[auto_1fr_auto] min-h-[100dvh]">
-            <Navbar />
+            <div>
+              <Banner />
+              <Navbar />{" "}
+            </div>
             <main>
               <Breadcrumb />
               {children}

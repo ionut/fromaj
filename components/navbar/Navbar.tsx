@@ -25,6 +25,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useAppSelector } from "@/lib/hooks";
 import { getTotalCartQuantity } from "@/lib/slice/cartSlice";
+import useSWR from "swr";
+import { getQuery } from "@/utils/query";
 
 const navigation = {
   categories: [
@@ -47,7 +49,7 @@ const navigation = {
       ],
       sections: [
         {
-          id: "clothing",
+          id: "platouri",
           name: "Platouri",
           items: [
             { name: "Platou 10 persoane", href: "/produse/platou-10-persoane" },
@@ -62,49 +64,17 @@ const navigation = {
         },
       ],
     },
-    {
-      id: "evenimente",
-      name: "Evenimente",
-      featured: [
-        {
-          name: "Botez",
-          href: "/evenimente/botez",
-          imageSrc:
-            "https://tailwindui.com/plus/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-          imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
-        },
-        {
-          name: "Nunta",
-          href: "/evenimente/nunta",
-          imageSrc:
-            "https://tailwindui.com/plus/img/ecommerce-images/category-page-02-image-card-06.jpg",
-          imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
-        },
-      ],
-      sections: [
-        {
-          id: "categorii",
-          name: "Categorii",
-          items: [
-            { name: "Botez", href: "/evenimente/botez" },
-            { name: "Nunta", href: "/evenimente/nunta" },
-            { name: "Picnic", href: "/evenimente/picnic" },
-            { name: "Onomastica", href: "/evenimente/onomastica" },
-            { name: "Atelier", href: "/evenimente/atelier" },
-          ],
-        },
-      ],
-    },
   ],
   pages: [
+    { name: "Evenimente", href: "/evenimente" },
     { name: "Rezervare", href: "/rezervare" },
     { name: "Despre noi", href: "/despre" },
   ],
 };
 
 export default function Navbar() {
+  const { data, error, isLoading } = useSWR("/products?populate=*", getQuery);
+  if (error) return <div>failed to load</div>;
   const [open, setOpen] = useState(false);
   const totalQuantity = useAppSelector(getTotalCartQuantity);
   return (
@@ -230,10 +200,6 @@ export default function Navbar() {
       </Dialog>
 
       <header className="relative bg-green">
-        <p className="flex h-14 items-center justify-center bg-davys-grey px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Banner customizabil pentru reduceri/vacante/sarbatori etc
-        </p>
-
         <nav aria-label="Top" className="container px-4 sm:px-6 lg:px-8">
           <div className="flex h-28 items-center">
             <button

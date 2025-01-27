@@ -11,7 +11,7 @@ type ImageTypes = {
 const ProductImage = ({ href, imageUrl, name }: ImageTypes) => {
   return (
     <Link href={href}>
-      <figure className="hover:scale-105 ease-in-out duration-200 aspect-square ">
+      <figure className="hover:scale-105 ease-in-out duration-200 aspect-square">
         <Image
           src={imageUrl}
           width={237}

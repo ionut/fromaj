@@ -1,12 +1,10 @@
 "use client";
 import React, { use, useState } from "react";
 import { Cart, Products } from "@/utils/types";
-import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { addItem, getCurrentQuantityById } from "../../lib/slice/cartSlice";
 import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 import DeleteItem from "../cart/DeleteItem";
-import Link from "next/link";
 import ProductImage from "../ui/product/ProductImage";
 import ProductInfo from "../ui/product/ProductInfo";
 
@@ -26,7 +24,7 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
 
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
-  const imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${pictures.data[0].attributes.url}`;
+  const imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${pictures.data[0].attributes.url}?format=webp`;
 
   function handleAddToCart() {
     setIsLoading(true);
@@ -54,11 +52,11 @@ const ProductSectionItem = ({ item }: { item: Products }) => {
   }
 
   return (
-    <li className="space-y-4 border border-green p-2 md:p-4 lg:p-6 rounded-md grid grid-rows-subgrid row-span-3">
+    <li className="space-y-2 border border-green/40 shadow-2xl p-2 md:p-4 lg:p-6 rounded-xl grid grid-rows-subgrid row-span-3">
       <ProductImage href={`/produse/${slug}`} imageUrl={imageUrl} name={name} />
       <ProductInfo name={name} price={price} />
 
-      <div className="flex items-center">
+      <div className="flex items-center justify-center">
         <div className="flex gap-4">
           {isInCart && !isLoading ? (
             <>
