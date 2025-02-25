@@ -6,7 +6,7 @@ import SectionTitle from "../ui/common/SectionTitle";
 const HowItStartSection = () => {
   return (
     <Container>
-      <div className="grid  grid-cols-1 lg:grid-cols-2 items-center gap-4">
+      <div className="grid grid-cols-1 lg:grid-flow-col lg:auto-cols-max items-center gap-4">
         <div className="space-y-4">
           <SectionTitle title="Fromaj - Povestea noastră" />
           <p className="text-center text-xl">
@@ -25,7 +25,7 @@ const HowItStartSection = () => {
             width={500}
             height={500}
             loading="lazy"
-            alt="Platouri Branzeturi"
+            alt="Platouri premium cu brânzeturi fine și mezeluri artizanale pentru evenimente și catering de lux în România"
             className="rounded-t-full"
           />
 
@@ -33,7 +33,7 @@ const HowItStartSection = () => {
             src="/images/badge-2.png"
             width={130}
             height={130}
-            alt="Artisan Cheese Boards"
+            alt="Fromaj - Furnizor specializat de platouri cu brânzeturi artizanale pentru evenimente"
             className="absolute top-0 right-0"
           />
 
@@ -41,7 +41,7 @@ const HowItStartSection = () => {
             src="/images/badge-2-bg.png"
             width={130}
             height={130}
-            alt="Artisan Cheese Boards"
+            alt="Sigla decorativă Fromaj - Servicii premium de catering cu brânzeturi fine"
             className="animate-spin-slow duration-1000 absolute top-0 right-0"
           />
         </div>

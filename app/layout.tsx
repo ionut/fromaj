@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Fromaj Artisan Cheese",
   description:
     "Fromaj Artisan Cheese Boards · Cutii cu brânzeturi delicate și mezeluri alese · Corporate Catering & Evenimente",
+  metadataBase: new URL("https://dev.fromaj.ro"),
 };
 
 export default function RootLayout({

@@ -1,25 +1,71 @@
-import SingleProduct from "@/components/produse/SingleProduct";
+import SingleProduct from "@/components/ui/product/SingleProduct";
 import Container from "@/components/ui/common/Container";
 import { getQuery } from "@/utils/query";
 import { notFound } from "next/navigation";
 
-export default async function ProductPage(props: {
+async function getProduct(slug: string) {
+  const { data: product } = await getQuery(
+    `/products?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=*`
+  );
+  return product[0];
+}
+
+export async function generateMetadata({
+  params,
+}: {
   params: Promise<{ slug: string }>;
 }) {
-  const params = await props.params;
-  const { data: product } = await getQuery(
-    `/products?filters[slug][$eq]=${params.slug}&populate=*`
-  );
+  const routeParams = (await params).slug;
+  const product = await getProduct(routeParams);
+  if (!product) {
+    return {
+      title: "Product Not Found",
+      description: "The requested product does not exist",
+    };
+  }
 
-  const { data: relatedProducts } = await getQuery(
-    `/products?filters[slug][$ne]=${params.slug}&populate=*`
-  );
-  if (!product.length || !product) {
+  return {
+    title: product.attributes.productName,
+    description: product.attributes.description,
+    openGraph: {
+      title: product.attributes.productName,
+      description: product.attributes.description,
+      images: [
+        {
+          url: product.attributes.pictures.data[0].attributes.url
+            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${product.attributes.pictures.data[0].attributes.url}`
+            : "/default-product-image.jpg",
+          width: 800,
+          height: 600,
+          alt: product.attributes.productName,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.attributes.productName,
+      description: product.attributes.description,
+      images: product.attributes.pictures.data[0].attributes.url
+        ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${product.attributes.pictures.data[0].attributes.url}`
+        : "/default-product-image.jpg",
+    },
+  };
+}
+
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const routeParams = (await params).slug;
+  const product = await getProduct(routeParams);
+
+  if (!product) {
     notFound();
   }
   return (
     <Container className="space-y-8">
-      <SingleProduct product={product[0]} />
+      <SingleProduct product={product} />
     </Container>
   );
 }

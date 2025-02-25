@@ -38,11 +38,11 @@ const AboutSection = () => {
             </div>
             <div className="col-span-1">
               <Image
-                src="/images/platou-no-back.webp"
-                width={574}
-                height={574}
-                alt="Platouri"
-                className="aspect-square"
+                src="/images/misiunea-noastra.webp"
+                width={736}
+                height={736}
+                alt="Platou premium Fromaj cu selecție de brânzeturi fine, mezeluri artizanale și decorațiuni pentru evenimente speciale"
+                className="aspect-square w-full object-contain"
               />
             </div>
           </div>

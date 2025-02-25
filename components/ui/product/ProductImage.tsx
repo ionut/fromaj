@@ -14,8 +14,8 @@ const ProductImage = ({ href, imageUrl, name }: ImageTypes) => {
       <figure className="hover:scale-105 ease-in-out duration-200 aspect-square">
         <Image
           src={imageUrl}
-          width={237}
-          height={237}
+          width={425}
+          height={425}
           alt={name}
           className="object-cover w-full h-full rounded-md"
         />

@@ -24,14 +24,14 @@ const ServiceSection = () => {
             src="/images/shape-1.png"
             width={246}
             height={620}
-            alt="Fromaj forma"
+            alt="Element decorativ Fromaj - Design lateral stânga pentru secțiunea de servicii catering brânzeturi"
             className="absolute top-0 left-0 -z-10"
           />
           <Image
             src="/images/shape-2.png"
             width={343}
             height={506}
-            alt="Fromaj forma"
+            alt="Element decorativ Fromaj - Design lateral dreapta pentru secțiunea CheeseBar și servicii evenimente"
             className="absolute top-0 right-0 -z-10"
           />
         </div>

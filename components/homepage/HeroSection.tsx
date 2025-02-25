@@ -44,7 +44,7 @@ const HeroSection = () => {
 
             <div className="flex items-center gap-4 justify-center md:justify-start">
               <a
-                href="tel:+40747241177"
+                href="tel:+40754404000"
                 className="text-white outline outline-1 outline-white rounded-2xl text-xl font-bold flex justify-center items-center p-3 shadow-lg hover:transition-colors hover:bg-davys-grey hover:outline-davys-grey focus:outline-2 xl:text-2xl xl:px-6"
               >
                 Contactează
@@ -60,17 +60,9 @@ const HeroSection = () => {
           </article>
 
           <div className="order-1 md:order-2">
-            {/* <Image
-              src="/images/platou-no-back.webp"
-              width={468}
-              height={544}
-              priority
-              alt="Fromaj Artisan Cheese Background"
-              className="object-cover drop-shadow-image aspect-square md:animate-spin-slow"
-            /> */}
             <Image
               src={images.mobile}
-              alt="Description"
+              alt="Platou premium rotativ Fromaj cu selecție de brânzeturi fine, fructe proaspete și garnituri elegante pentru evenimente speciale și catering de lux"
               width={468}
               height={544}
               priority

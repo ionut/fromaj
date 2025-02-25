@@ -7,9 +7,7 @@ import Loading from "./loading";
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
-      <PersistGate loading={<Loading />} persistor={persistor}>
-        {children}
-      </PersistGate>
+      <PersistGate persistor={persistor}>{children}</PersistGate>
     </Provider>
   );
 }

@@ -19,19 +19,20 @@ const orderSchema = z.object({
   street: z.string().min(4, { message: "Adresă de livrare prea scurtă!" }),
   city: z.string().min(1, { message: "Numele orasului este prea scurt!" }),
   date: z.string().date(),
-  time: z.string(),
+  time: z.string().time(),
   cart: z.array(cartItemSchema),
 });
 
 const reservationSchema = z.object({
   fullName: z.string().min(1, { message: "Nume prea scurt!" }),
   phone: z.string().min(8, { message: "Număr de telefon prea scurt!" }),
-  date: z.string().date(),
-  time: z.string(),
   personsNumber: z
     .number()
     .gt(10, { message: "Evenimentul trebuie să fie mai mare de 10 persoane!" }),
-  eventType: z.string(),
+  eventType: z.string().min(1, { message: "Adaugă tipul evenimentului!" }),
+  date: z.string().date(),
+  time: z.string(),
+
   message: z.string(),
 });
 

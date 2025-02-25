@@ -27,42 +27,13 @@ import { useAppSelector } from "@/lib/hooks";
 import { getTotalCartQuantity } from "@/lib/slice/cartSlice";
 import useSWR from "swr";
 import { getQuery } from "@/utils/query";
+import { Products } from "@/utils/types";
 
 const navigation = {
   categories: [
     {
-      id: "produse",
-      name: "Produse",
-      featured: [
-        {
-          name: "Platou 7 persoane",
-          href: "/produse/platou-7-persoane",
-          imageSrc: "/images/cutii.jpg",
-          imageAlt: "Platou 7 persoane",
-        },
-        {
-          name: "Platou 4/5 persoane",
-          href: "/produse/platou-5-persoane",
-          imageSrc: "/images/cutii.jpg",
-          imageAlt: "Platou 4/5 persoane",
-        },
-      ],
-      sections: [
-        {
-          id: "platouri",
-          name: "Platouri",
-          items: [
-            { name: "Platou 10 persoane", href: "/produse/platou-10-persoane" },
-            { name: "Platou 2 persoane", href: "/produse/platou-2-persoane" },
-            { name: "Platou 4/5 persoane", href: "/produse/platou-4-persoane" },
-            { name: "Platou 6/7 persoane", href: "/produse/platou-7-persoane" },
-            {
-              name: "Platou Vegetarian 4/5 persoane",
-              href: "/produse/platou-vegetarian",
-            },
-          ],
-        },
-      ],
+      id: "platouri",
+      name: "Platouri",
     },
   ],
   pages: [
@@ -74,9 +45,17 @@ const navigation = {
 
 export default function Navbar() {
   const { data, error, isLoading } = useSWR("/products?populate=*", getQuery);
-  if (error) return <div>failed to load</div>;
+  const products = data?.data as Products[];
+  const featuredProductIds = new Set([1, 6]);
+
+  const featuredProducts = products?.filter((product) =>
+    featuredProductIds.has(product.id)
+  );
+
   const [open, setOpen] = useState(false);
   const totalQuantity = useAppSelector(getTotalCartQuantity);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>failed to load</div>;
   return (
     <div className="bg-green">
       {/* Mobile menu */}
@@ -124,25 +103,28 @@ export default function Navbar() {
                     className="space-y-10 px-4 pb-8 pt-10"
                   >
                     <div className="grid grid-cols-2 gap-x-2">
-                      {category.featured.map((item) => (
-                        <div key={item.name} className="group relative text-sm">
+                      {featuredProducts.map((item) => (
+                        <div
+                          key={item.attributes.productName}
+                          className="group relative text-sm"
+                        >
                           <Image
-                            alt={item.imageAlt}
-                            src={item.imageSrc}
-                            width={140}
-                            height={140}
+                            alt={item.attributes.productName}
+                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${item.attributes.pictures.data[0].attributes.url}`}
+                            width={360}
+                            height={360}
                             className="aspect-square w-full rounded-lg object-cover group-hover:opacity-80"
                           />
                           <CloseButton
                             as={Link}
-                            href={item.href}
+                            href={`/produse/${item.attributes.slug}`}
                             className="mt-6 block font-semibold text-white"
                           >
                             <span
                               aria-hidden="true"
                               className="absolute inset-0 z-10"
                             />
-                            {item.name}
+                            {item.attributes.productName}
                           </CloseButton>
                           <p aria-hidden="true" className="mt-1 underline">
                             Shop now
@@ -150,33 +132,35 @@ export default function Navbar() {
                         </div>
                       ))}
                     </div>
-                    {category.sections.map((section) => (
-                      <div key={section.name}>
-                        <p
-                          id={`${category.id}-${section.id}-heading-mobile`}
-                          className="font-medium text-white text-xl"
-                        >
-                          {section.name}
-                        </p>
-                        <ul
-                          role="list"
-                          aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-                          className="mt-6 flex flex-col space-y-6"
-                        >
-                          {section.items.map((item) => (
-                            <li key={item.name} className="flow-root">
-                              <CloseButton
-                                as={Link}
-                                href={item.href}
-                                className="-m-2 block p-2 text-base font-medium text-white hover:text-white-alpha-80"
-                              >
-                                {item.name}
-                              </CloseButton>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+
+                    <div key="Platouri">
+                      <p
+                        id="produse-platouri-heading-mobile"
+                        className="font-medium text-white text-xl"
+                      >
+                        Platouri
+                      </p>
+                      <ul
+                        role="list"
+                        aria-labelledby="produse-platouri-heading-mobile"
+                        className="mt-6 flex flex-col space-y-6"
+                      >
+                        {products?.map((item) => (
+                          <li
+                            key={item.attributes.productName}
+                            className="flow-root"
+                          >
+                            <CloseButton
+                              as={Link}
+                              href={`/produse/${item.attributes.slug}`}
+                              className="-m-2 block p-2 text-base font-medium text-white hover:text-white-alpha-80"
+                            >
+                              {item.attributes.productName}
+                            </CloseButton>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </TabPanel>
                 ))}
               </TabPanels>
@@ -217,21 +201,22 @@ export default function Navbar() {
               <Link href="/">
                 <span className="sr-only">Fromaj Logo</span>
                 <Image
-                  alt="Fromaj - Artisan Cheese Boards"
+                  alt="Fromaj - Specialiști în platouri premium cu brânzeturi artizanale și catering pentru evenimente de lux în România"
                   width={256}
                   height={48}
                   priority
                   src="/images/logo.png"
-                  className="h-12 w-64"
+                  className="h-12 w-64 aspect-auto"
                 />
               </Link>
             </div>
 
             {/* Flyout menus */}
+
             <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
               <div className="flex h-full items-center space-x-8">
                 {navigation.categories.map((category) => (
-                  <Popover key={category.name} className="flex">
+                  <Popover key={category.id} className="flex">
                     <div className="relative flex">
                       <PopoverButton className="relative z-0 flex items-center text-xl font-medium text-white transition-colors duration-200 ease-out hover:text-white-alpha-80 data-[open]:text-white-alpha-80">
                         {category.name}
@@ -252,29 +237,29 @@ export default function Navbar() {
                         <div className="container px-8 border-t border-white-alpha-80">
                           <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
                             <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                              {category.featured.map((item) => (
+                              {featuredProducts.map((item) => (
                                 <div
-                                  key={item.name}
+                                  key={item.attributes.productName}
                                   className="group relative text-lg md:text-xl"
                                 >
                                   <Image
-                                    alt={item.imageAlt}
-                                    src={item.imageSrc}
-                                    width={344}
-                                    height={344}
+                                    alt={item.attributes.productName}
+                                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${item.attributes.pictures.data[0].attributes.url}`}
+                                    width={720}
+                                    height={720}
                                     className="aspect-square w-full rounded-lg object-cover group-hover:opacity-80"
                                   />
 
                                   <CloseButton
                                     as={Link}
-                                    href={item.href}
+                                    href={`/produse/${item.attributes.slug}`}
                                     className="mt-6 block font-medium text-white "
                                   >
                                     <span
                                       aria-hidden="true"
                                       className="absolute inset-0 z-10 font-bold"
                                     />
-                                    {item.name}
+                                    {item.attributes.productName}
                                   </CloseButton>
                                   <p
                                     aria-hidden="true"
@@ -286,33 +271,34 @@ export default function Navbar() {
                               ))}
                             </div>
                             <div className="row-start-1 grid grid-cols-auto gap-x-8 gap-y-10 text-sm">
-                              {category.sections.map((section) => (
-                                <div key={section.name}>
-                                  <p
-                                    id={`${section.name}-heading`}
-                                    className="font-semibold text-white text-2xl"
-                                  >
-                                    {section.name}
-                                  </p>
-                                  <ul
-                                    role="list"
-                                    aria-labelledby={`${section.name}-heading`}
-                                    className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                  >
-                                    {section.items.map((item) => (
-                                      <li key={item.name} className="flex">
-                                        <CloseButton
-                                          as={Link}
-                                          href={item.href}
-                                          className="text-xl text-white-alpha-80"
-                                        >
-                                          {item.name}
-                                        </CloseButton>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              ))}
+                              <div key="Platouri">
+                                <p
+                                  id="Platouri-heading"
+                                  className="font-semibold text-white text-2xl"
+                                >
+                                  Platouri
+                                </p>
+                                <ul
+                                  role="list"
+                                  aria-labelledby="Platouri-heading"
+                                  className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                >
+                                  {products?.map((item) => (
+                                    <li
+                                      key={item.attributes.productName}
+                                      className="flex"
+                                    >
+                                      <CloseButton
+                                        as={Link}
+                                        href={`/produse/${item.attributes.slug}`}
+                                        className="text-xl text-white-alpha-80"
+                                      >
+                                        {item.attributes.productName}
+                                      </CloseButton>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -320,7 +306,6 @@ export default function Navbar() {
                     </PopoverPanel>
                   </Popover>
                 ))}
-
                 {navigation.pages.map((page) => (
                   <Link
                     key={page.name}

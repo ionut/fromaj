@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import {
   deleteItem,
   getCart,
-  getCurrentQuantityById,
   getTotalCartPrice,
   increaseItemQuantityBySelect,
 } from "../../lib/slice/cartSlice";
@@ -22,14 +21,14 @@ import Container from "../ui/common/Container";
 export default function CartCheckout() {
   const cart = useAppSelector<Cart[]>(getCart);
   const subTotal = useAppSelector<number>(getTotalCartPrice);
-  const quantities = useAppSelector((state) =>
-    cart.map((product) => getCurrentQuantityById(product.id)(state))
-  );
   const transportTotal: number = 0;
   const priceTotal = subTotal + transportTotal;
   const dispatch = useAppDispatch();
 
-  const numbers = Array.from({ length: 30 }, (_, index) => index + 1);
+  const optionNumbers = useMemo(() => {
+    return Array.from({ length: 30 }, (_, index) => index + 1);
+  }, []);
+
   return (
     <Container>
       {!cart.length ? (
@@ -56,6 +55,7 @@ export default function CartCheckout() {
                           src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${product.image}`}
                           width={200}
                           height={200}
+                          priority
                           className="size-24 rounded-md object-cover sm:size-48"
                         />
                       </div>
@@ -93,9 +93,9 @@ export default function CartCheckout() {
                                     })
                                   )
                                 }
-                                defaultValue={quantities[productIdx]}
+                                defaultValue={product.quantity}
                               >
-                                {numbers.map((number) => (
+                                {optionNumbers.map((number) => (
                                   <option key={number} value={number}>
                                     {number}
                                   </option>
@@ -188,7 +188,7 @@ export default function CartCheckout() {
               <div className="mt-6">
                 <Link
                   href="/order"
-                  className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-semibold text-white shadow-sm hover:bg-davys-grey focus:outline-none focus:ring-2 focus:ring-wjote focus:ring-offset-2 focus:ring-offset-white"
+                  className="text-white outline outline-1 outline-white rounded-2xl text-xl font-bold flex justify-center items-center p-3 shadow-lg bg-green hover:transition-colors hover:bg-davys-grey hover:outline-davys-grey focus:outline-2 xl:text-2xl xl:px-6"
                 >
                   Comandă
                 </Link>

@@ -30,7 +30,7 @@ const Loading = () => {
           width={220}
           height={70}
           alt="Fromaj - Artisan Cheese Boards"
-          priority={true}
+          priority
         />
       </div>
     </div>

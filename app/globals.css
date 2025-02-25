@@ -20,7 +20,7 @@
     @apply text-white bg-green text-xl font-bold tracking-wider p-2 rounded-2xl outline outline-white outline-1 hover:bg-davys-grey hover:outline-none hover:transition-colors disabled:bg-davys-grey disabled:outline-none;
   }
   .button-update {
-    @apply text-white text-xl font-bold capitalize py-2;
+    @apply text-white text-xl font-bold capitalize py-3;
   }
 
   .clip-bottom {

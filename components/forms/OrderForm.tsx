@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { createOrder } from "@/app/action";
 import { Cart } from "@/utils/types";
@@ -12,6 +12,14 @@ const initialState = {
 };
 
 const OrderForm = ({ cart }: { cart: Cart[] }) => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [street, setStreet] = useState("");
+  const [apartament, setApartament] = useState("");
+  const [city, setCity] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const dispatch = useAppDispatch();
   const [state, formAction, pending] = useActionState(
     createOrder,
@@ -42,14 +50,28 @@ const OrderForm = ({ cart }: { cart: Cart[] }) => {
               type="text"
               name="fullName"
               placeholder="Numele dumneavoastră"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
             />
           </div>
 
           <div className="mt-6">
-            <Input type="email" name="email" placeholder="Adresă de email" />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Adresă de email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="mt-6">
-            <Input type="tel" name="phone" placeholder="Numărul de telefon" />
+            <Input
+              type="tel"
+              name="phone"
+              placeholder="Numărul de telefon"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
         </section>
 
@@ -63,7 +85,13 @@ const OrderForm = ({ cart }: { cart: Cart[] }) => {
 
           <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
             <div className="sm:col-span-3">
-              <Input type="text" name="street" placeholder="Stradă" />
+              <Input
+                type="text"
+                name="street"
+                placeholder="Stradă"
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
+              />
             </div>
 
             <div className="sm:col-span-3">
@@ -71,19 +99,39 @@ const OrderForm = ({ cart }: { cart: Cart[] }) => {
                 type="text"
                 name="apartment"
                 placeholder="Apartament, bloc, etc."
+                value={apartament}
+                onChange={(e) => setApartament(e.target.value)}
               />
             </div>
 
             <div>
-              <Input type="text" name="city" placeholder="Oras" />
+              <Input
+                type="text"
+                name="city"
+                placeholder="Oras"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
             </div>
 
             <div>
-              <Input type="date" name="date" placeholder="Data" />
+              <Input
+                type="date"
+                name="date"
+                placeholder="Data"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
             </div>
 
             <div>
-              <Input type="time" name="time" placeholder="Ora" />
+              <Input
+                type="time"
+                name="time"
+                placeholder="Ora"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+              />
             </div>
             <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           </div>
@@ -91,7 +139,7 @@ const OrderForm = ({ cart }: { cart: Cart[] }) => {
 
         <div className="mt-10 border-t border-gray-200 pt-6 sm:flex sm:items-center sm:justify-end">
           <button
-            className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:ml-6 sm:w-auto"
+            className="text-white outline outline-1 outline-white rounded-2xl text-xl font-bold flex justify-center items-center p-3 shadow-lg bg-green hover:transition-colors hover:bg-davys-grey hover:outline-davys-grey focus:outline-2 xl:text-2xl xl:px-6"
             aria-disabled={pending}
             disabled={pending}
           >

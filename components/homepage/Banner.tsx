@@ -16,7 +16,6 @@ export default function Banner() {
     revalidateOnFocus: false,
     shouldRetryOnError: false,
   });
-
   if (error) return;
   if (!data?.data) return;
   return (

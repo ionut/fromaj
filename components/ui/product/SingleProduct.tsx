@@ -11,16 +11,14 @@ import {
   TabPanels,
 } from "@headlessui/react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import Container from "../ui/common/Container";
-import { Cart, Products } from "@/utils/types";
+import { Products } from "@/utils/types";
 import Image from "next/image";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { addItem, getCurrentQuantityById } from "@/lib/slice/cartSlice";
-import UpdateItemQuantity from "../cart/UpdateItemQuantity";
-import DeleteItem from "../cart/DeleteItem";
+import { useAppSelector } from "@/lib/hooks";
+import { getCurrentQuantityById } from "@/lib/slice/cartSlice";
+
+import ProductActionAddToCard from "./ProductActionAddToCard";
 
 export default function SingleProduct({ product }: { product: Products }) {
-  const dispatch = useAppDispatch();
   const { id } = product;
   const {
     productName: name,
@@ -36,39 +34,24 @@ export default function SingleProduct({ product }: { product: Products }) {
       name: "Caracteristici",
       items: [
         `Greutate ${weight} kg`,
-        `Recomandat pentru maxim ${personNumber} persoane`,
-        "Poate ceva despre alimentele folosite",
-        "Alergii",
-        "Customizabil",
+        "Alergeni: Lactate, Gluten, Fructe cu coajă lemnoasă, Muștar, Sulfiți. Produsul poate conține urme de alți alergeni, fiind preparat într-un spațiu unde sunt procesate și alte ingrediente. Termen de valabilitatate: 2 zile de la dată producției. A se pastra la temperatura de 2-8°C",
+        "Poate fi personalizat la cerea clientului",
       ],
     },
     {
       name: "Livrare",
       items: [
-        "Iasi si zona metropolitana",
-        "Poate ceva despre interval orar",
-        "Comanda se face cu min 24 inainte",
+        "Iași și zona metropolitană",
+        "Comanda se face cu minim 24 de ore înainte",
       ],
     },
     {
       name: "Retur",
-      items: ["Nu se accepta retur"],
+      items: ["Nu se acceptă returul produselor alimentare"],
     },
   ];
   const currentQuantity = useAppSelector(getCurrentQuantityById(id));
-  const isInCart = currentQuantity > 0;
-  function handleAddToCart() {
-    const newItem: Cart = {
-      id: id,
-      image: pictures?.data[0]?.attributes?.url,
-      name: name,
-      quantity: 1,
-      price: price,
-      totalPrice: price * 1,
-      slug: slug,
-    };
-    dispatch(addItem(newItem));
-  }
+
   return (
     <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
       {/* Image gallery */}
@@ -84,9 +67,9 @@ export default function SingleProduct({ product }: { product: Products }) {
                 <span className="sr-only">{image.name}</span>
                 <span className="absolute inset-0 overflow-hidden rounded-md">
                   <Image
-                    alt={name}
-                    width={285}
-                    height={336}
+                    alt={`Miniatură ${name} - Platou Fromaj #${image.id}`}
+                    width={720}
+                    height={720}
                     priority
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.attributes.url}`}
                     className="size-full object-cover"
@@ -102,18 +85,23 @@ export default function SingleProduct({ product }: { product: Products }) {
         </div>
 
         <TabPanels>
-          {pictures.data.map((image: any) => (
-            <TabPanel key={image.id}>
-              <Image
-                alt="Platouri"
-                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.attributes.url}`}
-                width={464}
-                height={464}
-                priority
-                className="aspect-square w-full object-cover sm:rounded-lg"
-              />
-            </TabPanel>
-          ))}
+          {pictures.data.map(
+            (image: any) => (
+              console.log(image),
+              (
+                <TabPanel key={image.id}>
+                  <Image
+                    alt={`${name} premium - Imagine detaliată cu brânzeturi fine și mezeluri artizanale Fromaj pentru evenimente și catering de lux`}
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.attributes.url}`}
+                    width={720}
+                    height={720}
+                    priority
+                    className="aspect-square w-full object-cover sm:rounded-lg"
+                  />
+                </TabPanel>
+              )
+            )
+          )}
         </TabPanels>
       </TabGroup>
 
@@ -136,32 +124,7 @@ export default function SingleProduct({ product }: { product: Products }) {
         </div>
 
         <div className="mt-2 lg:mt-6">
-          <div className="flex">
-            <div className="flex items-center">
-              <div className="flex gap-4">
-                {isInCart && (
-                  <>
-                    <UpdateItemQuantity
-                      productId={id}
-                      currentQuantity={currentQuantity}
-                    />
-                    <DeleteItem productId={id} />
-                  </>
-                )}
-              </div>
-              <div>
-                {!isInCart && (
-                  <button
-                    type="button"
-                    className="button-add-to-cart"
-                    onClick={handleAddToCart}
-                  >
-                    Adaugă în coș
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
+          <ProductActionAddToCard item={product} />
         </div>
 
         <div aria-labelledby="details-heading" className="mt-6">

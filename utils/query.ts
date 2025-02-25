@@ -6,12 +6,18 @@ export async function getQuery(query: string) {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api${query}`
     );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
+    if (!data.data) {
+      throw new Error(data.error?.message || "No data available");
+    }
 
     return data;
   } catch (error) {
-    console.warn("Error fetching data:", error);
-    return { error: error instanceof Error ? error.message : "Unknown error" };
+    throw error instanceof Error ? error : new Error("Unknown error");
   }
 }
 

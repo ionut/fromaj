@@ -18,7 +18,7 @@ const SectionTitle = ({ title }: { title: string }) => {
         src="/images/separator-white.svg"
         width={160}
         height={40}
-        alt="Fromaj subtitlu"
+        alt="Separator decorativ Fromaj - Element grafic pentru titluri secțiuni"
         className="mx-auto w-40 h-10"
       />
     </>
