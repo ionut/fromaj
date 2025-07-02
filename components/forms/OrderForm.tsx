@@ -32,17 +32,14 @@ const OrderForm = ({ cart }: { cart: Cart[] }) => {
     }
   }, [state.status, state.userName, dispatch]);
   return (
-    <form
-      action={formAction}
-      className="px-4 pb-36 pt-16 sm:px-6 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-16"
-    >
+    <form action={formAction} className="lg:col-start-1 lg:row-start-1">
       <div className="mx-auto max-w-lg lg:max-w-none">
         <section aria-labelledby="contact-info-heading">
           <h2
             id="contact-info-heading"
-            className="text-lg font-medium text-gray-900"
+            className="text-2xl font-bold text-eerie-black-1"
           >
-            Contact information
+            Informatii Comandă
           </h2>
 
           <div className="mt-6">
@@ -139,7 +136,7 @@ const OrderForm = ({ cart }: { cart: Cart[] }) => {
 
         <div className="mt-10 border-t border-gray-200 pt-6 sm:flex sm:items-center sm:justify-end">
           <button
-            className="text-white outline outline-1 outline-white rounded-2xl text-xl font-bold flex justify-center items-center p-3 shadow-lg bg-green hover:transition-colors hover:bg-davys-grey hover:outline-davys-grey focus:outline-2 xl:text-2xl xl:px-6"
+            className="text-white rounded-2xl text-xl font-bold flex justify-center items-center p-3 bg-green hover:transition-colors hover:bg-davys-grey xl:text-2xl xl:px-6 hover:text-white"
             aria-disabled={pending}
             disabled={pending}
           >
@@ -147,7 +144,9 @@ const OrderForm = ({ cart }: { cart: Cart[] }) => {
           </button>
         </div>
       </div>
-      {state?.message && <p className="body-2">{state.message}</p>}
+      {state?.message && (
+        <p className="text-lg text-eerie-black-1">{state.message}</p>
+      )}
     </form>
   );
 };

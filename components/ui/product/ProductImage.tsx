@@ -17,7 +17,7 @@ const ProductImage = ({ href, imageUrl, name }: ImageTypes) => {
           width={425}
           height={425}
           alt={name}
-          className="object-cover w-full h-full rounded-md"
+          className="object-cover w-full h-full rounded-xl"
         />
       </figure>
     </Link>

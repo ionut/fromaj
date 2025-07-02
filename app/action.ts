@@ -19,7 +19,7 @@ const orderSchema = z.object({
   street: z.string().min(4, { message: "Adresă de livrare prea scurtă!" }),
   city: z.string().min(1, { message: "Numele orasului este prea scurt!" }),
   date: z.string().date(),
-  time: z.string().time(),
+  time: z.string(),
   cart: z.array(cartItemSchema),
 });
 

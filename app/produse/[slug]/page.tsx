@@ -2,6 +2,7 @@ import SingleProduct from "@/components/ui/product/SingleProduct";
 import Container from "@/components/ui/common/Container";
 import { getQuery } from "@/utils/query";
 import { notFound } from "next/navigation";
+import ProductReviews from "@/components/ui/product/ProductReviews";
 
 async function getProduct(slug: string) {
   const { data: product } = await getQuery(
@@ -66,6 +67,7 @@ export default async function ProductPage({
   return (
     <Container className="space-y-8">
       <SingleProduct product={product} />
+      <ProductReviews />
     </Container>
   );
 }

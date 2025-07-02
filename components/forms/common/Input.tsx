@@ -10,7 +10,10 @@ export const Input = ({
 }: InputProps) => {
   return (
     <div>
-      <label htmlFor={name} className="block text-xl font-medium text-white">
+      <label
+        htmlFor={name}
+        className="block text-xl font-medium text-eerie-black-1"
+      >
         {placeholder}
       </label>
       <div className="mt-2">

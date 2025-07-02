@@ -4,12 +4,15 @@ import { twMerge } from "tailwind-merge";
 type ContainerProps = {
   children: React.ReactNode;
   className?: string;
+  homeSection?: boolean;
 };
 
-const Container = ({ children, className }: ContainerProps) => {
+const Container = ({ children, className, homeSection }: ContainerProps) => {
+  const paddingTopStyle = homeSection && "pb-12 lg:pb-24";
+
   return (
     <section
-      className={twMerge("container pb-12 pt-8 lg:pb-24 lg:pt-16", className)}
+      className={twMerge("container pt-8 lg:pt-16", className, paddingTopStyle)}
     >
       {children}
     </section>

@@ -185,7 +185,7 @@ export default function Navbar() {
 
       <header className="relative bg-green">
         <nav aria-label="Top" className="container px-4 sm:px-6 lg:px-8">
-          <div className="flex h-28 items-center">
+          <div className="flex h-28 items-center justify-between lg:justify-start">
             <button
               type="button"
               onClick={() => setOpen(true)}
@@ -197,7 +197,7 @@ export default function Navbar() {
             </button>
 
             {/* Logo */}
-            <div className="ml-4 flex lg:ml-0">
+            <div className="flex lg:ml-0">
               <Link href="/">
                 <span className="sr-only">Fromaj Logo</span>
                 <Image
@@ -318,7 +318,7 @@ export default function Navbar() {
               </div>
             </PopoverGroup>
 
-            <div className="ml-auto flex items-center">
+            <div className="flex items-center lg:ml-auto">
               {/* Cart */}
               <div className="ml-4 flow-root lg:ml-6">
                 <Link

@@ -21,14 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
-      <body className={`${dmsans.className} bg-eerie-black-2`}>
+      <body className={`${dmsans.className} bg-white`}>
         <Providers>
-          <div className="grid grid-rows-[auto_1fr_auto] min-h-[100dvh]">
+          <div className="">
             <div>
               <Banner />
-              <Navbar />{" "}
+              <Navbar />
             </div>
-            <main>
+            <main className="min-h-[100dvh]">
               <Breadcrumb />
               {children}
             </main>

@@ -12,7 +12,7 @@ const images = {
 const HeroSection = () => {
   return (
     <div className="bg-green md:clip-bottom">
-      <Container className="border-t border-white">
+      <Container className="border-t border-white" homeSection={true}>
         <div className="grid grid-cols-1 items-center gap-5 md:grid-cols-[1fr_minmax(400px,_max-content)] md:gap-10 lg:gap-20">
           <article className="flex flex-col justify-center gap-6 order-2 md:order-1">
             <h1
@@ -20,18 +20,6 @@ const HeroSection = () => {
             >
               Pentru momente speciale
             </h1>
-            {/* <p className="paragraph">
-              Credem că fiecare masă spune o poveste. De aceea, ne-am propus să
-              transformăm evenimentele și sărbătorile tale în experiențe de
-              neuitat, prin platouri de brânzeturi create cu pasiune, rafinament
-              și atenție la cele mai mici detalii.
-            </p>
-            <p className="paragraph">
-              Fie că pregătești o cină romantică, o aniversare plină de zâmbete
-              sau un eveniment mareț, platourile noastre sunt mai mult decât o
-              selecție de delicatese – sunt o invitație la bucurie, savoare și
-              momente împărtășite.
-            </p> */}
             <p className="text-lg text-center font-normal md:text-left md:text-2xl ">
               Suntem aici să îți oferim o experiență gourmet de neuitat,
               perfectă pentru toate momentele tale speciale.
@@ -45,17 +33,10 @@ const HeroSection = () => {
             <div className="flex items-center gap-4 justify-center md:justify-start">
               <a
                 href="tel:+40754404000"
-                className="text-white outline outline-1 outline-white rounded-2xl text-xl font-bold flex justify-center items-center p-3 shadow-lg hover:transition-colors hover:bg-davys-grey hover:outline-davys-grey focus:outline-2 xl:text-2xl xl:px-6"
+                className="text-white underline rounded-2xl text-xl font-bold flex justify-center items-center xl:text-2xl"
               >
                 Contactează
-                <PhoneIcon width={20} height={20} className="ml-2" />
               </a>
-              <Link
-                href="/despre"
-                className="font-bold text-xl underline p-3 text-center xl:text-2xl xl:px-6"
-              >
-                Despre
-              </Link>
             </div>
           </article>
 
@@ -65,8 +46,8 @@ const HeroSection = () => {
               alt="Platou premium rotativ Fromaj cu selecție de brânzeturi fine, fructe proaspete și garnituri elegante pentru evenimente speciale și catering de lux"
               width={468}
               height={544}
-              priority
-              className="object-cover drop-shadow-image aspect-square md:animate-spin-slow"
+              priority={true}
+              className="object-cover size-[400px] drop-shadow-image aspect-square md:animate-spin-slow"
             />
           </div>
         </div>

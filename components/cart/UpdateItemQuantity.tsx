@@ -1,3 +1,4 @@
+import { twMerge } from "tailwind-merge";
 import {
   decreaseItemQuantity,
   increaseItemQuantity,
@@ -13,17 +14,19 @@ function UpdateItemQuantity({
 }) {
   const dispatch = useAppDispatch();
 
+  const buttonStyle = twMerge("button-update");
+
   return (
     <div className="flex gap-4">
       <button
-        className="button-update"
+        className={buttonStyle}
         onClick={() => dispatch(decreaseItemQuantity(productId))}
       >
         -
       </button>
-      <span className="button-update">{currentQuantity}</span>
+      <span className={buttonStyle}>{currentQuantity}</span>
       <button
-        className="button-update"
+        className={buttonStyle}
         onClick={() => dispatch(increaseItemQuantity(productId))}
       >
         +

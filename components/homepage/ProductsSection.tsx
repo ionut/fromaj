@@ -6,9 +6,10 @@ import { getQuery } from "@/utils/query";
 import Container from "../ui/common/Container";
 import SectionTitle from "../ui/common/SectionTitle";
 import useSWR from "swr";
+import Skeleton from "../ui/common/Skeleton";
 
 const ProductsSection = () => {
-  const { data, error } = useSWR("/products?populate=*", getQuery);
+  const { data, error, isLoading } = useSWR("/products?populate=*", getQuery);
 
   if (error) {
     return (
@@ -17,11 +18,26 @@ const ProductsSection = () => {
       </a>
     );
   }
+
+  if (isLoading) {
+    return (
+      <div className="bg-product-sections bg-cover bg-center md:-my-[10%] md:py-[10%]">
+        <Container homeSection={true}>
+          <SectionTitle title="Platouri fromaj" className="text-white" />
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-3 lg:grid-cols-3 xl:gap-6 mt-10">
+            {Array.from({ length: 6 }, (v, i) => i).map((i) => (
+              <Skeleton key={i} />
+            ))}
+          </ul>
+        </Container>
+      </div>
+    );
+  }
   return (
     <div className="bg-product-sections bg-cover bg-center md:-my-[10%] md:py-[10%]">
-      <Container>
-        <SectionTitle title="Platouri fromaj" />
-        <ul className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3 xl:gap-6 mt-10">
+      <Container homeSection={true}>
+        <SectionTitle title="Platouri fromaj" className="text-white" />
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-3 lg:grid-cols-3 xl:gap-6 mt-10">
           {data?.data?.map((item: Products) => {
             return (
               <ProductSectionItem

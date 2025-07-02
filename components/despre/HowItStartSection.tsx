@@ -8,7 +8,10 @@ const HowItStartSection = () => {
     <Container>
       <div className="grid grid-cols-1 lg:grid-flow-col lg:auto-cols-max items-center gap-4">
         <div className="space-y-4">
-          <SectionTitle title="Fromaj - Povestea noastră" />
+          <SectionTitle
+            title="Fromaj - Povestea noastră"
+            className="text-eerie-black-1"
+          />
           <p className="text-center text-xl">
             Fromaj a luat naștere din pasiunea pentru gusturi elegante, arome
             îmbibate în vin și miresme puternice. Din dorința de a oferi tonul

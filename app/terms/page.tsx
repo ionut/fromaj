@@ -7,7 +7,10 @@ const TermsPage = () => {
   return (
     <Container>
       <div>
-        <SectionTitle title="Termeni și condiții" />
+        <SectionTitle
+          title="Termeni și condiții"
+          className="text-eerie-black-1"
+        />
         <div className="mt-5">
           <ol className="list-group list-group-numbered">
             <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent">

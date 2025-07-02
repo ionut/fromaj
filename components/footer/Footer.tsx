@@ -67,8 +67,8 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-eerie-black-1">
-      <Container>
+    <footer className="bg-white">
+      <Container homeSection={true}>
         <nav
           aria-label="Footer"
           className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg min-h-6"
@@ -77,7 +77,7 @@ export default function Footer() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-white hover:text-white-alpha-80"
+              className="text-eerie-black-1 hover:white-alpha-20"
             >
               {item.name}
             </Link>
@@ -89,21 +89,21 @@ export default function Footer() {
               key={item.name}
               href={item.href}
               target="_blank"
-              className="text-white hover:text-white-alpha-80"
+              className="text-eerie-black-1 hover:white-alpha-20"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon aria-hidden="true" className="size-8" />
             </a>
           ))}
         </div>
-        <p className="mt-10 text-center text-lg text-white">
+        <p className="mt-10 text-center text-lg text-eerie-black-1">
           &copy; 2024 Fromaj.ro, Inc. All rights reserved.
         </p>
         <div className="mt-10 flex justify-center gap-x-10 min-h-8">
           <a
             href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO"
             target="_blank"
-            className="text-white hover:text-white-alpha-80"
+            className="text-eerie-black-1 hover:white-alpha-20"
           >
             <span className="sr-only">
               Soluționarea alternativă a litigiilor
@@ -119,7 +119,7 @@ export default function Footer() {
           <a
             href="https://anpc.ro/ce-este-sal/"
             target="_blank"
-            className="text-white hover:text-white-alpha-80"
+            className="text-eerie-black-1 hover:white-alpha-20"
           >
             <span className="sr-only">Soluționarea online a litigiilor</span>
             <Image

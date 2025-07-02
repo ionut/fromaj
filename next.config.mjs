@@ -24,6 +24,12 @@ const nextConfig = {
         hostname: "images.unsplash.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "flowbite.s3.amazonaws.com",
+        pathname: "/docs/gallery/square/*",
+        port: "",
+      },
     ],
   },
 };

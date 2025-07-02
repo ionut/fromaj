@@ -9,7 +9,7 @@ const Separator = () => (
     fill="currentColor"
     viewBox="0 0 20 20"
     aria-hidden="true"
-    className="size-8 shrink-0 text-white"
+    className="size-8 shrink-0 text-eerie-black-1"
   >
     <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
   </svg>
@@ -19,7 +19,7 @@ const BreadcrumbItem = ({ segment }: { segment: string }) => (
   <li>
     <div className="flex items-center">
       <Separator />
-      <p className="ml-4 text-lg font-medium text-white capitalize">
+      <p className="ml-4 text-lg font-medium text-eerie-black-1 capitalize">
         {segment.split("-").join(" ")}
       </p>
     </div>
@@ -36,7 +36,10 @@ export default function Breadcrumb() {
       <ol role="list" className="flex items-center space-x-4">
         <li>
           <div>
-            <Link href="/" className="text-white hover:text-white-alpha-80">
+            <Link
+              href="/"
+              className="text-eerie-black-1 hover:text-eerie-black-1/40"
+            >
               <HomeIcon aria-hidden="true" className="size-8 shrink-0" />
               <span className="sr-only">Home</span>
             </Link>

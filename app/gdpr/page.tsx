@@ -6,7 +6,10 @@ const GDPRPage = () => {
   return (
     <Container>
       <div>
-        <SectionTitle title="Politica de confidențialitate" />
+        <SectionTitle
+          title="Politica de confidențialitate"
+          className="text-eerie-black-1"
+        />
         <div className="mt-5">
           <p>
             Conform Legii nr. 677/2001 pentru protecția persoanelor cu privire

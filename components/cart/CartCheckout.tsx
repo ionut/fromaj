@@ -67,13 +67,13 @@ export default function CartCheckout() {
                               <h3 className="text-xl">
                                 <Link
                                   href={`/produse/${product.slug}`}
-                                  className="font-semibold text-white hover:text-white-alpha-80"
+                                  className="font-semibold text-eerie-black-1 hover:text-eerie-black-1/40"
                                 >
                                   {product.name}
                                 </Link>
                               </h3>
                             </div>
-                            <p className="mt-1 text-lg font-medium text-white-alpha-80">
+                            <p className="mt-1 text-lg font-medium text-eerie-black-1/40">
                               {product.price} RON
                             </p>
                           </div>
@@ -110,7 +110,7 @@ export default function CartCheckout() {
                             <div className="float-right">
                               <button
                                 type="button"
-                                className="-m-2 inline-flex p-2 text-white hover:text-white-alpha-80"
+                                className="-m-2 inline-flex p-2 text-eerie-black-1 hover:text-eerie-black-1/40"
                                 onClick={() => dispatch(deleteItem(product.id))}
                               >
                                 <span className="sr-only">Remove</span>
@@ -123,10 +123,10 @@ export default function CartCheckout() {
                           </div>
                         </div>
 
-                        <p className="mt-4 flex space-x-2 text-lg text-white-alpha-80">
+                        <p className="mt-4 flex space-x-2 text-lg text-eerie-black-1/40">
                           <ClockIcon
                             aria-hidden="true"
-                            className="size-5 shrink-0 text-white-alpha-80"
+                            className="size-5 shrink-0 text-eerie-black-1/40"
                           />
 
                           <span>Livrare in minimum 24 de ore</span>
@@ -188,7 +188,7 @@ export default function CartCheckout() {
               <div className="mt-6">
                 <Link
                   href="/order"
-                  className="text-white outline outline-1 outline-white rounded-2xl text-xl font-bold flex justify-center items-center p-3 shadow-lg bg-green hover:transition-colors hover:bg-davys-grey hover:outline-davys-grey focus:outline-2 xl:text-2xl xl:px-6"
+                  className="text-eerie-black-1 rounded-2xl text-xl font-bold flex justify-center items-center p-3 bg-white hover:transition-colors hover:bg-davys-grey xl:text-2xl xl:px-6 hover:text-white"
                 >
                   Comandă
                 </Link>

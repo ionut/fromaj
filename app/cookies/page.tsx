@@ -6,8 +6,11 @@ const CookiesPage = () => {
   return (
     <Container>
       <div>
-        <SectionTitle title="Politica de utilizare Cookie" />
-        <div className="mt-5">
+        <SectionTitle
+          title="Politica de utilizare Cookie"
+          className="text-eerie-black-1"
+        />
+        <div className="mt-5 text-eerie-black-1">
           <p>Acest site utilizează cookie-uri.</p>
           <p>Vă rugăm să citiți cu atenție informațiile de mai jos.</p>
           <p>

@@ -13,21 +13,16 @@ import {
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Products } from "@/utils/types";
 import Image from "next/image";
-import { useAppSelector } from "@/lib/hooks";
-import { getCurrentQuantityById } from "@/lib/slice/cartSlice";
 
-import ProductActionAddToCard from "./ProductActionAddToCard";
+import ProductActionAddToCart from "./ProductActionAddToCart";
 
 export default function SingleProduct({ product }: { product: Products }) {
-  const { id } = product;
   const {
     productName: name,
     price,
     weight,
     description,
     pictures,
-    personNumber,
-    slug,
   } = product.attributes;
   const details = [
     {
@@ -50,7 +45,6 @@ export default function SingleProduct({ product }: { product: Products }) {
       items: ["Nu se acceptă returul produselor alimentare"],
     },
   ];
-  const currentQuantity = useAppSelector(getCurrentQuantityById(id));
 
   return (
     <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
@@ -62,7 +56,7 @@ export default function SingleProduct({ product }: { product: Products }) {
             {pictures.data.map((image: any) => (
               <Tab
                 key={image.id}
-                className="group relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-white hover:bg-white-alpha-80 focus:outline-none focus:ring focus:ring-green focus:ring-offset-4"
+                className="group relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-eerie-black-1 hover:bg-white-alpha-20 focus:outline-none focus:ring focus:ring-green focus:ring-offset-4"
               >
                 <span className="sr-only">{image.name}</span>
                 <span className="absolute inset-0 overflow-hidden rounded-md">
@@ -85,33 +79,32 @@ export default function SingleProduct({ product }: { product: Products }) {
         </div>
 
         <TabPanels>
-          {pictures.data.map(
-            (image: any) => (
-              console.log(image),
-              (
-                <TabPanel key={image.id}>
-                  <Image
-                    alt={`${name} premium - Imagine detaliată cu brânzeturi fine și mezeluri artizanale Fromaj pentru evenimente și catering de lux`}
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.attributes.url}`}
-                    width={720}
-                    height={720}
-                    priority
-                    className="aspect-square w-full object-cover sm:rounded-lg"
-                  />
-                </TabPanel>
-              )
-            )
-          )}
+          {pictures.data.map((image: any) => (
+            <TabPanel key={image.id}>
+              <Image
+                alt={`${name} premium - Imagine detaliată cu brânzeturi fine și mezeluri artizanale Fromaj pentru evenimente și catering de lux`}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.attributes.url}`}
+                width={720}
+                height={720}
+                priority
+                className="aspect-square w-full object-cover sm:rounded-lg"
+              />
+            </TabPanel>
+          ))}
         </TabPanels>
       </TabGroup>
 
       {/* Product info */}
       <div className="mt-10 sm:mt-16 px-0 lg:mt-0">
-        <h1 className="text-3xl font-bold tracking-tight text-white">{name}</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-eerie-black-1">
+          {name}
+        </h1>
 
         <div className="mt-3">
           <h2 className="sr-only">Informatii produs</h2>
-          <p className="text-3xl tracking-tight text-white">{price} RON</p>
+          <p className="text-3xl tracking-tight text-eerie-black-1">
+            {price} RON
+          </p>
         </div>
 
         <div className="mt-6">
@@ -119,12 +112,12 @@ export default function SingleProduct({ product }: { product: Products }) {
 
           <div
             dangerouslySetInnerHTML={{ __html: description }}
-            className="space-y-6 text-lg text-white"
+            className="space-y-6 text-lg text-eerie-black-1"
           />
         </div>
 
         <div className="mt-2 lg:mt-6">
-          <ProductActionAddToCard item={product} />
+          <ProductActionAddToCart item={product} position="start" />
         </div>
 
         <div aria-labelledby="details-heading" className="mt-6">
@@ -135,27 +128,30 @@ export default function SingleProduct({ product }: { product: Products }) {
           <div className="divide-y divide-gray-200 border-t">
             {details.map((detail) => (
               <Disclosure key={detail.name} as="div">
-                <h3>
+                <div>
                   <DisclosureButton className="group relative flex w-full items-center justify-between py-6 text-left">
-                    <span className="text-lg font-medium text-white group-data-[open]:text-white-alpha-80">
+                    <span className="text-lg font-medium text-eerie-black-1 group-data-[open]:text-eerie-black-1">
                       {detail.name}
                     </span>
                     <span className="ml-6 flex items-center">
                       <PlusIcon
                         aria-hidden="true"
-                        className="block size-6 text-white group-hover:text-white-alpha-80 group-data-[open]:hidden"
+                        className="block size-6 text-eerie-black-1 group-hover:text-eerie-black-1 group-data-[open]:hidden"
                       />
                       <MinusIcon
                         aria-hidden="true"
-                        className="hidden size-6 text-white group-hover:text-white-alpha-80 group-data-[open]:block group-data-[open]:text-white-alpha-80"
+                        className="hidden size-6 text-eerie-black-1 group-hover:text-eerie-black-1 group-data-[open]:block group-data-[open]:text-eerie-black-1 "
                       />
                     </span>
                   </DisclosureButton>
-                </h3>
-                <DisclosurePanel className="pb-6">
+                </div>
+                <DisclosurePanel
+                  transition
+                  className="pb-6 origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
+                >
                   <ul
                     role="list"
-                    className="list-disc space-y-1 pl-5 text-base text-white marker:text-white"
+                    className="list-disc space-y-1 pl-5 text-base text-eerie-black-1 marker:text-eerie-black-1"
                   >
                     {detail.items.map((item) => (
                       <li key={item} className="pl-2">

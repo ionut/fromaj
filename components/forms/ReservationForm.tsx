@@ -26,10 +26,11 @@ const ReservationForm = () => {
   if (state.status === "Success!") {
     redirect(`/congratulations?userName=${state.userName}&type=rezervare`);
   }
+
   return (
     <form
       action={formAction}
-      className="max-w-2xl mx-auto space-y-4 p-6 bg-green rounded-lg"
+      className="max-w-[80%] mx-auto space-y-4 p-6 bg-green rounded-lg"
     >
       <div className="grid grid-cols-2 gap-2">
         <Input
@@ -59,7 +60,7 @@ const ReservationForm = () => {
         <Input
           type="text"
           name="eventType"
-          placeholder="Tipul de eveniment"
+          placeholder="Tipul de eveniment(nuntă, botez etc)"
           value={eventType}
           onChange={(e) => setEventType(e.target.value)}
         />
@@ -83,9 +84,9 @@ const ReservationForm = () => {
       <div>
         <label
           htmlFor="message"
-          className="block text-xl font-medium text-white"
+          className="block text-xl font-medium text-eerie-black-1"
         >
-          Add your message
+          Adaugă mesaj
         </label>
         <div className="mt-2">
           <textarea
@@ -100,7 +101,7 @@ const ReservationForm = () => {
       </div>
       <div className="mb-2">
         <button
-          className="text-white outline outline-1 outline-white rounded-2xl text-xl font-bold flex justify-center items-center p-3 shadow-lg bg-green hover:transition-colors hover:bg-davys-grey hover:outline-davys-grey focus:outline-2 xl:text-2xl xl:px-6"
+          className="text-eerie-black-1 rounded-2xl text-xl font-bold flex justify-center items-center p-3 bg-white hover:transition-colors hover:bg-davys-grey xl:text-2xl xl:px-6 hover:text-white disabled:bg-smoky-black-1 disabled:text-white"
           aria-disabled={pending}
           disabled={pending}
         >
