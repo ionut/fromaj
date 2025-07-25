@@ -7,7 +7,7 @@ import Navbar from "@/components/navbar/Navbar";
 import { dmsans } from "@/styles/fonts";
 import Breadcrumb from "@/components/ui/common/Breadcrumb";
 import Banner from "@/components/homepage/Banner";
-import VacationWrapper from "@/components/homepage/VacationWrapper";
+import MaintenanceWrapper from "@/components/homepage/MaintenanceWrapper";
 
 // Flag pentru vacation mode
 const VACATION_MODE = true;
@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className={`${dmsans.className} bg-white`}>
         <Providers>
           {VACATION_MODE ? (
-            <VacationWrapper />
+            <MaintenanceWrapper />
           ) : (
             <div className="">
               <div>
