@@ -14,10 +14,10 @@ const VACATION_MODE = true;
 
 export const metadata: Metadata = {
   title: VACATION_MODE
-    ? "În concediu - Fromaj Artisan Cheese"
+    ? "În dezvoltare - Fromaj Artisan Cheese"
     : "Fromaj Artisan Cheese",
   description: VACATION_MODE
-    ? "Fromaj Artisan Cheese - Suntem în concediu și revenim curând cu noutăți!"
+    ? "Fromaj Artisan Cheese - Suntem în dezvoltare și revenim curând cu noutăți!"
     : "Fromaj Artisan Cheese Boards · Cutii cu brânzeturi delicate și mezeluri alese · Corporate Catering & Evenimente",
   metadataBase: new URL("https://dev.fromaj.ro"),
 };
