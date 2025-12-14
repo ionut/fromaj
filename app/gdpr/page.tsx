@@ -10,7 +10,7 @@ const GDPRPage = () => {
           title="Politica de confidențialitate"
           className="text-eerie-black-1"
         />
-        <div className="mt-5">
+        <div className="mt-5 text-eerie-black-1">
           <p>
             Conform Legii nr. 677/2001 pentru protecția persoanelor cu privire
             la prelucrarea datelor cu caracter personal și liberă circulație a

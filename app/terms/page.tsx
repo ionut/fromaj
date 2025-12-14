@@ -12,7 +12,7 @@ const TermsPage = () => {
           className="text-eerie-black-1"
         />
         <div className="mt-5">
-          <ol className="list-group list-group-numbered">
+          <ol className="list-group list-group-numbered  text-eerie-black-1">
             <li className="list-group-item d-flex justify-content-between align-items-start bg-transparent">
               <div className="ms-2 me-auto">
                 <div className="fw-bold">Informații Generale</div>
@@ -30,9 +30,9 @@ const TermsPage = () => {
                   („GDPR”).
                 </p>
                 <p>
-                  <b>WebRender</b>, cu sediul social in Iași, str. Fântânilor nr
-                  57, J22/2934/2021, Cod fiscal 44836220, care administrează
-                  website-ul
+                  <b>Entourage Addict SRL</b>, cu sediul social in Iași, str.
+                  Fântânilor nr 57, J22/2934/2021, Cod fiscal 44836220, care
+                  administrează website-ul
                   <Link href="/">
                     <b>fromaj.ro</b>
                   </Link>

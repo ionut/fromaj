@@ -37,8 +37,8 @@ const navigation = {
     },
   ],
   pages: [
-    { name: "Evenimente", href: "/evenimente" },
-    { name: "Rezervare", href: "/rezervare" },
+    // { name: "Evenimente", href: "/evenimente" },
+    // { name: "Rezervare", href: "/rezervare" },
     { name: "Despre noi", href: "/despre" },
   ],
 };
