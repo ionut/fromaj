@@ -4,10 +4,11 @@ import { getQuery } from "@/utils/query";
 import { notFound } from "next/navigation";
 
 async function getProduct(slug: string) {
-  const response = await getQuery(
+  const { data, error } = await getQuery(
     `/products?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=*`,
   );
-  return response?.data?.[0] || null;
+  if (error) return null;
+  return data?.[0] || null;
 }
 
 export async function generateMetadata({

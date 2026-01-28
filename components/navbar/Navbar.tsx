@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import {
   CloseButton,
   Dialog,
@@ -25,8 +25,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useAppSelector } from "@/lib/hooks";
 import { getTotalCartQuantity } from "@/lib/slice/cartSlice";
-import useSWR from "swr";
-import { getQuery } from "@/utils/query";
 import { Products } from "@/utils/types";
 
 const navigation = {
@@ -44,17 +42,32 @@ const navigation = {
 };
 
 export default function Navbar() {
-  const { data, error, isLoading } = useSWR("/products?populate=*", getQuery);
-  const products = data?.data as Products[];
-  const featuredProductIds = new Set([1, 6]);
-
-  const featuredProducts = products?.filter((product) =>
-    featuredProductIds.has(product.id)
-  );
-
+  const [products, setProducts] = useState<Products[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const totalQuantity = useAppSelector(getTotalCartQuantity);
-  if (isLoading) return <div>Loading...</div>;
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/products?populate=*`,
+      );
+      if (!response.ok) {
+        setError("Failed to load");
+        return;
+      }
+      const result = await response.json();
+      setProducts(result.data || []);
+    }
+    fetchProducts();
+  }, []);
+
+  const featuredProductIds = new Set([1, 6]);
+  const featuredProducts = products?.filter((product) =>
+    featuredProductIds.has(product.id),
+  );
+
+  if (!products) return <div>Loading...</div>;
   if (error) return <div>failed to load</div>;
   return (
     <div className="bg-green">
@@ -103,7 +116,7 @@ export default function Navbar() {
                     className="space-y-10 px-4 pb-8 pt-10"
                   >
                     <div className="grid grid-cols-2 gap-x-2">
-                      {featuredProducts.map((item) => (
+                      {featuredProducts?.map((item) => (
                         <div
                           key={item.attributes.productName}
                           className="group relative text-sm"
@@ -237,7 +250,7 @@ export default function Navbar() {
                         <div className="container px-8 border-t border-white-alpha-80">
                           <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
                             <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                              {featuredProducts.map((item) => (
+                              {featuredProducts?.map((item) => (
                                 <div
                                   key={item.attributes.productName}
                                   className="group relative text-lg md:text-xl"

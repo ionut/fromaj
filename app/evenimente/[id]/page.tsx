@@ -8,11 +8,13 @@ export default async function EventPage(
   }
 ) {
   const params = await props.params;
-  const { data: event } = await getQuery(
+  const { data: event, error } = await getQuery(
     `/evenimentes?filters[id][$eq]=${params.id}&populate=*`
   );
-  if (!event.length) {
+
+  if (error || !event?.length) {
     notFound();
   }
+
   return <SingleEvent event={event[0]} />;
 }

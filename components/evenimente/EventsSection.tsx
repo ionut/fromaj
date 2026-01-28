@@ -7,10 +7,11 @@ import Image from "next/image";
 const EventsSection = async () => {
   const { error, data: events } = await getQuery("/evenimente?populate=*");
 
-  const imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${events.attributes.poze.data[0].attributes.url}?format=webp`;
-  if (error) {
+  if (error || !events) {
     return "Not found!";
   }
+
+  const imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${events.attributes.poze.data[0].attributes.url}?format=webp`;
   return (
     <section className="events-section">
       <div className="container events-section-block">
