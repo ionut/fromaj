@@ -2,16 +2,11 @@ import { unstable_noStore as noStore } from "next/cache";
 
 export async function getQuery(query: string) {
   noStore();
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-  const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
 
   try {
-    const response = await fetch(`${baseUrl}/api${query}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api${query}`,
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -36,7 +31,7 @@ export async function postData(query: string, formData: any) {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
+          Authorization: `Bearer ${process.env.API_TOKEN_SALT}`, // Include the Authorization header
         },
         body: JSON.stringify({ data: formData.data }),
       },
