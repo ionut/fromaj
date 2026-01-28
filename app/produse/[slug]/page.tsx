@@ -2,13 +2,12 @@ import SingleProduct from "@/components/ui/product/SingleProduct";
 import Container from "@/components/ui/common/Container";
 import { getQuery } from "@/utils/query";
 import { notFound } from "next/navigation";
-import ProductReviews from "@/components/ui/product/ProductReviews";
 
 async function getProduct(slug: string) {
-  const { data: product } = await getQuery(
-    `/products?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=*`
+  const response = await getQuery(
+    `/products?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=*`,
   );
-  return product[0];
+  return response?.data?.[0] || null;
 }
 
 export async function generateMetadata({
@@ -67,7 +66,7 @@ export default async function ProductPage({
   return (
     <Container className="space-y-8">
       <SingleProduct product={product} />
-      <ProductReviews />
+      {/* <ProductReviews /> */}
     </Container>
   );
 }

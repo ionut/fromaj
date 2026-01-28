@@ -2,10 +2,10 @@ import { unstable_noStore as noStore } from "next/cache";
 
 export async function getQuery(query: string) {
   noStore();
+  const baseUrl =
+    process.env.STRAPI_INTERNAL_URL || process.env.NEXT_PUBLIC_STRAPI_URL;
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api${query}`
-    );
+    const response = await fetch(`${baseUrl}/api${query}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -38,6 +38,7 @@ export async function postData(query: string, formData: any) {
 
     if (!response.ok) {
       const errorData = await response.json();
+      console.log("Error data from Strapi:", errorData);
       throw new Error(errorData.message || "Network response was not ok");
     }
   } catch (error) {
