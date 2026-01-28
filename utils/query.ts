@@ -2,10 +2,14 @@ import { unstable_noStore as noStore } from "next/cache";
 
 export async function getQuery(query: string) {
   noStore();
-  const baseUrl =
-    process.env.STRAPI_INTERNAL_URL || process.env.NEXT_PUBLIC_STRAPI_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
   try {
-    const response = await fetch(`${baseUrl}/api${query}`);
+    const response = await fetch(`${baseUrl}/api${query}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.API_TOKEN_SALT}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
